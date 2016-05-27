@@ -12,7 +12,7 @@
       </div>
     
      <div class="card">
-         <a href="?Ageiculturist" class="btn " >เกษตรกร</a> <p>ไปสร้าง Module  Ageiculturist   จัดการเกษตรกร เพิ่มลบแก้ไข (มีเลือกจังหวัด อำเภอ ตำบล jQuery )  click ดู table : <a href='#ageiculturist' class="modal-trigger"><i class="material-icons">view_list</i></a>
+         <a href="?Ageiculturist" class="btn " >เกษตรกร :TIK</a> <p>ไปสร้าง Module  Ageiculturist   จัดการเกษตรกร เพิ่มลบแก้ไข (มีเลือกจังหวัด อำเภอ ตำบล jQuery )  click ดู table : <a href='#ageiculturist' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
             <div  id="ageiculturist" class="modal">
                 
