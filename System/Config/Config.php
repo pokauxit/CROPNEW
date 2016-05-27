@@ -7,6 +7,6 @@ define("SUBMIT",$_POST['submit']);
  
 define("APP_HOST", "localhost");
 define("APP_USER", "root");
-define("APP_PASS", "cyberman");
-define("APP_DB", "crop");
+define("APP_PASS", "");
+define("APP_DB", "cropnew");
 ?>
