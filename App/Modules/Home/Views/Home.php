@@ -9,15 +9,57 @@
     <div class="card">
             <a href="javascript:;" class="btn orange">Read First</a>   
             เวลา copmit ให้ export table ที่ตนทำไปไว้ใน folder  <b>tempFile</b>
-            
+            <br> หน้าตาทำให้เขากับ materializecss เลยครับ ไม่ยาก ถ้าติดให้ถาม หรือ ให้ remote ครับ <br>
+            หรือ commit ขึ้นครับ หน้า add ,edit ทำ alert(); check ค่าว่างด้วย ใช้จาก JS Lib ถ้าไม่เป็นถามครับ ง่ายมากหัดเป็บเดียวได้เลย
+            <hr><i class="red-text">ใครติดตรงไหน ถามได้เลยครับ</i>
     </div>
+     
+    
+    
+    
      <div class="card">
-            <a href="?Login" class="btn">Login</a>   
+         <a href="?TypePlant" class="btn " >ชนิดของพืช  :Jui</a> <p>ไปสร้าง Module  TypePlant   จัดการชนิดของพืช เพิ่มลบแก้ไข  click ดู table : <a href='#TypePlant' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="TypePlant" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: type_plant </td><td colspan="3">	ชนิดของพืช </b><br>
+             <tr><td>   type_id     </td><td>       รหัสชนิดพืช       </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_name              </td><td>    ชื่อชนิด 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+             <tr><td>   note            </td><td>     หมายเหตุ	   </td><td>     varchar	200 </td><td>	can null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
+         
+    
+    <div class="card">
+         <a href="?Plant" class="btn " >พืช  :Jui</a> <p>ไปสร้าง Module  Plant   จัดการพืช เพิ่มลบแก้ไข  มี dropdown จาก TypePlant ด้วยเลือกว่าพืชเป้นชนิดไหน click ดู table : <a href='#Plant' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Plant" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: plant </td><td colspan="3">	รหัสพืช </b><br>
+             <tr><td>   plant_id     </td><td>       รหัสชนิดพืช       </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_id              </td><td>    ชื่อชนิด 	   </td><td>     integer  </td><td>	not null fk->type_plant </td></tr>
+             <tr><td>   plant_name            </td><td>     ชื่อพืช 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+            <tr><td>   caltivated_area            </td><td>     พื้นที่เพาะปลูก 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
       </div>
     
     
     
-     <div class="card">
+    <div class="card">
          <a href="?Ageiculturist" class="btn " >เกษตรกร :TIK</a> <p>ไปสร้าง Module  Ageiculturist   จัดการเกษตรกร เพิ่มลบแก้ไข (มีเลือกจังหวัด อำเภอ ตำบล jQuery )  click ดู table : <a href='#ageiculturist' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
             <div  id="ageiculturist" class="modal">
@@ -36,13 +78,14 @@
                 
                 </div>
       </div>
-         
-    
     
     
     
      <div class="card">
-         <a href="?Crop//1" class="btn " >พืชที่เเกษตรปลูก :Nu</a> <p>ไปสร้าง Module  Crop   จัดการพืชที่เกษตรกรคนนั้นปลูก เพิ่มลบแก้ไข (รับค่าจาก id url สมมุตเป็น 1 เป็นเกษตรกรที่เราจะเลือกจัดการพืชที่เขาปลูก จริงๆต้องรอติ้กทำเสร็จเราถึงจะเลิกเกษตรเกษตรจริง แต่อันนี้สมมุตว่าเราเลือก id 1 มาแล้ว เพื่อให้ทำ โมดูลนี้ได้โดยไม่ต้องรอ Tik)  click ดู table : <a href='#crop' class="modal-trigger"><i class="material-icons">view_list</i></a>
+         <a href="?Crop//1" class="btn " >พืชที่เเกษตรปลูก :Nu</a> <p>ไปสร้าง Module  Crop   จัดการพืชที่เกษตรกรคนนั้นปลูก เพิ่มลบแก้ไข (รับค่าจาก id url สมมุตเป็น 1 เป็นเกษตรกรที่เราจะเลือกจัดการพืชที่เขาปลูก จริงๆต้องรอติ้กทำเสร็จเราถึงจะเลิกเกษตรเกษตรจริง แต่อันนี้สมมุตว่าเราเลือก id 1 มาแล้ว เพื่อให้ทำ โมดูลนี้ได้โดยไม่ต้องรอ Tik) 
+             <br> และมีการ ดึง list รายการพืช ออกมาเป็น option (dropdown) จากที่ jui ทำ แต่ไม่ต้องเราสร้างตารางแบบ jui และ make ข้อมูลใส่ไปก่อน จะได้ไม่ต้องรอกัน  
+             
+             click ดู table : <a href='#crop' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
             <div  id="crop" class="modal">
                 
