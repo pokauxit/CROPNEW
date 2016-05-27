@@ -1,0 +1,22 @@
+@import url(../font/thsarabunnew.css);
+
+*{ margin: 0; padding: 0; }
+body{ font-family: 'THSarabunNew', sans-serif; font-size: 0.95em; line-height: 1.7em; 
+background-color: #eeeeee;
+}
+
+.container{
+    width:90%;
+}
+.navbar-brand img{
+    display: inline-block; 
+    max-height: 56px;
+    float: left;
+}
+.navbar-brand .brand-name{
+    float: right;
+   
+  
+    padding-left: 10px;
+ 
+}
