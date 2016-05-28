@@ -8,5 +8,5 @@ define("SUBMIT",$_POST['submit']);
 define("APP_HOST", "localhost");
 define("APP_USER", "root");
 define("APP_PASS", "");
-define("APP_DB", "cropnew");
+define("APP_DB", "crops");
 ?>
