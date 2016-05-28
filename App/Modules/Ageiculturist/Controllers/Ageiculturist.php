@@ -11,13 +11,15 @@ class Ageiculturist extends HMVC{
 
      public function __construct() {
 //         ACL::check("STAFF");
-//         parent::__construct();
+    parent::__construct();
      }
 
      public function index() {
          $this->db = new agl();
          $this->db->left("tambon_id", "tambon.tambon_name");
+        
          $this->view();
+         
      }
 
     public function  Add(){

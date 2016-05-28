@@ -3,14 +3,14 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+ 
 ?>
 
 <div class="container">
 
     <div style="margin-top: 15px;">
         <h4 class="pull-left">จัดการเกษตรกร</h4>
-<!--        <a class="btn waves-effect waves-light pull-right"-->
-<!--           href="--><?php //echo $this->route->Add(); ?><!--"><i class="fa fa-plus"></i> Add</a>-->
+   <a class="btn waves-effect waves-light pull-right"   href="<?php echo $this->route->Add(); ?>"><i class="fa fa-plus"></i> Add</a>
     </div>
     <div class="row">
         <table class="responsive-table highlight striped">
@@ -48,7 +48,9 @@ $template->open();
         </table>
     </div>
 </div>
-
+<?php 
+ 
+?>
 
 <?php
 $template->close();
