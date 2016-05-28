@@ -31,7 +31,7 @@ class Plant extends HMVC {
         } else {
             $this->dbTypePlan = new typepln();
             $this->dbTypePlan->select();
-            
+
             $this->view("Add");
         }
     }
@@ -43,7 +43,7 @@ class Plant extends HMVC {
         } else {
             $this->dbTypePlan = new typepln();
             $this->dbTypePlan->select();
-            
+
             $this->row = $this->db->get(ID);
             $this->view("Edit");
         }
@@ -51,6 +51,13 @@ class Plant extends HMVC {
 
     public function Delete() {
         $this->controller();
+    }
+
+    public function getPlantAll($id) {// รับ ID มา Selected
+        $this->id = $id;
+        $this->dbPlant = new pln();
+        $this->dbPlant->select();
+        $this->view("Option_List");
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\Crop\Controllers\Crop;
+use App\Modules\Plant\Controllers\Plant;
 Use System\Template\Template;
 
 $template = new Template();
@@ -28,8 +29,10 @@ $template->open();
 
                 <div class="input-field  col  s12 m6">
                     <select id="plant_id" name="plant_id">
-                        <option value="1" >1</option>
-                        <option value="1" >1</option> 
+                        <?php
+                        $plant = new Plant();
+                        echo $plant->getPlantAll($this->rowId->plant_id); // ส่ง ID ไป Selected
+                        ?>
                     </select>
                     <label for="plant_id">พืช</label>
                 </div>

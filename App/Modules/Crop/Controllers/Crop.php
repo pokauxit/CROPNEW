@@ -3,11 +3,13 @@
 namespace App\Modules\Crop\Controllers;
 
 use App\Models\crop AS tb_crop;
+use App\Models\plant AS tb_plant;
 use System\HMVC\HMVC;
 
 class Crop extends HMVC {
 
     protected $db;
+    protected $dbPlan;
     protected $rowId;
 
     public function __construct() {
@@ -19,7 +21,7 @@ class Crop extends HMVC {
         $this->db = new tb_crop();
         $this->db->where = "argiculturist_id='" . $this->param(0) . "'";
         $this->db->orderSort = "crop_id ASC";
-        $this->db->select();
+        $this->db->left('plant_id', 'plant.plant_name');
         $this->view();
     }
 
@@ -27,6 +29,8 @@ class Crop extends HMVC {
         if (SUBMIT) {
             $this->controller();
         } else {
+            $this->dbPlan = new tb_plant();
+            $this->dbPlan->select();
             $this->view("Add");
         }
     }
@@ -36,6 +40,8 @@ class Crop extends HMVC {
         if (SUBMIT) {
             $this->controller();
         } else {
+            $this->dbPlan = new tb_plant();
+            $this->dbPlan->select();
             $this->rowId = $this->db->get($this->param(1));
             $this->view("Edit");
         }
