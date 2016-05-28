@@ -20,7 +20,7 @@ class Plant extends HMVC {
 
     public function index() {
         $this->dbPlant = new pln();
-        $this->dbPlant->select();
+        $this->dbPlant->left("plant_id", "typeplant.type_name");
 
         $this->view();
     }
