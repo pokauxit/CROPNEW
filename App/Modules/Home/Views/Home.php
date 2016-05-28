@@ -17,6 +17,28 @@
     </div>
      
     <div class="card">
+         <a href="?Standard" class="btn " >มาตราฐาน  :Tik</a> <p>ไปสร้าง Module  Standard   จัดการมาตราฐาน พิ่มลบแก้ไข  click ดู table : <a href='#Standard' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Standard" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: standard  </td><td colspan="3">	มาตรฐาน/รางวัล  </b><br>
+             <tr><td>   sid     </td><td>       รหัสมาตรฐาน    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_name            </td><td>     ชื่อมาตรฐานที่ได้รับ  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   org             </td><td>     สถาบันหรือน่วยงานที่กำหนดมฐ   	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
+    
+    
+    
+    
+    <div class="card">
          <a href="?TypeFertilizer" class="btn " >ชนิดของปุ๋ย  :Jui</a> <p>ไปสร้าง Module  TypeFertilizer   จัดการชนิดของปุ๋ย (มีข้อมูล2ชนิด ไบโอเคมี และ ชีวภาพ  )เพิ่มลบแก้ไข  click ดู table : <a href='#TypeFertilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
             <div  id="TypeFertilizer" class="modal">
