@@ -30,7 +30,24 @@
                 </div>
       </div>
     
-    
+    <div class="card">
+         <a href="?Symptom" class="btn " >อาการ   :Tik</a> <p>ไปสร้าง Module  Symptom   จัดการอาการผิดปกติของพืช click ดู table : <a href='#Symptom' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Symptom" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: symptom   </td><td colspan="3">	 ลักษณะของอาการ  </b><br>
+             <tr><td>   symptom_id       </td><td>       รหัสการ      </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   symptom_name            </td><td>     ชื่อของอาหาร  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   symptom_detail             </td><td>     รายละเอียดขงอาหาร    	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
     <div class="card">
          <a href="?Standard" class="btn " >มาตราฐาน  :Tik</a> <p>ไปสร้าง Module  Standard   จัดการมาตราฐาน พิ่มลบแก้ไข  click ดู table : <a href='#Standard' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
