@@ -59,7 +59,6 @@ class Plant extends HMVC {
         $this->dbPlant->select();
         $this->view("Option_List");
     }
-
 }
 ?>
 

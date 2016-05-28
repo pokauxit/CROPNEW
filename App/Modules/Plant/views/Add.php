@@ -67,7 +67,7 @@
     </div>
     </div>
 </div>
+
 <?php
     $template->close();
 ?>
-
