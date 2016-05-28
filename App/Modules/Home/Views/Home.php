@@ -16,6 +16,21 @@
             <hr><i class="red-text">ใครติดตรงไหน ถามได้เลยครับ</i>
     </div>
      
+    
+    <div class="card">
+         <a href="?Staff" class="btn " >เจ้าหน้าที่  :Nu</a> <p>ไปสร้าง Module  Staff     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Staff" class="modal">
+                
+               ใช้อันเดิมจากงานเก่า
+                
+           
+                
+                
+                </div>
+      </div>
+    
+    
     <div class="card">
          <a href="?Standard" class="btn " >มาตราฐาน  :Tik</a> <p>ไปสร้าง Module  Standard   จัดการมาตราฐาน พิ่มลบแก้ไข  click ดู table : <a href='#Standard' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
