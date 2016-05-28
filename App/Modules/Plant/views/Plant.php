@@ -4,8 +4,13 @@
     $template = new Template();
     $template->open();
 ?>
-<div class="container">
+<div class="container" id="container-center">
+    <div class="row card " style="padding: 10px;"> 
+    <div>
+        <h4 class="pull-left">จัดการประเภทของพืช</h4>
+        <br/>
     <table class="bordered">
+        <thead class="green">
         <tr>
           <th>รหัสชนิดพืช</th>
           <th>ชื่อประเภท</th>
@@ -13,6 +18,7 @@
           <th>พื้นที่เพาะปลูก</th>
           <th>ตัวเลือก</th>
         </tr>
+        </thead>
     <?php
         $i=1;
         $pk = $this->pk;
@@ -24,21 +30,24 @@
           <td><?php echo $rc2->plant_name; ?></td>
           <td><?php echo $rc2->caltivated_area; ?></td>
           <td>
-                <a href="<?php echo $this->route->Edit($rc2->plant_id);?>">edit </a> 
-                <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc2->plant_id);?>"> delete</a>
+              <a href="<?php echo $this->route->Edit($rc2->plant_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+              <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc2->plant_id);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
           </td>
         </tr>
     <?php
         $i++;
     }
     ?>   
-        <tr>
-            <td colspan="5">
-                <a href="<?php echo $this->route->Add();?>">Add</a>
-
-            </td>
-        </tr>
     </table>
+    </div>
+        <br/>
+    <div class="center"  >
+        <a class="btn waves-effect green" href="<?php echo $this->route->Add();
+        echo '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> Add</a>
+        <a class="btn waves-effect orange" href="<?php echo $this->route->Add();
+        echo '/' . $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> Back</a>
+    </div> 
+    </div>
 </div>
 <?php
     $template->close();
