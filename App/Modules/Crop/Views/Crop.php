@@ -6,7 +6,7 @@ $template = new Template();
 $template->open();
 ?>
 
-<div class="container">
+<div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 
    
     
