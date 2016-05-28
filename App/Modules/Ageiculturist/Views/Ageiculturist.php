@@ -6,15 +6,17 @@ $template->open();
  
 ?>
 
-<div class="container">
 
-    <div style="margin-top: 15px;">
-        <h4 class="pull-left">จัดการเกษตรกร</h4>
-   <a class="btn waves-effect waves-light pull-right"   href="<?php echo $this->route->Add(); ?>"><i class="fa fa-plus"></i> เพิ่มรายการ</a>
-    </div>
-    <div class="row">
-        <table class="responsive-table highlight striped">
-            <thead>
+<div class="container" id="container-center">
+    <div class="row card " style="padding: 10px;">
+
+
+        <h4 class="pull-left">จัดการข้อมูลเกษตรกร</h4>
+
+        <p>
+
+        <table class="bordered  striped " style="min-width: 500px;"  >
+            <thead class="green">
             <tr>
                 <th>ลำดับ</th>
                 <th>บ้านเลขที่</th>
@@ -25,16 +27,6 @@ $template->open();
             </tr>
             </thead>
 
-            <tfoot>
-            <tr>
-                <th>ลำดับ</th>
-                <th>บ้านเลขที่</th>
-                <th>หมายเลขโทรศัพท์</th>
-                <th>ชื่อเกษตรกร</th>
-                <th>รหัสจังหวัด</th>
-                <th>จัดการ</th>
-            </tr>
-            </tfoot>
             <tbody>
             <?php $rowId = 1; ?>
             <?php while ($rc = $this->db->fetch()) : ?>
@@ -52,6 +44,12 @@ $template->open();
             <?php endwhile; ?>
             </tbody>
         </table>
+        <p><br></p>
+
+        <div class="center"  >
+            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+            <a class="btn waves-effect orange" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+        </div>
     </div>
 </div>
 <?php 
