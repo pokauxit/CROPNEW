@@ -6,9 +6,11 @@ $template = new Template();
 $template->open();
 ?>
 
-<div class="container">
-    <h4>จัดการเกษตรกร</h4>
-    <div class="row">
+<div class="container" id="container-center">
+
+    <div class="row card" style="padding: 10px;">
+
+        <h4>จัดการข้อมูลเกษตรกร</h4>
         <form class="col s12" action="" method="post">
             <div class="row">
                 <div class="input-field col m4 s12">
@@ -24,9 +26,9 @@ $template->open();
                     <label for="agriculturist_name">ชื่อเกษตรกร</label>
                 </div>
             </div>
-          
-            
-              <div class="row">
+
+
+            <div class="row">
                 <div class="input-field col  m4 s12">
                     <select id="province_id" name="province_id">
                         <?php $province = new AutoProvince();
@@ -49,23 +51,16 @@ $template->open();
                     <label for="tambon_id">ตำบล</label>
                 </div>
             </div>
-            
-            
-            
+
+
             <div align="center" class="row">
-                <br>  <br>  <br>
+                <br> <br> <br>
                 <div class="col s12">
-                <button class="btn waves-effect waves-light orange" type="reset" name="reset">เคลียร์
-                    <i class="material-icons right">replay</i>
-                </button>
-                <button class="btn waves-effect waves-light"
-                        type="submit"
-                        name="submit" id="btn-submit"
-                        value="ss">บันทึก
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
+                    <button class="btn waves-effect green " style="margin: 5px;" type="submit" name="submit" id="btn-submit" value="ss"><i class="fa fa-save"></i> บันทึก </button>
+                    <button class="btn waves-effect light-green"  style="margin: 5px;" type="reset" name="reset"   value="ss"><i class="fa fa-refresh"></i> เริ่มใหม่ </button>
+                    <button class="btn waves-effect orange"  style="margin: 5px;" type="button" onclick="window.location.href = '<?php echo $this->route->backToModule() . '//' . $this->param(0); ?>'"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ </button>
                 </div>
+            </div>
         </form>
     </div>
 </div>
@@ -77,98 +72,100 @@ $template->close();
 <script>
 
     $(document).ready(function () {
-        
-        try{
- refreshOption();
-        $(document).on('submit', 'form', function (e) {
 
-            if ($('#tambon_id').val() > 0) {
-                $("form").submit();
-            } else {
-                alert('กรุณาเลือกตำบล');
-            }
-            e.preventDefault();
-        });
+        try {
+            refreshOption();
+            $(document).on('submit', 'form', function (e) {
 
-        $(document).on('change', '#province_id', function (e) {
-            e.preventDefault();
+                if ($('#tambon_id').val() > 0) {
+                    $("form").submit();
+                } else {
+                    alert('กรุณาเลือกตำบล');
+                }
+                e.preventDefault();
+            });
 
-            if ($('#province_id').val() > 0) {
-                validateProvince();
-                var provinceId = $('#province_id').val();
-                callBackAjax('province_id', provinceId);
-            } else {
-                validateProvince();
-            }
-        });
+            $(document).on('change', '#province_id', function (e) {
+                e.preventDefault();
 
-        $(document).on('change', '#amphur_id', function (e) {
-            e.preventDefault();
-
-            if ($('#amphur_id').val() > 0) {
-                validateAmphur();
-                var amphurId = $('#amphur_id').val();
-                callBackAjax('amphur_id', amphurId);
-            } else {
-                validateAmphur();
-            }
-        });
-
-
-        function callBackAjax(key, value) {
-            var action = key;
-
-            console.log("action " + key);
-            console.log("id " + value);
-
-            $.ajax({
-                'type': 'POST',
-                'url': '?AutoProvince',
-                'cache': false,
-                'data': {'action': key, 'value': value},
-                'success': function (result) {
-                    console.log(action);
-                    console.log(result);
-                    if (action === 'province_id') {
-                        $('#amphur_id').append(result);
-                        refreshOption();
-                    }
-
-                    if (action === 'amphur_id') {
-                        $('#tambon_id').append(result);
-                        refreshOption();
-                    }
+                if ($('#province_id').val() > 0) {
+                    validateProvince();
+                    var provinceId = $('#province_id').val();
+                    callBackAjax('province_id', provinceId);
+                } else {
+                    validateProvince();
                 }
             });
+
+            $(document).on('change', '#amphur_id', function (e) {
+                e.preventDefault();
+
+                if ($('#amphur_id').val() > 0) {
+                    validateAmphur();
+                    var amphurId = $('#amphur_id').val();
+                    callBackAjax('amphur_id', amphurId);
+                } else {
+                    validateAmphur();
+                }
+            });
+
+
+            function callBackAjax(key, value) {
+                var action = key;
+
+                console.log("action " + key);
+                console.log("id " + value);
+
+                $.ajax({
+                    'type': 'POST',
+                    'url': '?AutoProvince',
+                    'cache': false,
+                    'data': {'action': key, 'value': value},
+                    'success': function (result) {
+                        console.log(action);
+                        console.log(result);
+                        if (action === 'province_id') {
+                            $('#amphur_id').append(result);
+                            refreshOption();
+                        }
+
+                        if (action === 'amphur_id') {
+                            $('#tambon_id').append(result);
+                            refreshOption();
+                        }
+                    }
+                });
+            }
+
+            function refreshOption() {
+                $('select').material_select('destroy');
+                $('select').material_select();
+            }
+
+            function validateAll() {
+                $('#amphur_id').empty();
+                $('#tambon_id').empty();
+
+                $('#amphur_id').html('<option disabled selected>กรุณาเลือกจังหวัด</option>');
+                $('#tambon_id').html('<option>กรุณาเลือกจอำเภอ</option>');
+            }
+
+            function validateProvince() {
+                $('#amphur_id').empty();
+                $('#tambon_id').empty();
+
+                $('#amphur_id').html('<option disabled selected>กรุณาเลือกรายการ</option>');
+                $('#tambon_id').html('<option>กรุณาเลือกจอำเภอ</option>');
+            }
+
+            function validateAmphur() {
+                $('#tambon_id').empty();
+                $('#tambon_id').html('<option disabled selected>กรุณารายการ</option>');
+            }
+
+        } catch (e) {
+            alert(e);
         }
-
-        function refreshOption() {
-            $('select').material_select('destroy');
-            $('select').material_select();
-        }
-
-        function validateAll() {
-            $('#amphur_id').empty();
-            $('#tambon_id').empty();
-
-            $('#amphur_id').html('<option disabled selected>กรุณาเลือกจังหวัด</option>');
-            $('#tambon_id').html('<option>กรุณาเลือกจอำเภอ</option>');
-        }
-
-        function validateProvince() {
-            $('#amphur_id').empty();
-            $('#tambon_id').empty();
-
-            $('#amphur_id').html('<option disabled selected>กรุณาเลือกรายการ</option>');
-            $('#tambon_id').html('<option>กรุณาเลือกจอำเภอ</option>');
-        }
-
-        function validateAmphur() {
-            $('#tambon_id').empty();
-            $('#tambon_id').html('<option disabled selected>กรุณารายการ</option>');
-        }
-        
-        }catch(e){alert(e);}
     });
-    
+
 </script>

@@ -5,7 +5,9 @@
   $template->open();
 ?>
 <div class="container">
-      
+    
+    
+    
     <div class="card">
             <a href="javascript:;" class="btn orange">Read First</a>   
             เวลา copmit ให้ export table ที่ตนทำไปไว้ใน folder  <b>tempFile</b>
@@ -15,6 +17,97 @@
     </div>
      
     
+    <div class="card">
+         <a href="?Staff" class="btn " >เจ้าหน้าที่  :Nu</a> <p>ไปสร้าง Module  Staff     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Staff" class="modal">
+                
+               ใช้อันเดิมจากงานเก่า
+                
+           
+                
+                
+                </div>
+      </div>
+    
+    <div class="card">
+         <a href="?Symptom" class="btn " >อาการ   :Tik</a> <p>ไปสร้าง Module  Symptom   จัดการอาการผิดปกติของพืช click ดู table : <a href='#Symptom' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Symptom" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: symptom   </td><td colspan="3">	 ลักษณะของอาการ  </b><br>
+             <tr><td>   symptom_id       </td><td>       รหัสการ      </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   symptom_name            </td><td>     ชื่อของอาหาร  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   symptom_detail             </td><td>     รายละเอียดขงอาหาร    	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
+    <div class="card">
+         <a href="?Standard" class="btn " >มาตราฐาน  :Tik</a> <p>ไปสร้าง Module  Standard   จัดการมาตราฐาน พิ่มลบแก้ไข  click ดู table : <a href='#Standard' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Standard" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: standard  </td><td colspan="3">	มาตรฐาน/รางวัล  </b><br>
+             <tr><td>   sid     </td><td>       รหัสมาตรฐาน    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_name            </td><td>     ชื่อมาตรฐานที่ได้รับ  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   org             </td><td>     สถาบันหรือน่วยงานที่กำหนดมฐ   	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
+    
+    
+    
+    
+    <div class="card">
+         <a href="?TypeFertilizer" class="btn " >ชนิดของปุ๋ย  :Jui</a> <p>ไปสร้าง Module  TypeFertilizer   จัดการชนิดของปุ๋ย (มีข้อมูล2ชนิด ไบโอเคมี และ ชีวภาพ  )เพิ่มลบแก้ไข  click ดู table : <a href='#TypeFertilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="TypeFertilizer" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: type_fertilizer  </td><td colspan="3">	ชนิดของปุ๋ย </b><br>
+             <tr><td>   type_fertiltzer_id     </td><td>       รหัสชนิด    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_name            </td><td>     ชื่อชนิดปุ๋ย 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
+    
+     <div class="card">
+         <a href="?BioFerilizer" class="btn " >ปุ๋ย  :Jui</a> <p>ไปสร้าง Module  BioFerilizer   จัดการชนิดปุ๋ยและสารชีวภาพ ( จะมีประเภทของปุ๋ย/สารชีภาพ  ที่ต้องเลือก ตอน add,edit,)เพิ่มลบแก้ไข  click ดู table : <a href='#BioFerilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="BioFerilizer" class="modal">
+                
+               <table class="bordered">
+                   <tr><td >Table: bio_ferilizer  </td><td colspan="3">สารชีวภาพ/ปุ๋ย</b><br>
+            
+                   <tr><td>   bio_fer_id     </td><td>        รหัสสารชีวภาพ/ปุ๋ย  </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_id            </td><td>     ชนิดปุ๋ย 	   </td><td>     integer	  </td><td>	not null  fk (type_fertilizer->type_fertiltzer_id)</td></tr>
+		<tr><td>   bio_fer_name            </td><td>     ชื่อสารชีวภาพ/ปุ๋ย 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   bio_fer_properties            </td><td>     คุณสมบัติสารชีวภาพ/ปุ๋ย 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
+		 
+              </table>
+                
+           
+                
+                
+                </div>
+      </div>
     
     
      <div class="card">

@@ -6,33 +6,27 @@ $template->open();
  
 ?>
 
-<div class="container">
 
-    <div style="margin-top: 15px;">
-        <h4 class="pull-left">จัดการเกษตรกร</h4>
-   <a class="btn waves-effect waves-light pull-right"   href="<?php echo $this->route->Add(); ?>"><i class="fa fa-plus"></i> Add</a>
-    </div>
-    <div class="row">
-        <table class="responsive-table highlight striped">
-            <thead>
+<div class="container" id="container-center">
+    <div class="row card " style="padding: 10px;">
+
+
+        <h4 class="pull-left">จัดการข้อมูลเกษตรกร</h4>
+
+        <p>
+
+        <table class="bordered  striped " style="min-width: 500px;"  >
+            <thead class="green">
             <tr>
                 <th>ลำดับ</th>
                 <th>บ้านเลขที่</th>
                 <th>หมายเลขโทรศัพท์</th>
                 <th>ชื่อเกษตรกร</th>
                 <th>รหัสจังหวัด</th>
+                <th>จัดการ</th>
             </tr>
             </thead>
 
-            <tfoot>
-            <tr>
-                <th>ลำดับ</th>
-                <th>บ้านเลขที่</th>
-                <th>หมายเลขโทรศัพท์</th>
-                <th>ชื่อเกษตรกร</th>
-                <th>รหัสจังหวัด</th>
-            </tr>
-            </tfoot>
             <tbody>
             <?php $rowId = 1; ?>
             <?php while ($rc = $this->db->fetch()) : ?>
@@ -42,10 +36,20 @@ $template->open();
                     <td><?php echo $rc->phone_no; ?></td>
                     <td><?php echo $rc->agriculturist_name; ?></td>
                     <td><?php echo $rc->tambon_tambon_name; ?></td>
+                    <td>
+                        <a  href="<?php echo $this->route->Edit($rc->agriculturist_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข</a>
+                        | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->agriculturist_id);?>""><i class="red-text fa fa-trash"></i> ลบ </a>
+                    </td>
                 </tr>
             <?php endwhile; ?>
             </tbody>
         </table>
+        <p><br></p>
+
+        <div class="center"  >
+            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+            <a class="btn waves-effect orange" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+        </div>
     </div>
 </div>
 <?php 

@@ -16,6 +16,11 @@ use System\HMVC\HMVC;
 
 class AutoProvince extends HMVC
 {
+    protected $tambonId;
+    protected $amphurId;
+    protected $provinceId;
+
+    protected $idSelected;
     protected $provinces;
     protected $amphurs;
     protected $tambons;
@@ -30,7 +35,8 @@ class AutoProvince extends HMVC
 
     }
 
-    public function getProvinceAll() {
+    public function getProvinceAll()
+    {
         $this->provinces = new province();
         $this->provinces->select();
         $this->view("Province");
@@ -47,6 +53,35 @@ class AutoProvince extends HMVC
     {
         $this->tambons = new tambon();
         $this->tambons->find("amphur_id = " . $id);
+        $this->view("Tambon");
+    }
+
+    public function getProvinceFromEdit($id)
+    {
+        $this->tambons = new tambon();
+        $item = $this->tambons->get($id);
+        $this->provinceId = $item->province_id;
+        $this->provinces = new province();
+        $this->provinces->select();
+        $this->view("Province");
+    }
+
+    public function getAmphurFromEdit($id)
+    {
+        $this->tambons = new tambon();
+        $item = $this->tambons->get($id);
+        $this->amphurId = $item->amphur_id;
+        $this->amphurs = new amphur();
+        $this->amphurs->find("province_id = " . $item->province_id);
+        $this->view("Amphur");
+    }
+
+    public function getTambonFromEdit($id)
+    {
+        $this->tambonId = $id;
+        $this->tambons = new tambon();
+        $item = $this->tambons->get($id);
+        $this->tambons->find("amphur_id = " . $item->amphur_id);
         $this->view("Tambon");
     }
 }
