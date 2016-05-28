@@ -1,12 +1,12 @@
 <?php
-namespace App\Modules\TypePlant\Controllers;
+namespace App\Modules\Plant\Controllers;
  use System\HMVC\HMVC;
- use App\Models\typeplant as tpl; 
+ use App\Models\plant as pln; 
  use System\Utils\JS;
  
  class Delete extends HMVC{
      public function index() {
-        $std =  new tpl();
+        $std =  new pln();
         if($std->delete(ID)){
             echo JS::deleteComplate();
             echo JS::re($this->route->backToModule());
