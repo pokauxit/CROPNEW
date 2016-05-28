@@ -1,4 +1,4 @@
-<?php
+<?php 
     Use System\Template\Template;
   
     $template = new Template();
@@ -49,6 +49,7 @@
     </div>
     </div>
 </div>
+
 <?php
     $template->close();
 ?>
