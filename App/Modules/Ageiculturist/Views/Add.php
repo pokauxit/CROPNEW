@@ -15,17 +15,19 @@ $template->open();
                     <input name="home_no" type="text" class="validate" required>
                     <label for="home_no">บ้านเลขที่</label>
                 </div>
-                <div class="input-field col m4 s12">
+                <div class="input-field col   m4 s12">
                     <input name="phone_no" type="number" class="validate" required>
                     <label for="phone_no">หมายเลขโทรศัพท์</label>
                 </div>
-                <div class="input-field col m4 s12">
+                <div class="input-field col  m4 s12">
                     <input name="agriculturist_name" type="text" class="validate" required>
                     <label for="agriculturist_name">ชื่อเกษตรกร</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col m4 s12">
+          
+            
+              <div class="row">
+                <div class="input-field col  m4 s12">
                     <select id="province_id" name="province_id">
                         <?php $province = new AutoProvince();
                         echo $province->getProvinceAll();
@@ -33,21 +35,26 @@ $template->open();
                     </select>
                     <label for="province_id">จังหวัด</label>
                 </div>
-                <div class="input-field col m4 s12">
+                <div class="input-field col  m4 s12">
                     <select id="amphur_id" name="amphur_id">
                         <option disabled selected>กรุณาเลือกจังหวัด</option>
                     </select>
                     <label for="amphur_id">อำเภอ</label>
 
                 </div>
-                <div class="input-field col m4 s12">
+                <div class="input-field col  m4 s12">
                     <select id="tambon_id" name="tambon_id">
                         <option disabled selected>กรุณาเลือกอำเภอ</option>
                     </select>
                     <label for="tambon_id">ตำบล</label>
                 </div>
             </div>
-            <div align="center">
+            
+            
+            
+            <div align="center" class="row">
+                <br>  <br>  <br>
+                <div class="col s12">
                 <button class="btn waves-effect waves-light orange" type="reset" name="reset">เคลียร์
                     <i class="material-icons right">replay</i>
                 </button>
@@ -58,6 +65,7 @@ $template->open();
                     <i class="material-icons right">send</i>
                 </button>
             </div>
+                </div>
         </form>
     </div>
 </div>
@@ -69,7 +77,9 @@ $template->close();
 <script>
 
     $(document).ready(function () {
-
+        
+        try{
+ refreshOption();
         $(document).on('submit', 'form', function (e) {
 
             if ($('#tambon_id').val() > 0) {
@@ -157,5 +167,8 @@ $template->close();
             $('#tambon_id').empty();
             $('#tambon_id').html('<option disabled selected>กรุณารายการ</option>');
         }
+        
+        }catch(e){alert(e);}
     });
+    
 </script>
