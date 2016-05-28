@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 27, 2016 at 06:42 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.4
+-- Host: localhost
+-- Generation Time: May 28, 2016 at 11:30 AM
+-- Server version: 5.7.10-log
+-- PHP Version: 5.6.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crops`
+-- Database: `crop`
 --
 
 -- --------------------------------------------------------
@@ -1059,6 +1059,30 @@ INSERT INTO `amphur` (`amphur_id`, `amphur_code`, `amphur_name`, `postcode`, `ge
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `crop`
+--
+
+CREATE TABLE `crop` (
+  `crop_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
+  `plant_id` int(11) NOT NULL COMMENT 'รหัสพืช',
+  `argiculturist_id` int(11) NOT NULL COMMENT 'รหัสเกษตร',
+  `sunlight` varchar(50) NOT NULL COMMENT 'ปริมาณแสง',
+  `water_source` varchar(100) NOT NULL COMMENT 'แหล่งน้ำ',
+  `wind` double(7,3) NOT NULL COMMENT 'ความเร็วลม',
+  `spetial_information` varchar(200) NOT NULL COMMENT 'ข้อมูลพิเศษ'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `crop`
+--
+
+INSERT INTO `crop` (`crop_id`, `plant_id`, `argiculturist_id`, `sunlight`, `water_source`, `wind`, `spetial_information`) VALUES
+(11, 1, 1, 'sdffsd', 'sdfsdf', 5.000, 'sdfsdfsdf'),
+(12, 1, 1, 'sdfaf', 'sdf', 444.000, '4445');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `geography`
 --
 
@@ -1078,6 +1102,28 @@ INSERT INTO `geography` (`geo_id`, `geo_name`) VALUES
 (4, 'ภาคตะวันตก'),
 (5, 'ภาคตะวันออก'),
 (6, 'ภาคใต้');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plant`
+--
+
+CREATE TABLE `plant` (
+  `plant_id` int(11) NOT NULL COMMENT 'รหัสชนิดพืช',
+  `type_id` int(11) NOT NULL COMMENT 'ชื่อชนิด',
+  `plant_name` varchar(100) NOT NULL COMMENT 'ชื่อพืช',
+  `caltivated_area` varchar(200) NOT NULL COMMENT 'พื้นที่เพราะปลูก'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='รหัสพืช';
+
+--
+-- Dumping data for table `plant`
+--
+
+INSERT INTO `plant` (`plant_id`, `type_id`, `plant_name`, `caltivated_area`) VALUES
+(1, 2, 'คุณนายตื่นสาย', 'ซึ่งควรปลูกอยู่กลางแจ้ง สามารถรับแสงแดดได้ทั้งวัน และควรรดน้ำทุกวันวันละครั้งแต่ระวังอย่าให้น้ำขัง'),
+(4, 2, 'วาสนา', 'พื้นหน้าบ้าน'),
+(8, 1, 'ดาวเรือง', 'กระถาง');
 
 -- --------------------------------------------------------
 
@@ -10063,6 +10109,28 @@ INSERT INTO `tambon` (`tambon_id`, `tambon_code`, `tambon_name`, `amphur_id`, `p
 (8859, '961302', 'บูกิต   ', 997, 76, 6),
 (8860, '961303', 'มะรือโบออก   ', 997, 76, 6);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `typeplant`
+--
+
+CREATE TABLE `typeplant` (
+  `type_id` int(11) NOT NULL COMMENT 'รหัสชนิดพืช',
+  `type_name` varchar(100) DEFAULT NULL COMMENT 'ชื่อชนิด',
+  `note` varchar(200) NOT NULL COMMENT 'หมายเหตุ'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `typeplant`
+--
+
+INSERT INTO `typeplant` (`type_id`, `type_name`, `note`) VALUES
+(1, 'ไม้ดอก', 'เช่น เฟื่องฟ้า ชบา ดาวกระจาย บานชื่น คุณนายตื่นสาย ชวนชม โป๊ยเซียน กุหลาบ พวงชมพู่ เป็นต้น'),
+(2, 'ไม้ประดับ', 'เช่น หมากผู้หมากเมีย โปร่งฟ้า เฟิร์น พลับพลึง เป็นต้น'),
+(3, 'ไม้ผล', 'เช่น มะม่วง องุ่น ขนุน น้อยหน่า แอปเปิ้ล ละมุด ฝรั่ง มังคุด ลำไย เป็นต้น'),
+(6, 'พืชผักสวนครัว', 'เช่น ขิง ข่า กะเพรา เป็นต้น');
+
 --
 -- Indexes for dumped tables
 --
@@ -10080,10 +10148,22 @@ ALTER TABLE `amphur`
   ADD PRIMARY KEY (`amphur_id`);
 
 --
+-- Indexes for table `crop`
+--
+ALTER TABLE `crop`
+  ADD PRIMARY KEY (`crop_id`);
+
+--
 -- Indexes for table `geography`
 --
 ALTER TABLE `geography`
   ADD PRIMARY KEY (`geo_id`);
+
+--
+-- Indexes for table `plant`
+--
+ALTER TABLE `plant`
+  ADD PRIMARY KEY (`plant_id`);
 
 --
 -- Indexes for table `province`
@@ -10096,6 +10176,12 @@ ALTER TABLE `province`
 --
 ALTER TABLE `tambon`
   ADD PRIMARY KEY (`tambon_id`);
+
+--
+-- Indexes for table `typeplant`
+--
+ALTER TABLE `typeplant`
+  ADD PRIMARY KEY (`type_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -10112,10 +10198,20 @@ ALTER TABLE `ageiculturist`
 ALTER TABLE `amphur`
   MODIFY `amphur_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=999;
 --
+-- AUTO_INCREMENT for table `crop`
+--
+ALTER TABLE `crop`
+  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=13;
+--
 -- AUTO_INCREMENT for table `geography`
 --
 ALTER TABLE `geography`
   MODIFY `geo_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `plant`
+--
+ALTER TABLE `plant`
+  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `province`
 --
@@ -10126,6 +10222,11 @@ ALTER TABLE `province`
 --
 ALTER TABLE `tambon`
   MODIFY `tambon_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8861;
+--
+-- AUTO_INCREMENT for table `typeplant`
+--
+ALTER TABLE `typeplant`
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
