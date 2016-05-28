@@ -59,17 +59,30 @@ $template->open();
                     <textarea name="spetial_information" class="materialize-textarea" rows="1" style="height:20px;"></textarea>
                     <label for="spetial_information">ข้อมูลพิเศษ</label>
                 </div>
-            </div>
+           
             
+             </div>
             
-            
-            <div align="center">
+            <div class="row">
+                
+               <div class=" col m2 s12">
+                    &nbsp;
+                    
+                </div>
+                <div class="col m8 s12 center">
                 <input name="argiculturist_id" type="hidden" value="<?php echo ID; ?>">
                 
-                <button class="btn waves-effect green" type="submit" name="submit" id="btn-submit" value="ss"><i class="fa fa-save"></i> บันทึก </button>
-                <button class="btn waves-effect light-green" type="reset" name="reset"   value="ss"><i class="fa fa-refresh"></i> เริ่มใหม่ </button>
-                <button class="btn waves-effect orange" type="button" onclick="window.location.href = '<?php echo $this->route->backToModule() . '//' . $this->param(0); ?>'"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ </button>
+                <button class="btn waves-effect green " style="margin: 5px;" type="submit" name="submit" id="btn-submit" value="ss"><i class="fa fa-save"></i> บันทึก </button>
+                <button class="btn waves-effect light-green"  style="margin: 5px;" type="reset" name="reset"   value="ss"><i class="fa fa-refresh"></i> เริ่มใหม่ </button>
+                <button class="btn waves-effect orange"  style="margin: 5px;" type="button" onclick="window.location.href = '<?php echo $this->route->backToModule() . '//' . $this->param(0); ?>'"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ </button>
+             
+                </div>
+                <div class=" col m2 s12">
+                    &nbsp;
+                    
+                </div>
             </div>
+                   
         </form>
     </div>
 </div>
