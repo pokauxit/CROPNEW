@@ -29,6 +29,18 @@
                 
                 </div>
       </div>
+    <div class="card">
+         <a href="?Soil" class="btn " >ดิน  :Nu</a> <p>ไปสร้าง Module  Soil     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+             
+            <div  id="Soil" class="modal">
+                
+              ส่ง csv ไปใน face 
+                
+           
+                
+                
+                </div>
+      </div>
     
     <div class="card">
          <a href="?Symptom" class="btn " >อาการ   :Tik</a> <p>ไปสร้าง Module  Symptom   จัดการอาการผิดปกติของพืช click ดู table : <a href='#Symptom' class="modal-trigger"><i class="material-icons">view_list</i></a>
