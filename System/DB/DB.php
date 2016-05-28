@@ -105,5 +105,22 @@ class DB{
 		return $this->result = $this->query($sql);
     } 
     
+    //ดึงข้อมูลในฟิลด์ โดยกำหนดค่า id
+    public function getField($table="", $field="", $fieldid="" , $condition=""){
+        if($fieldid){
+            $sql = "SELECT $field showfield FROM $table WHERE $fieldid =  $condition LIMIT 1";
+            $rs = $this->query($sql);
+            $rc = mysqli_fetch_object($rs);
+            return $rc->showfield;
+            exit();
+        }else{
+            $sql = "SELECT $field showfield FROM $table WHERE $condition LIMIT 1";
+            $rs = $this->query($sql);
+            $rc = mysqli_fetch_object($rs);
+            return $rc->showfield;
+            exit();
+        }
+    }
+    
 }
 ?>
