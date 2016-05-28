@@ -78,6 +78,8 @@ class ORM extends DB {
         
          $sql = "SELECT ".$this->name.".*,".$table.".".$fr." AS ".$table."_".$fr." FROM ".$this->name." RIGHT JOIN ".$table." ON (".$this->name.".".$fk." = ".$table.".".$this->findPK($table).") ";
            if($this->where){ $sql.= " WHERE ".$this->where;}
+            if($this->order){$sql.= " ORDER BY ".$this->order." ".$this->orderSort;}
+        if($this->limit){$sql.= " LIMIT ".$this->limit;}
          return $this->result = $this->query($sql);
     }
     
