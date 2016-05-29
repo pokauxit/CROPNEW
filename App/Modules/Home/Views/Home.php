@@ -119,7 +119,7 @@
       </div>
     
      <div class="card">
-         <a href="?BioFerilizer" class="btn " >ปุ๋ย  :Jui</a> <p>ไปสร้าง Module  BioFerilizer   จัดการชนิดปุ๋ยและสารชีวภาพ ( จะมีประเภทของปุ๋ย/สารชีภาพ  ที่ต้องเลือก ตอน add,edit,)เพิ่มลบแก้ไข  click ดู table : <a href='#BioFerilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
+         <a href="?BioFertilizer" class="btn " >ปุ๋ย  :Jui</a> <p>ไปสร้าง Module  BioFerilizer   จัดการชนิดปุ๋ยและสารชีวภาพ ( จะมีประเภทของปุ๋ย/สารชีภาพ  ที่ต้องเลือก ตอน add,edit,)เพิ่มลบแก้ไข  click ดู table : <a href='#BioFerilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
             <div  id="BioFerilizer" class="modal">
                 
