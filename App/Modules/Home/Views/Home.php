@@ -15,6 +15,14 @@
             หรือ commit ขึ้นครับ หน้า add ,edit ทำ alert(); check ค่าว่างด้วย ใช้จาก JS Lib ถ้าไม่เป็นถามครับ ง่ายมากหัดเป็บเดียวได้เลย
             <hr><i class="red-text">ใครติดตรงไหน ถามได้เลยครับ</i>
     </div>
+    
+    
+    
+    <div class="card">
+         <a href="?CropApplication//1" class="btn " >ขึ้นตอนการปลูกพืชนั้นๆ :Nu </a> <p>ไปสร้าง Module  CropApplication    พี่ทำ layout ไว้แล้ว 
+             ตัวนี้จะมี ส่ง id ของพืชที่ปลูกไปมาด้วยนะครับ  
+      </div>
+    
       <div class="card">
          <a href="?DiseasePestWeed" class="btn " >ปัญหาต่างๆของพืชที่มักพบ  :Tik</a> <p>ไปสร้าง Module  DiseasePestWeed     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
              
