@@ -49,4 +49,11 @@ class Standard extends HMVC
     {
         $this->controller();
     }
+    
+    public function getStandardAll($id) {// รับ ID มา Selected
+        $this->id = $id;
+        $this->db = new std();
+        $this->db->select();
+        $this->view("Option_List");
+    }
 }
