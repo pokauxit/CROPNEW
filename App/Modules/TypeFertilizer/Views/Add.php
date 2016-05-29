@@ -23,28 +23,23 @@
 
 <div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 
-    <div>
+    <div class="input-field col s12">
         <h4 class="pull-left">จัดการชนิดของปุ๋ย</h4>
+    </div>
         <br/>
-        <form name="form_insert_typefertilizer" id="form_insert_typeplant" method="post" action=""  onsubmit="return check(this)" >
-        <table>
-            <tr>
-                <td>รหัสชนิดของปุ๋ย</td>
-                <td><input type="text" name="type_fertilizer_id" value=""></td>
-            </tr>
+        <form class="center" name="form_insert_typefertilizer" id="form_insert_typeplant" method="post" action=""  onsubmit="return check(this)" > 
             
-            <tr>
-                <td>ชื่อชนิดของปุ๋ย</td>
-                <td><input type="text" name="type_fertilizer_name" value=""></td>
-            </tr>
-        </table>
-        <div class="center">
+        <div class="input-field col s12 m12 center">         
+            <input type="text" name="type_fertilizer_name" value="">
+            <label for="type_fertilizer_name">ชื่อชนิดของปุ๋ย</label>
+        </div>
+
+        <div class="center col s12 m12">
             <button class="btn waves-effect green " style="margin: 5px;" type="submit" name="submit" id="btn-submit" value="ss"><i class="fa fa-save"></i> บันทึก </button>
             <button class="btn waves-effect light-green"  style="margin: 5px;" type="reset" name="reset"   value="ss"><i class="fa fa-refresh"></i> เริ่มใหม่ </button>
             <button class="btn waves-effect orange"  style="margin: 5px;" type="button" onclick="window.location.href = '<?php echo $this->route->backToModule() . '//' . $this->param(0); ?>'"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ </button>
         </div>
         </form>
-    </div>
     </div>
 </div>
 <?php

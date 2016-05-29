@@ -4,7 +4,9 @@
     $template = new Template();
     $template->open();
 ?>
-
+<?php 
+    echo System\Utils\JS::load();
+?>
 <script>
     
     function check(obj){
@@ -27,38 +29,37 @@
 
 <div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 
-    <div>
+    <div class="input-field col s12">
         <h4 class="pull-left">จัดการชนิดปุ๋ยและสารชีวภาพ</h4>
+    </div>
         <br/>
-        <form name="form_insert_bio_ferilizer" id="form_inert_plant" action="" method="post" onsubmit="return check(this);">
-        <table>
-            <tr>
-                <td>ชนิดของปุ๋ย</td>
-                <td>
-                    <select name="type_fertilizer_id" class="browser-default" id="type_fertilizer_id">
-                        <option value="" disabled selected>กรุณาเลือกประเภทพืช</option>
-                    <?php
-                        while($rc_TypeFtz = $this->dbTypeFtz->fetch()){
-                    ?>
-                        <option value="<?php echo $rc_TypeFtz->type_fertilizer_id; ?>" id="<?php echo $rc_TypeFtz->type_fertilizer_id; ?>" description="<?php echo $rc_TypeFtz->type_fertilizer_name; ?>"><?php echo $rc_TypeFtz->type_fertilizer_name; ?></option>
-                    <?php
-                    }
-                    ?>
-                    </select>
-                </td>
-            </tr>
+        <form class="center" name="form_insert_bio_ferilizer" id="form_inert_plant" action="" method="post" onsubmit="return check(this);">
+
             
-            <tr>
-                <td>ชื่อสารชีวภาพ/ปุ๋ย</td>
-                <td><input type="text" name="bio_fer_name" value="<?php echo $this->row->bio_fer_name; ?>"></td>
-            </tr>
+            <div class="input-field col s12 m6 center">
+            <select name="type_fertilizer_id" id="type_fertilizer_id">
+                <option value="" disabled selected>กรุณาเลือกประเภทพืช</option>
+            <?php
+                while($rc_TypeFtz = $this->dbTypeFtz->fetch()){
+            ?>
+                <option value="<?php echo $rc_TypeFtz->type_fertilizer_id; ?>" id="<?php echo $rc_TypeFtz->type_fertilizer_id; ?>" description="<?php echo $rc_TypeFtz->type_fertilizer_name; ?>"><?php echo $rc_TypeFtz->type_fertilizer_name; ?></option>
+            <?php
+            }
+            ?>
+            </select>
+                <label for="type_fertilizer_id">ชนิดของปุ๋ย</label>
+            </div>
             
-            <tr>
-                <td>คุณสมบัติ</td>
-                <td><textarea name="bio_fer_properties" class="materialize-textarea"><?php echo $this->row->bio_fer_properties; ?></textarea></td>
-            </tr>
-        </table>
-        
+            <div class="input-field col s12 m6 center">
+                <input type="text" name="bio_fer_name" id="bio_fer_name" value="<?php echo $this->row->bio_fer_name; ?>">
+                <label for="type_fertilizer_id">ชื่อสารชีวภาพ/ปุ๋ย</label>
+            </div>
+            
+            <div class="input-field col s12 m12 center">
+                <input type="text" name="bio_fer_properties" id="bio_fer_properties" value="<?php echo $this->row->bio_fer_properties; ?>">
+                <label for="type_fertilizer_id">คุณสมบัติ</label>
+            </div>
+            
         <div class="center">
             <button class="btn waves-effect green " style="margin: 5px;" type="submit" name="submit" id="btn-submit" value="ss"><i class="fa fa-save"></i> บันทึก </button>
             <button class="btn waves-effect light-green"  style="margin: 5px;" type="reset" name="reset"   value="ss"><i class="fa fa-refresh"></i> เริ่มใหม่ </button>

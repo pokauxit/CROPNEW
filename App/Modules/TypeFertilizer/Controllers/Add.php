@@ -7,7 +7,6 @@ namespace App\Modules\TypeFertilizer\Controllers;
  
  class Add extends HMVC{
      public function index() {
-         Validate::has($_POST['type_fertilizer_id']);
          Validate::has($_POST['type_fertilizer_name']);
          
         $std =  new tfz();
