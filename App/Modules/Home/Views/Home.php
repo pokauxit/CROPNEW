@@ -21,10 +21,11 @@ print_r($this->session("STAFF"));
 
 
        <div class="card">
-<<<<<<< HEAD
+ 
          <a href="?CropStandard//1" class="btn " >มาตรฐานการปลูกพืชนั้นๆ :Nu </a> <p>ไปสร้าง Module  CropStandard    พี่ทำ layout ไว้แล้ว
              ตัวนี้จะมี ส่ง id ของพืชที่ปลูกไปมาด้วยนะครับ
-=======
+         </div>
+     <div class="card">
          <a href="?CropApplyFertilizer//1" class="btn " >การให้ปุ๋ย :Nu </a> <p>ไปสร้าง Module  CropApplyFertilizer    พี่ทำ layout ไว้แล้ว 
              ตัวนี้จะมี ส่ง id ของพืชที่ปลูกไปมาด้วยนะครับ  
       </div>
@@ -32,7 +33,7 @@ print_r($this->session("STAFF"));
        <div class="card">
          <a href="?CropStandard//1" class="btn " >มาตรฐานการปลูกพืชนั้นๆ :Nu </a> <p>ไปสร้าง Module  CropStandard    พี่ทำ layout ไว้แล้ว 
              ตัวนี้จะมี ส่ง id ของพืชที่ปลูกไปมาด้วยนะครับ  
->>>>>>> origin/master
+ 
       </div>
 
     <div class="card">
