@@ -12,6 +12,7 @@ $template->openMain($this->param(-2));
     <thead class="green">
         <tr>
             <th>ลำดับ</th>
+            <th>วิธีการเก็บเกียว</th>
             <th>ฤดูกาล</th>
             <th>จำนานผลผลิต</th>
             <th>หน่วยผลผลิต</th>
@@ -25,6 +26,7 @@ $template->openMain($this->param(-2));
             ?>
             <tr>
                 <td><?php echo $rowId++; ?></td>
+                <td><?php echo $rc->harvest_algorithm; ?></td>
                 <td><?php echo $rc->season; ?></td>
                 <td><?php echo $rc->amout; ?></td>
                 <td><?php echo $rc->unit; ?></td>
