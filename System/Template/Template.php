@@ -71,8 +71,8 @@ class Template {
                                     <li class="tab col s3 "><a href="#">ผลผลิต</a></li>
                                     <li class="tab col s3"><a href="#">พื้นที่เพาะปลูก</a></li>
                                     <li class="tab col s3"><a href="#">การให้ปุ๋ย</a></li>
-                                    <li class="tab col s3"><a href="#">มาตฐาน</a></li>
-                                    <li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>">ปัญหาและการควบคุม</a></li>
+                                    <li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>" onclick="window.location.href=this.href;">มาตฐาน</a></li>
+                                    <li class="tab col s3"><a >ปัญหาและการควบคุม</a></li>
                                 </ul>
                             </div>
                             <div id="test1" class="col s12" style="">
