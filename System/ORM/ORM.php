@@ -90,6 +90,8 @@ class ORM extends DB {
         if($this->where){ $sql.= " WHERE ".$this->where;}
         if($this->order){$sql.= " ORDER BY ".$this->order." ".$this->orderSort;}
         if($this->limit){$sql.= " LIMIT ".$this->limit;}
+        
+        
         return $this->result = $this->query($sql);
     }
 
@@ -239,7 +241,7 @@ class ORM extends DB {
      */
     public function find($condition){
         $sql = "SELECT ".$this->select." FROM " . $this->name . " WHERE " . $condition;
-        return $this->fetch($this->query($sql));
+        return $this->query($sql);
     }
 	
     private function chkQuote($type)
