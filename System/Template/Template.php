@@ -70,11 +70,9 @@ class Template {
                                 <ul class="tabs maincrop">
                                     <li class="tab col s3"><a class="<?php if($active == "CropApplication"){echo "active";}?>" href="?CropApplication//<?php echo ID?>" onclick="window.location.href=this.href;" >ขั้นตอนการปลูก</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropHarvest"){echo "active";}?>" href="?CropHarvest//<?php echo ID?>" onclick="window.location.href=this.href;">การเก็บเกี่ยว/ผลผลิต</a></li>
-                                   
-                                    <li class="tab col s3"><a href="#">พื้นที่เพาะปลูก</a></li>
+                                    <li class="tab col s3"><a class="<?php if($active == "CropCultivatedArea"){echo "active";}?>" href="?CropCultivatedArea//<?php echo ID?>" onclick="window.location.href=this.href;">พื้นที่เพาะปลูก</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropApplyFertilizer"){echo "active";}?>" href="?CropApplyFertilizer//<?php echo ID?>" onclick="window.location.href=this.href;">การให้ปุ๋ย</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>" onclick="window.location.href=this.href;">มาตฐาน</a></li>
- 
                                     <li class="tab col s3"><a href="#">ปัญหาและการควบคุม</a></li> 
                                 </ul>
                             </div>
