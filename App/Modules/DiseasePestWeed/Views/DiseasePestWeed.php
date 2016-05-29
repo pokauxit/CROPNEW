@@ -22,6 +22,7 @@ $template->open();
                 <th>ชื่อโรค/ศัตรูพืช/วัชพืช</th>
                 <th>รายละเอียดของโรค/ศัตรูพืช/วัชพืช</th>
                 <th>ชนิดปัญหา</th>
+                <th>อาการ</th>
                 <th>จัดการ</th>
             </tr>
             </thead>
@@ -36,6 +37,9 @@ $template->open();
                     <td><?php if ($rc->problem_type_id == 1): print 'โรค';
                         elseif ($rc->probolem_type_id == 2): print 'ศัตรูพืช';
                         else: print 'วัชพืช'; endif; ?></td>
+                    <td>
+                        <?php echo $rc->symptom_symptom_name; ?>
+                    </td>
                     <td>
                         <a href="<?php echo $this->route->Edit($rc->disease_pest_weed_id); ?>"><i
                                 class="orange-text fa fa-edit"></i> แก้ไข</a>
