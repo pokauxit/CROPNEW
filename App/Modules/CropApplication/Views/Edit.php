@@ -28,9 +28,9 @@ if (!empty($this->rowId->time_start) && $this->rowId->time_start != '0000-00-00'
             <input name="time_start" type="date" class="datepicker" value="<?php echo $date; ?>">
             <label for="time_start">เวลาที่เริ่มปลูก</label>
         </div>
-        <div class="input-field col  s12 m6">
+        <div class="input-field col  s12 m6">  <label for="fertiltzer_peroid">ช่วงเวลาที่ให้ปุ๋ย</label>
             <input name="fertiltzer_peroid" type="text" class="validate" required value="<?php echo $this->rowId->fertiltzer_peroid; ?>">
-            <label for="fertiltzer_peroid">ช่วงเวลาที่ให้ปุ๋ย</label>
+          
         </div>
     </div>
 
