@@ -1,7 +1,7 @@
 <?php
 
 namespace System\Template;
-
+use App\Modules\ServiceData\Controllers\ServiceData as Service;
 class Template {
 
     public function open() {
@@ -49,17 +49,18 @@ class Template {
 
             public function openMain($active) {
                  
+                $service = new Service();
                 ?>
                 <div class="container" id="container-center">
 
                     <div class="card">
-
-                        ข้อมูลเกษตร
+                        <?php $rc =  $service->getCropByID(ID);?>
+                       <?php $service->showAgeiculturist($rc->argiculturist_id);?>
                     </div>
 
 
                     <div class="card">
-                        ข้อมูลพืชที่ปลูก
+                         <?php $service->showPlant($rc->plant_id)?>
                     </div>
 
 
