@@ -49,7 +49,7 @@ class Template {
 
             public function openMain($active) {
                 ?>
-                <div class="container">
+                <div class="container" id="container-center">
 
                     <div class="card">
 
@@ -75,7 +75,7 @@ class Template {
                                     <li class="tab col s3"><a href="#">ปัญหาและการควบคุม</a></li>
                                 </ul>
                             </div>
-                            <div id="test1" class="col s12">Test 1 
+                            <div id="test1" class="col s12">
                                 <?php
                             }
 

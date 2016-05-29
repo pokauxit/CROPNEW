@@ -2,7 +2,7 @@
 
 namespace App\Modules\Crop\Controllers;
 
-use App\Models\Crop AS tb_crop;
+use App\Models\crop AS tb_crop;
 use System\HMVC\HMVC;
 use System\Utils\JS;
 
