@@ -7,8 +7,7 @@ $template->open();
 $template->openMain($this->route->getName);
 ?>
 
-<p><br></p>
-<table class="bordered  striped " style="min-width: 500px;"  >
+<table class="bordered  striped "  style="min-width: 500px;"  >
     <thead class="green">
         <tr>
             <th>ลำดับ</th>
@@ -40,12 +39,13 @@ $template->openMain($this->route->getName);
         <?php } ?>
     </tbody>
 </table>
+   
 <p><br></p>
 <div class="center"  >
     <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> Add</a>
     <a class="btn waves-effect orange" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> Back</a>
 </div>
-<p><br></p>
+
 <?php
 $template->closeMain();
 $template->close();

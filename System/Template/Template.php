@@ -75,12 +75,15 @@ class Template {
                                     <li class="tab col s3"><a href="#">ปัญหาและการควบคุม</a></li>
                                 </ul>
                             </div>
-                            <div id="test1" class="col s12">
+                            <div id="test1" class="col s12" style="">
+
+                            <p><br></p>
+                            <div class="center" style="text-align: center;padding: 20px;" >
                                 <?php
                             }
 
                public function closeMain() {
-                                ?>
+                                ?> </div><p><br></p>
                                </div>
 
                             </div>

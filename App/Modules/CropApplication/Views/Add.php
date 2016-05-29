@@ -22,9 +22,9 @@ $template->openMain($this->route->getName);
             <input name="time_start" type="date" class="datepicker">
             <label for="time_start">เวลาที่เริ่มปลูก</label>
         </div>
-        <div class="input-field col  s12 m6">
+        <div class="input-field col  s12 m6"> <label for="fertiltzer_peroid" class="pull-left">ช่วงเวลาที่ให้ปุ๋ย</label>
             <input name="fertiltzer_peroid" type="text" class="validate" required>
-            <label for="fertiltzer_peroid">ช่วงเวลาที่ให้ปุ๋ย</label>
+           
         </div>
     </div>
 
