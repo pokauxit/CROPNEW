@@ -10,7 +10,7 @@ $template->open();
 
     <div class="row card" style="padding: 10px;">
 
-        <h4>จัดการข้อมูลเกษตรกร</h4>
+        <h4>ข้อมูลเกษตรกร</h4>
         <form class="col s12" action="" method="post">
             <div class="row">
                 <div class="input-field col m4 s12">
