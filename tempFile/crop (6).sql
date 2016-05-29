@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 29, 2016 at 05:13 AM
+-- Generation Time: May 29, 2016 at 07:23 AM
 -- Server version: 5.7.10-log
 -- PHP Version: 5.6.18
 
@@ -1055,6 +1055,51 @@ INSERT INTO `amphur` (`amphur_id`, `amphur_code`, `amphur_name`, `postcode`, `ge
 (996, '9612', 'จะแนะ   ', '96220', 6, 76),
 (997, '9613', 'เจาะไอร้อง   ', '96130', 6, 76),
 (998, '9681', '*อ.บางนรา  จ.นราธิวาส   ', '00000', 6, 76);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application_method`
+--
+
+CREATE TABLE `application_method` (
+  `step` int(11) NOT NULL COMMENT 'ลำดับขั้นตอน',
+  `crop_id` int(11) NOT NULL COMMENT 'พืชที่ปลูก',
+  `step_detail` varchar(200) NOT NULL COMMENT 'รายละเอียด',
+  `time_start` date DEFAULT NULL COMMENT 'เวลาที่เริ่มปลูก',
+  `fertiltzer_peroid` varchar(50) DEFAULT NULL COMMENT 'ช่วงเวลาที่ให้ปุ๋ย'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `application_method`
+--
+
+INSERT INTO `application_method` (`step`, `crop_id`, `step_detail`, `time_start`, `fertiltzer_peroid`) VALUES
+(4, 1, 'ทดสอบขั้นตอน 1', '2016-10-01', 'เช้า เที่ยง เย็น หรือเวลาไม่มีแดด'),
+(5, 1, 'atyutyutyu6574567567567567', NULL, 'gfhgfjghkhl'),
+(6, 1, 'พะพ', '2016-05-26', 'พะพ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `biofertilizer`
+--
+
+CREATE TABLE `biofertilizer` (
+  `bio_fer_id` int(11) NOT NULL COMMENT 'รหัสสารชีวภาพ/ปุ๋ย',
+  `type_fertilizer_id` int(11) NOT NULL COMMENT 'ชนิดปุ๋ย',
+  `bio_fer_name` varchar(100) NOT NULL COMMENT 'ชื่อสารชีวภาพ/ปุ๋ย',
+  `bio_fer_properties` varchar(200) NOT NULL COMMENT 'คุณสมบัติสารชีวภาพ/ปุ๋ย'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='สารชีวภาพ/ปุ๋ย';
+
+--
+-- Dumping data for table `biofertilizer`
+--
+
+INSERT INTO `biofertilizer` (`bio_fer_id`, `type_fertilizer_id`, `bio_fer_name`, `bio_fer_properties`) VALUES
+(10000001, 100002, 'EM', 'ปุ๋ย EM'),
+(10000002, 100001, 'ไนโตรเจน', 'type_fertilizer_name'),
+(10000004, 100002, 'ปุ๋ยหมักหอยเชอรี่', 'ปุ๋ยหมักหอยเชอรี่ บำรุงราก ใบ');
 
 -- --------------------------------------------------------
 
@@ -10188,6 +10233,25 @@ INSERT INTO `tambon` (`tambon_id`, `tambon_code`, `tambon_name`, `amphur_id`, `p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `typefertilizer`
+--
+
+CREATE TABLE `typefertilizer` (
+  `type_fertilizer_id` int(11) NOT NULL COMMENT 'รหัสชนิด',
+  `type_fertilizer_name` varchar(200) DEFAULT NULL COMMENT 'ชื่อชนิดปุ๋ย'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `typefertilizer`
+--
+
+INSERT INTO `typefertilizer` (`type_fertilizer_id`, `type_fertilizer_name`) VALUES
+(100001, 'ชีวภาพ'),
+(100002, 'ไบโอเคมี2');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `typeplant`
 --
 
@@ -10222,6 +10286,19 @@ ALTER TABLE `ageiculturist`
 --
 ALTER TABLE `amphur`
   ADD PRIMARY KEY (`amphur_id`);
+
+--
+-- Indexes for table `application_method`
+--
+ALTER TABLE `application_method`
+  ADD PRIMARY KEY (`step`,`crop_id`),
+  ADD KEY `crop_id` (`crop_id`);
+
+--
+-- Indexes for table `biofertilizer`
+--
+ALTER TABLE `biofertilizer`
+  ADD PRIMARY KEY (`bio_fer_id`);
 
 --
 -- Indexes for table `crop`
@@ -10278,6 +10355,12 @@ ALTER TABLE `tambon`
   ADD PRIMARY KEY (`tambon_id`);
 
 --
+-- Indexes for table `typefertilizer`
+--
+ALTER TABLE `typefertilizer`
+  ADD PRIMARY KEY (`type_fertilizer_id`);
+
+--
 -- Indexes for table `typeplant`
 --
 ALTER TABLE `typeplant`
@@ -10297,6 +10380,16 @@ ALTER TABLE `ageiculturist`
 --
 ALTER TABLE `amphur`
   MODIFY `amphur_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=999;
+--
+-- AUTO_INCREMENT for table `application_method`
+--
+ALTER TABLE `application_method`
+  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน', AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `biofertilizer`
+--
+ALTER TABLE `biofertilizer`
+  MODIFY `bio_fer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสารชีวภาพ/ปุ๋ย', AUTO_INCREMENT=10000005;
 --
 -- AUTO_INCREMENT for table `crop`
 --
@@ -10326,7 +10419,7 @@ ALTER TABLE `soil`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `standard`
 --
@@ -10342,6 +10435,11 @@ ALTER TABLE `symptom`
 --
 ALTER TABLE `tambon`
   MODIFY `tambon_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8861;
+--
+-- AUTO_INCREMENT for table `typefertilizer`
+--
+ALTER TABLE `typefertilizer`
+  MODIFY `type_fertilizer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิด', AUTO_INCREMENT=100003;
 --
 -- AUTO_INCREMENT for table `typeplant`
 --
