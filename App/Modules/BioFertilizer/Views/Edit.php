@@ -76,6 +76,7 @@
 <script>
     $("#jQuery").ready(function(){
         $("#type_fertilizer_id option[id='<?php echo $this->row->type_fertilizer_id; ?>']").attr("selected", "selected");
+        $('#type_fertilizer_id').material_select();
     });    
 </script>
 <!-- DEVAP END SET SELECTED -->

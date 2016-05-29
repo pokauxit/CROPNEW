@@ -77,6 +77,7 @@
 <script>
     $("#jQuery").ready(function(){
         $("#type_id option[id='<?php echo $this->row->type_id; ?>']").attr("selected", "selected");
+        $('#type_id').material_select();
     });    
 </script>
 <!-- DEVAP END SET SELECTED -->
