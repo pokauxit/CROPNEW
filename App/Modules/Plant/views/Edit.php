@@ -26,44 +26,45 @@
 </script>
 
 <div class="container" id="container-center">
-    <div class="row card " style="padding: 10px;"> 
-    <div>
+    <div class="row card center" style="padding: 10px;"> 
+    <div class="input-field col s12">
         <h4 class="pull-left">จัดการประเภทของพืช</h4>
         <br/>
-    <form name="form_insert_plant" id="form_inert_plant" action="" method="post" onsubmit="return check(this);">
-        <table>
-            <tr>
-                <td>ประเภทของพืช</td>
-                <td>
-                <select class="browser-default" name="type_id" id="type_id">
-                    <option value="" disabled selected>กรุณาเลือกประเภทพืช</option>
-                    <?php
-                    while($rc_typepln = $this->dbTypePlan->fetch()){
-                    ?>
-                    <option value="<?php echo $rc_typepln->type_id; ?>" id="<?php echo $rc_typepln->type_id; ?>" description="<?php echo $rc_typepln->type_name; ?>"><?php echo $rc_typepln->type_name; ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </td>
-            </tr>
+    </div>
+    <form class="center" name="form_insert_plant" id="form_inert_plant" action="" method="post" onsubmit="return check(this);">
 
-            <tr>
-                <td>ชื่อพืช</td>
-                <td><input type="text" name="plant_name" value="<?php echo $this->row->plant_name; ?>"></td>
-            </tr>
+        <div class="input-field col s12 m6 center">
+            
+            <select name="type_id" id="type_id">
+                <option value="" disabled selected>กรุณาเลือกประเภทพืช</option>
+                <?php
+                while($rc_typepln = $this->dbTypePlan->fetch()){
+                ?>
+                <option value="<?php echo $rc_typepln->type_id; ?>" id="<?php echo $rc_typepln->type_id; ?>" description="<?php echo $rc_typepln->type_name; ?>"><?php echo $rc_typepln->type_name; ?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <label for="type_id">ประเภทของพืช</label>
+        </div>
 
-            <tr>
-                <td>พื้นที่เพาะปลูก</td>
-                <td><textarea name="caltivated_area" class="materialize-textarea"><?php echo $this->row->caltivated_area; ?></textarea></td>
-            </tr>
-        </table>
-        <div class="center">
+        <div class="input-field col s12 m6 center">
+            
+            <input type="text" name="plant_name" value="<?php echo $this->row->plant_name; ?>">
+            <label for="type_name">ชื่อพืช</label>
+        </div>
+     
+        <div class="input-field col s12 m12 center">
+            
+            <textarea name="caltivated_area" class="materialize-textarea"><?php echo $this->row->caltivated_area; ?></textarea>
+            <label for="type_name">พื้นที่เพาะปลูก</label>
+        </div>
+
+        <div class="input-field col s12 m12 center">
             <button class="btn waves-effect green " style="margin: 5px;" type="submit" name="submit" id="btn-submit" value="ss"><i class="fa fa-save"></i> บันทึก </button>
             <button class="btn waves-effect orange"  style="margin: 5px;" type="button" onclick="window.location.href = '<?php echo $this->route->backToModule() . '//' . $this->param(0); ?>'"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ </button> 
         </div>
-    </div>
-</form>
+    </form>
     </div>
 </div>
 

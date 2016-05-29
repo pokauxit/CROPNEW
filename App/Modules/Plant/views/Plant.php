@@ -25,7 +25,7 @@
         while($rc2 = $this->dbPlant->fetch()){
     ?>
         <tr>
-          <td><?php echo $rc2->plant_id; ?></td>
+          <td><?php echo $rc2->plant_id; ?>.</td>
           <td><?php echo $rc2->typeplant_type_name ?></td>
           <td><?php echo $rc2->plant_name; ?></td>
           <td><?php echo $rc2->caltivated_area; ?></td>
