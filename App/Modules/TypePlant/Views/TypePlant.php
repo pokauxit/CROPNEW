@@ -7,11 +7,11 @@
 <div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 
     <div>
-        <h4 class="pull-left">จัดการพืช</h4>
+        <h4 class="pull-left">จัดการชนิดของพืช</h4>
         <br/>
         <table class="bordered">
             <tr>
-              <th>รหัสพืช</th>
+              <th>No.</th>
               <th>ชื่อประเภท</th>
               <th>หมายเหตุ</th>
               <th>ตัวเลือก</th>
@@ -22,7 +22,7 @@
             while ($rc  = $this->db->fetch()){
             ?>
             <tr>
-                <td><?php echo $rc->type_id; ?></td>
+                <td><?php echo $i; ?>.</td>
                 <td><?php echo $rc->type_name; ?></td>
                 <td><?php echo $rc->note; ?></td>
                 <td>

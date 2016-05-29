@@ -27,7 +27,7 @@
 <div class="container" id="container-center">
     <div class="row card center" style="padding: 10px;"> 
  <div class="input-field col s12">
-        <h4 class="pull-left">จัดการพืช</h4>
+        <h4 class="pull-left">จัดการชนิดของพืช</h4>
         <p>
         </div>
         
