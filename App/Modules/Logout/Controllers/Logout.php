@@ -8,7 +8,7 @@ use System\Utils\JS;
 class Logout extends HMVC{
      public function index() {
          $this->session("STAFF","");
-         echo  JS::re("?");
+         echo  JS::re("?Login");
     }
 
 }
