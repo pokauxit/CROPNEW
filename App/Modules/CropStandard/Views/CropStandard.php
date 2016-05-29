@@ -4,7 +4,8 @@ use System\Template\Template;
 
 $template = new Template();
 $template->open();
-$template->openMain($this->route->getName);
+
+$template->openMain($this->param(-2));
 ?>
 
 <table class="bordered  striped "  style="min-width: 500px;"  >

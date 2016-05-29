@@ -11,11 +11,12 @@ class CropStandard extends HMVC {
     protected $rowId;
 
     public function __construct() {
-        //ACL::check("STAFF");
+        
         parent::__construct();
     }
 
     public function index() {
+ 
         $this->db = new tb_method_6();
         $this->db->where = "crop_id='" . $this->param(0) . "'";
         $this->db->orderSort = "crop_standard_id ASC";

@@ -5,7 +5,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
-$template->openMain($this->route->getName);
+$template->openMain( $this->param(-2));
 
 if (!empty($this->rowId->time_start) && $this->rowId->time_start != '0000-00-00') {
     $date = date_format(date_create($this->rowId->time_start), 'j F, Y');
