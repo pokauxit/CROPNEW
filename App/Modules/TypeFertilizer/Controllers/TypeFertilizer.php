@@ -43,7 +43,13 @@
     public function Delete(){
         $this->controller();
     }
-   
+    
+   public function getTypeFertilizerAll($id) {// รับ ID มา Selected
+        $this->id = $id;
+        $this->db = new tfz();
+        $this->db->select();
+        $this->view("Option_List");
+    }
 
 }
 ?>

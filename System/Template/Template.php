@@ -71,7 +71,7 @@ class Template {
                                     <li class="tab  col s3"><a  href="#" onclick="window.location.href=this.href;">การเก็บเกี่ยว</a></li>
                                     <li class="tab col s3 "><a href="#">ผลผลิต</a></li>
                                     <li class="tab col s3"><a href="#">พื้นที่เพาะปลูก</a></li>
-                                    <li class="tab col s3"><a href="#">การให้ปุ๋ย</a></li>
+                                    <li class="tab col s3"><a class="<?php if($active == "CropApplyFertilizer"){echo "active";}?>" href="?CropApplyFertilizer//<?php echo ID?>" onclick="window.location.href=this.href;">การให้ปุ๋ย</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>" onclick="window.location.href=this.href;">มาตฐาน</a></li>
  
                                     <li class="tab col s3"><a href="#">ปัญหาและการควบคุม</a></li> 
