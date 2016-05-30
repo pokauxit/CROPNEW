@@ -57,7 +57,12 @@ $template->openMain($this->param(-2));
     <p><br></p>
 </form>
 <div  id="map" class="modal">
-    <div style="text-align: center;padding: 3px">คลิกลากเพื่อหาตำแหน่งจุดที่ต้องการ</div>
+    <div style="text-align: center;padding: 3px">
+        คลิกลากเพื่อหาตำแหน่งจุดที่ต้องการ 
+        <span style="float: right">
+            <a href="javascript:;" class="modal-action modal-close red-text"><i class="fa fa-lg fa-times"></i></a>
+        </span>
+    </div>
     <div id="map_canvas"></div>
 </div>
 <?php
