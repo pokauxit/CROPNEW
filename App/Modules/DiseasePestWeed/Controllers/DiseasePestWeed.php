@@ -24,7 +24,7 @@ class DiseasePestWeed extends HMVC
     public function index()
     {
         $this->db = new dpw();
-        $this->db->left("symptom_id", "symptom.symptom_name");
+        $this->db->select();
         $this->view();
     }
 
