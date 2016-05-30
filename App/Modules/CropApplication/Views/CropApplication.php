@@ -4,6 +4,7 @@ use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav3level(ID);
 $template->openMain( $this->param(-2));
 ?>
 

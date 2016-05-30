@@ -3,6 +3,7 @@
   
     $template = new Template();
     $template->open();
+    $template->nav1level();
 ?>
 <div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 

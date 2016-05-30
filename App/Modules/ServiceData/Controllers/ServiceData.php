@@ -20,11 +20,18 @@ class ServiceData extends HMVC{
          
     }
     public function showAgeiculturist($id){
-         echo $id;
+         
          $this->db = new agl();
           $this->db->where =$this->db->pk()."=".$id;
         $this->db->left("tambon_id", "tambon.tambon_name");
           $this->view("Ageiculturist");
+    }
+    
+    public function getAgeiculturist($id){
+        
+         $this->db = new agl(); 
+          return $this->db->get($id);
+       
     }
     
     public function showPlant($id){
@@ -33,5 +40,12 @@ class ServiceData extends HMVC{
        $this->dbPlant->where =$this->dbPlant->pk()."=".$id;
         $this->dbPlant->left("type_id", "typeplant.type_name"); 
         $this->view("Plant");
+    }
+    
+    public function getPlant($id){
+        
+         $this->db = new pln(); 
+          return $this->db->get($id);
+       
     }
 }

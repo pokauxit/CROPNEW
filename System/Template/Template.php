@@ -54,6 +54,8 @@ class Template {
         <a href="?" class="breadcrumb">หน้าหลัก</a>
         <a href="javascript:;" class="breadcrumb"><?php
         if($_URL[0] == "Staff")echo "เจ้าหน้าที่";
+        if($_URL[0] == "TypePlant")echo "ชนิดของพืช";
+
         
         ?></a>
         
@@ -64,10 +66,54 @@ class Template {
             }
 
             
+public function nav2level($id){
+                global  $_URL;
+                   $service = new Service();
+                      $rc =  $service->getAgeiculturist($id);
+                ?><nav style="line-height: 45px;height: 40px;" >
+    <div class="nav-wrapper container" >
+      <div class="col s12">
+        <a href="?" class="breadcrumb">หน้าหลัก</a>
+        <a href="javascript:;" class="breadcrumb"><?php
+         echo $rc->agriculturist_name;
+
+        
+        ?></a>
+        <a href="javascript:;" class="breadcrumb">พืชที่ปลูก</a>
+      </div>
+    </div>
+  </nav>
+      <?php
+            }
 
 
+      
+public function nav3level($id){
+                global  $_URL;
+                   $service = new Service();
+                   $rc =  $service->getCropByID(ID);
+                      $rc1 =  $service->getAgeiculturist($rc->argiculturist_id);
+                         $rc2 =  $service->getPlant($rc->plant_id);
+                ?><nav style="line-height: 45px;height: 40px;" >
+    <div class="nav-wrapper container" >
+      <div class="col s12">
+        <a href="?" class="breadcrumb">หน้าหลัก</a>
+        <a href="?Crop//<?php echo $rc->argiculturist_id;?>" class="breadcrumb"><?php
+         echo $rc1->agriculturist_name;
 
+        
+        ?></a>
+        <a href="javascript:;" class="breadcrumb"><?php
+         echo   $rc2->plant_name;
 
+        
+        ?></a>
+        <a href="javascript:;" class="breadcrumb">การเพาะปลูก</a>
+      </div>
+    </div>
+  </nav>
+      <?php
+            }
 
 
 

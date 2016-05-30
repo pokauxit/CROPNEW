@@ -4,6 +4,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav2level(ID);
 $template->ageiculturistInfo(ID)
 ?>
 
@@ -40,7 +41,7 @@ $template->ageiculturistInfo(ID)
                         <td><?php echo $rc->wind; ?></td>
                         <td><?php echo $rc->spetial_information; ?></td>
                         <td>
-                            <a href="<?php echo '?CropMain//' . $rc->crop_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
+                            <a href="<?php echo '?CropApplication//' . $rc->crop_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
                             | <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->crop_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
                             | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->crop_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
                         </td>
