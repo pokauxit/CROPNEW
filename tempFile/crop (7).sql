@@ -1183,8 +1183,8 @@ CREATE TABLE `cultivated_area` (
   `area_sequence` int(11) NOT NULL COMMENT 'ลำดับของพื้นที่',
   `crop_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
   `soil_id` int(11) NOT NULL COMMENT 'รหัสดิน',
-  `lat_map` varchar(10) NOT NULL COMMENT 'ละติจูด',
-  `long_map` varchar(10) NOT NULL COMMENT 'ลองติจูด',
+  `lat_map` varchar(20) NOT NULL COMMENT 'ละติจูด',
+  `long_map` varchar(20) NOT NULL COMMENT 'ลองติจูด',
   `area_detail` varchar(200) NOT NULL COMMENT 'ข้อมูลพื้นที่',
   `soil_drainage` varchar(100) NOT NULL COMMENT 'การระบายน้ำของดิน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='พื้นที่เพาะปลูก';
