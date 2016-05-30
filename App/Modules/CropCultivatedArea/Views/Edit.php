@@ -20,12 +20,12 @@ $template->openMain($this->param(-2));
             <label for="soil_id">ชื่อดิน</label>
         </div>
         <div class="input-field col s12 m4">
-            <label for="lat">ละติจูด</label>
-            <input name="lat" type="text" class="validate" required value="<?php echo $this->rowId->lat; ?>">
+            <label for="lat_map">ละติจูด</label>
+            <input name="lat_map" type="text" class="validate" required value="<?php echo $this->rowId->lat_map; ?>">
         </div>
         <div class="input-field col s12 m4">
-            <label for="long">ลองติจูด</label>
-            <input name="long" type="text" class="validate" required value="<?php echo $this->rowId->long; ?>">
+            <label for="long_map">ลองติจูด</label>
+            <input name="long_map" type="text" class="validate" required value="<?php echo $this->rowId->long_map; ?>">
         </div>
     </div>
 

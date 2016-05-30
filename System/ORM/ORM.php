@@ -68,6 +68,8 @@ class ORM extends DB {
         
          $sql = "SELECT ".$this->name.".*,".$table.".".$fr." AS ".$table."_".$fr." FROM ".$this->name." LEFT JOIN ".$table." ON (".$this->name.".".$fk." = ".$table.".".$this->findPK($table).") ";
          if($this->where){ $sql.= " WHERE ".$this->where;}
+         
+         
          return $this->result = $this->query($sql);
     }
     
@@ -184,7 +186,7 @@ class ORM extends DB {
                $sql .= "'',";
             }
         }
-             $query =  substr($sql,0,-1)." ".$pk ;
+            $query =  substr($sql,0,-1)." ".$pk ;
           return $this->result = $this->query($query);
     }
     

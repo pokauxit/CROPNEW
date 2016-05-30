@@ -28,8 +28,8 @@ $template->openMain($this->param(-2));
             <tr>
                 <td><?php echo $rowId++; ?></td>
                 <td><?php echo $rc->soil_soil_name; ?></td>
-                <td><?php echo $rc->lat; ?></td>
-                <td><?php echo $rc->long; ?></td>
+                <td><?php echo $rc->lat_map; ?></td>
+                <td><?php echo $rc->long_map; ?></td>
                 <td><?php echo $rc->area_detail; ?></td>
                 <td><?php echo $rc->soil_drainage; ?></td>
                 <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->area_sequence); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>

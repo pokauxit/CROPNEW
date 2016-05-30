@@ -1,3 +1,4 @@
 <?php
-echo "Ageiculturist";
+
+print_r($this->db->fetch());
 ?>

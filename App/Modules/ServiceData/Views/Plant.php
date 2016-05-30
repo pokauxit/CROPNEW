@@ -1,5 +1,5 @@
 <?php
 
-echo "กกก";
+print_r($this->dbPlant->fetch());
 
 ?>
