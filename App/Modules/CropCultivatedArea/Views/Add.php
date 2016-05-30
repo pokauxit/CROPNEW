@@ -21,11 +21,11 @@ $template->openMain($this->param(-2));
         </div>
         <div class="input-field col s12 m4">
             <label for="lat_map">ละติจูด</label>
-            <input name="lat_map">" type="text" class="validate" required>
+            <input name="lat_map" type="text" class="validate" required>
         </div>
         <div class="input-field col s12 m4">
             <label for="long_map">ลองติจูด</label>
-            <input name="long_map">" type="text" class="validate" required>
+            <input name="long_map" type="text" class="validate" required>
         </div>
     </div>
 
