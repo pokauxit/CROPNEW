@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2016 at 02:48 AM
+-- Generation Time: May 30, 2016 at 01:17 PM
 -- Server version: 5.7.10-log
 -- PHP Version: 5.6.18
 
@@ -1077,7 +1077,8 @@ CREATE TABLE `application_method` (
 INSERT INTO `application_method` (`step`, `crop_id`, `step_detail`, `time_start`, `fertiltzer_peroid`) VALUES
 (4, 1, 'ทดสอบขั้นตอน 1', '2016-10-01', 'เช้า เที่ยง เย็น หรือเวลาไม่มีแดด'),
 (5, 1, 'atyutyutyu6574567567567567', NULL, 'gfhgfjghkhl'),
-(6, 1, 'พะพ', '2016-05-26', 'พะพ');
+(6, 1, 'พะพ', '2016-05-26', 'พะพ'),
+(7, 14, 'เตรียมดิน', '2016-05-30', 'สัปดาห์แรก');
 
 -- --------------------------------------------------------
 
@@ -1101,7 +1102,8 @@ CREATE TABLE `apply_fertilizer` (
 INSERT INTO `apply_fertilizer` (`apply_fertilizer_id`, `crop_id`, `bio_fer_id`, `apply_fertilizer_amout`, `apply_fertiltzer_unit`, `appy_fertilizer_frequency`) VALUES
 (1, 1, 10000001, 111, '111', '111'),
 (3, 1, 10000001, 324234, '324234dfgdfgdf', 'gdfgdfgdfg'),
-(4, 0, 10000002, 33, '33', '33');
+(4, 0, 10000002, 33, '33', '33'),
+(5, 14, 10000002, 1, 'กระสอบ/ไร่', '1 สัปดาห์');
 
 -- --------------------------------------------------------
 
@@ -1148,7 +1150,8 @@ CREATE TABLE `crop` (
 INSERT INTO `crop` (`crop_id`, `plant_id`, `argiculturist_id`, `sunlight`, `water_source`, `wind`, `spetial_information`) VALUES
 (11, 1, 2, 'sdffsd', 'sdfsdf', 5.000, 'sdfsdfsdf'),
 (12, 1, 2, 'sdfaf', 'sdf', 444.000, '4445'),
-(13, 8, 1, 'aaa', 'aa', 0.000, 'aa');
+(13, 8, 1, 'aaa', 'aa', 0.000, 'aa'),
+(14, 8, 2, '44', 'มุล', 44.000, 'ดินทรายร่วน');
 
 -- --------------------------------------------------------
 
@@ -1183,8 +1186,8 @@ CREATE TABLE `cultivated_area` (
   `area_sequence` int(11) NOT NULL COMMENT 'ลำดับของพื้นที่',
   `crop_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
   `soil_id` int(11) NOT NULL COMMENT 'รหัสดิน',
-  `lat_map` varchar(10) NOT NULL COMMENT 'ละติจูด',
-  `long_map` varchar(10) NOT NULL COMMENT 'ลองติจูด',
+  `lat_map` varchar(20) NOT NULL COMMENT 'ละติจูด',
+  `long_map` varchar(20) NOT NULL COMMENT 'ลองติจูด',
   `area_detail` varchar(200) NOT NULL COMMENT 'ข้อมูลพื้นที่',
   `soil_drainage` varchar(100) NOT NULL COMMENT 'การระบายน้ำของดิน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='พื้นที่เพาะปลูก';
@@ -1196,7 +1199,8 @@ CREATE TABLE `cultivated_area` (
 INSERT INTO `cultivated_area` (`area_sequence`, `crop_id`, `soil_id`, `lat_map`, `long_map`, `area_detail`, `soil_drainage`) VALUES
 (1, 1, 3, '0.99999999', '0.99999999', 'test001', 'test002'),
 (3, 1, 0, '234234234', '324234234', '32423sfdfsdf', '32423dsffsdf'),
-(5, 0, 1, 'ss', 'ss', 'aaa', 'ssss');
+(5, 0, 1, 'ss', 'ss', 'aaa', 'ssss'),
+(6, 14, 3, '333', '333', 'ดี', 'ดี');
 
 -- --------------------------------------------------------
 
@@ -1269,7 +1273,8 @@ CREATE TABLE `harvest` (
 --
 
 INSERT INTO `harvest` (`harvest_id`, `crop_id`, `harvest_algorithm`, `season`, `amout`, `unit`) VALUES
-(3, 1, 'tertertertert', 'ฤดูร้อน', 23, 'fsfsdf');
+(3, 1, 'tertertertert', 'ฤดูร้อน', 23, 'fsfsdf'),
+(4, 14, 'ตัด', 'ฤดูหนาว', 44, 'กก.');
 
 -- --------------------------------------------------------
 
@@ -1471,7 +1476,7 @@ CREATE TABLE `symptom` (
 --
 
 INSERT INTO `symptom` (`symptom_id`, `symptom_name`, `symptom_detail`) VALUES
-(2, 'ทดสอบ๑-', 'ทดสอบ๑-');
+(2, 'ใบแห้ง', 'ทดสอบ๑-');
 
 -- --------------------------------------------------------
 
@@ -10546,12 +10551,12 @@ ALTER TABLE `amphur`
 -- AUTO_INCREMENT for table `application_method`
 --
 ALTER TABLE `application_method`
-  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน', AUTO_INCREMENT=7;
+  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `apply_fertilizer`
 --
 ALTER TABLE `apply_fertilizer`
-  MODIFY `apply_fertilizer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการให้ปุ๋ย', AUTO_INCREMENT=5;
+  MODIFY `apply_fertilizer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการให้ปุ๋ย', AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `biofertilizer`
 --
@@ -10561,7 +10566,7 @@ ALTER TABLE `biofertilizer`
 -- AUTO_INCREMENT for table `crop`
 --
 ALTER TABLE `crop`
-  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=14;
+  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `crop_standard`
 --
@@ -10571,7 +10576,7 @@ ALTER TABLE `crop_standard`
 -- AUTO_INCREMENT for table `cultivated_area`
 --
 ALTER TABLE `cultivated_area`
-  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=6;
+  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `disease_pest_weed`
 --
@@ -10586,7 +10591,7 @@ ALTER TABLE `geography`
 -- AUTO_INCREMENT for table `harvest`
 --
 ALTER TABLE `harvest`
-  MODIFY `harvest_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=4;
+  MODIFY `harvest_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `plant`
 --
