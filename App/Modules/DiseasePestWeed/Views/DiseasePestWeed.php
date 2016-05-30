@@ -3,7 +3,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
-
+$template->nav1level();
 ?>
 
 
@@ -11,7 +11,7 @@ $template->open();
     <div class="row card " style="padding: 10px;">
 
 
-        <h4 class="pull-left">จัดการข้อมูลโรค/แมลง/วัคพืช</h4>
+        <h4 class="pull-left">จัดการข้อมูลโรค/แมลง/วัชพืช</h4>
 
         <p>
 
@@ -56,7 +56,7 @@ $template->open();
         <div class="center">
             <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i
                     class="fa fa-plus"></i> เพิ่มข้อมูล</a>
-            <a class="btn waves-effect orange" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i
+            <a class="btn waves-effect orange" href="?"><i
                     class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
     </div>

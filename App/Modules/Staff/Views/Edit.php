@@ -5,7 +5,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
-
+$template->nav1level();
 echo System\Utils\JS::load();
 ?>
 <script>function check(obj) {

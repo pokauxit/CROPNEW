@@ -4,6 +4,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav1level();
 ?>
 
 <div class="container" id="container-center">
@@ -34,7 +35,16 @@ $template->open();
                     <tr>
                         <td><?php echo $rowId++; ?></td>
                         <td><?php echo $rc->soil_name; ?></td>
-                        <td><?php echo $rc->soil_type; ?></td>
+                        <td>
+                            
+                            
+                              <?php if($this->rowId->soil_type==1){echo 'ดินทราย';} ?> 
+                     <?php if($this->rowId->soil_type==2){echo 'ดินตะกอน';} ?> 
+                       <?php if($this->rowId->soil_type==3){echo 'ดินเหนียว';} ?> 
+                      <?php if($this->rowId->soil_type==4){echo 'ดินร่วน';} ?> 
+                        <?php if($this->rowId->soil_type==5){echo 'ดินเค็ม';} ?> 
+                        
+                        </td>
                         <td><?php echo $rc->soil_factor; ?></td>
                         <td><?php echo $rc->soil_problem; ?></td>
                         <td><?php echo $rc->soil_nutrition; ?></td>
@@ -48,9 +58,10 @@ $template->open();
         </table>
         <p><br></p>
 
-        <div class="center"  >
-            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> Add</a>
-            <a class="btn waves-effect orange" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> Back</a>
+ 
+          <div class="center"  >
+            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/'  ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+            <a class="btn waves-effect orange" href="<?php echo $template->mainPanel?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
     </div>
 

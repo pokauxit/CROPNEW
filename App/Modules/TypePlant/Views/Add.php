@@ -3,6 +3,7 @@
   
     $template = new Template();
     $template->open();
+    $template->nav1level();
 ?>
 <?php 
     echo System\Utils\JS::load();

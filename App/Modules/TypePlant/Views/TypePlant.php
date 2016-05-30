@@ -41,8 +41,7 @@
     <div class="center"  >
         <a class="btn waves-effect green" href="<?php echo $this->route->Add();
         echo '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> Add</a>
-        <a class="btn waves-effect orange" href="<?php echo $this->route->Add();
-        echo '/' . $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> Back</a>
+        <a class="btn waves-effect orange" href="?"><i class="fa fa-arrow-circle-left"></i> Back</a>
     </div> 
     </div>
 </div>

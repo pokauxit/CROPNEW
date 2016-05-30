@@ -3,7 +3,7 @@
 namespace System\Template;
 use App\Modules\ServiceData\Controllers\ServiceData as Service;
 class Template {
-
+var $mainPanel = "?";
     public function open() {
         ?><!DOCTYPE html>
         <html>
@@ -54,7 +54,17 @@ class Template {
         <a href="?" class="breadcrumb">หน้าหลัก</a>
         <a href="javascript:;" class="breadcrumb"><?php
         if($_URL[0] == "Staff")echo "เจ้าหน้าที่";
+       
+        if($_URL[0] == "Ageiculturist")echo "เกษตรกร";
+        if($_URL[0] == "DiseasePestWeed")echo "โรค/แมลง/วัชพืช";
+          if($_URL[0] == "Soil")echo "ดิน";
+           if($_URL[0] == "Symptom")echo "อาการ";
+           if($_URL[0] == "Standard")echo "มาตรฐาน";
         if($_URL[0] == "TypePlant")echo "ชนิดของพืช";
+           if($_URL[0] == "Plant")echo "พืช";
+           if($_URL[0] == "BioFertilizer")echo "ปุ๋ยและสารชีวภาพ";
+           if($_URL[0] == "TypeFertilizer")echo "ชนิดของปุ๋ย";
+
 
         
         ?></a>

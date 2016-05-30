@@ -5,6 +5,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav3level(ID);
 $template->openMain( $this->param(-2));
 
 if (!empty($this->rowId->time_start) && $this->rowId->time_start != '0000-00-00') {

@@ -4,13 +4,14 @@ use \App\Models\plant as pln;
 
 $template = new Template();
 $template->open();
+$template->nav1level();
 ?>
 
 <div class="container" id="container-center">
 
     <div class="row card" style="padding: 10px;">
 
-        <h4>ข้อมูลโรค/แมลง/วัคพืช</h4>
+        <h4>ข้อมูลโรค/แมลง/วัชพืช</h4>
         <form class="col s12" action="" method="post">
             <div class="row">
                 <div class="input-field col m4 s12">

@@ -5,7 +5,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
-
+$template->nav1level();
 echo System\Utils\JS::load();
 ?>
 <script>
@@ -45,11 +45,11 @@ echo System\Utils\JS::load();
                 <div class="input-field  col  s12 m6">
                     <select name="soil_type">
                         <!--<option disabled selected>กรุณาเลือกรายการ</option>-->
-                        <option value="1" <?php if($this->rowId->soil_type==1){echo 'selected';} ?>> ดิน 1 </option>
-                        <option value="2" <?php if($this->rowId->soil_type==2){echo 'selected';} ?>> ดิน 2 </option>
-                        <option value="3" <?php if($this->rowId->soil_type==3){echo 'selected';} ?>> ดิน 3 </option>
-                        <option value="4" <?php if($this->rowId->soil_type==4){echo 'selected';} ?>> ดิน 4 </option>
-                        <option value="5" <?php if($this->rowId->soil_type==5){echo 'selected';} ?>> ดิน 5 </option>
+                        <option value="1" <?php if($this->rowId->soil_type==1){echo 'selected';} ?>> ดินทราย  </option>
+                        <option value="2" <?php if($this->rowId->soil_type==2){echo 'selected';} ?>> ดินตะกอน </option>
+                        <option value="3" <?php if($this->rowId->soil_type==3){echo 'selected';} ?>> ดินเหนียว </option>
+                        <option value="4" <?php if($this->rowId->soil_type==4){echo 'selected';} ?>> ดินร่วน </option>
+                        <option value="5" <?php if($this->rowId->soil_type==5){echo 'selected';} ?>> ดินเค็ม  </option>
                     </select>
                     <label for="soil_type">ชนิดของดิน</label>
                 </div>

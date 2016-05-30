@@ -4,7 +4,7 @@
   $template = new Template();
   $template->open();
 
-print_r($this->session("STAFF"));
+//print_r($this->session("STAFF"));
 ?>
 <div class="container">
 
@@ -18,6 +18,201 @@ print_r($this->session("STAFF"));
             <hr><i class="red-text">ใครติดตรงไหน ถามได้เลยครับ</i>
     </div>
 
+      <div class="card  OK ">
+         <a href="?Staff" class="btn yellow" >เจ้าหน้าที่  :Nu</a> <p>ไปสร้าง Module  Staff     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="Staff" class="modal">
+
+               ใช้อันเดิมจากงานเก่า
+
+
+
+
+                </div>
+      </div>
+    
+    
+    
+    <div class="card   ok">
+         <a href="?Ageiculturist" class="btn yellow" >เกษตรกร :TIK</a> <p>ไปสร้าง Module  Ageiculturist   จัดการเกษตรกร เพิ่มลบแก้ไข (มีเลือกจังหวัด อำเภอ ตำบล jQuery )  click ดู table : <a href='#ageiculturist' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="ageiculturist" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: ageiculturist</td><td colspan="3">	ข้อมูลเกษตรกร</b><br>
+             <tr><td>   agriculturist_id	</td><td>รหัสเกษตรกร</td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   home_no             </td><td>    บ้านเลขที่	   </td><td>     varchar	50 </td><td>	not null </td></tr>
+             <tr><td>   phone_no            </td><td>     หมายเลขโทรศัพท์	   </td><td>     varchar	50 </td><td>	 null </td></tr>
+		<tr><td> agriculturist_name</td><td>	ชื่อเกษตรกร</td><td>	varchar	100 </td><td>	not null </td></tr>
+             <tr><td>   tambon_id	    </td><td>   รหัสจังหวัด	</td><td>	integer  </td><td>	not null fk ->tumbon  </td></tr>
+              </table>
+
+                note: สร้าง module AutoProvince  เพื่อการเลีอกที่อยู่ด้วย  table จังหวัดก็ตามที่ tik ทำมา
+
+
+                </div>
+      </div>
+
+    
+    <div class="card OK">
+         <a href="?DiseasePestWeed" class="btn yellow" >ปัญหาต่างๆของพืชที่มักพบ  :Tik</a> <p>ไปสร้าง Module  DiseasePestWeed     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="DiseasePestWeed" class="modal">
+
+              ส่ง csv ไปใน face
+
+
+
+
+                </div>
+      </div>
+  
+    <div class="card OK">
+         <a href="?Soil" class="btn yellow" >ดิน  :Nu</a> <p>ไปสร้าง Module  Soil     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="Soil" class="modal">
+
+              ส่ง csv ไปใน face
+
+
+
+
+                </div>
+      </div>
+
+    <div class="card OK">
+         <a href="?Symptom" class="btn yellow" >อาการ   :Tik</a> <p>ไปสร้าง Module  Symptom   จัดการอาการผิดปกติของพืช click ดู table : <a href='#Symptom' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="Symptom" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: symptom   </td><td colspan="3">	 ลักษณะของอาการ  </b><br>
+             <tr><td>   symptom_id       </td><td>       รหัสการ      </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   symptom_name            </td><td>     ชื่อของอาหาร  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   symptom_detail             </td><td>     รายละเอียดขงอาหาร    	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+
+              </table>
+
+
+
+
+                </div>
+      </div>
+    <div class="card">
+         <a href="?Standard" class="btn  yellow" >มาตราฐาน  :Tik</a> <p>ไปสร้าง Module  Standard   จัดการมาตราฐาน พิ่มลบแก้ไข  click ดู table : <a href='#Standard' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="Standard" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: standard  </td><td colspan="3">	มาตรฐาน/รางวัล  </b><br>
+             <tr><td>   sid     </td><td>       รหัสมาตรฐาน    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_name            </td><td>     ชื่อมาตรฐานที่ได้รับ  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   org             </td><td>     สถาบันหรือน่วยงานที่กำหนดมฐ   	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+
+              </table>
+
+
+
+
+                </div>
+      </div>
+
+
+
+
+    <div class="card">
+         <a href="?TypeFertilizer" class="btn yellow" >ชนิดของปุ๋ย  :Jui</a> <p>ไปสร้าง Module  TypeFertilizer   จัดการชนิดของปุ๋ย (มีข้อมูล2ชนิด ไบโอเคมี และ ชีวภาพ  )เพิ่มลบแก้ไข  click ดู table : <a href='#TypeFertilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="TypeFertilizer" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: type_fertilizer  </td><td colspan="3">	ชนิดของปุ๋ย </b><br>
+             <tr><td>   type_fertiltzer_id     </td><td>       รหัสชนิด    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_name            </td><td>     ชื่อชนิดปุ๋ย 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
+
+              </table>
+
+
+
+
+                </div>
+      </div>
+
+     <div class="card">
+         <a href="?BioFertilizer" class="btn yellow" >ปุ๋ย  :Jui</a> <p>ไปสร้าง Module  BioFerilizer   จัดการชนิดปุ๋ยและสารชีวภาพ ( จะมีประเภทของปุ๋ย/สารชีภาพ  ที่ต้องเลือก ตอน add,edit,)เพิ่มลบแก้ไข  click ดู table : <a href='#BioFerilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="BioFerilizer" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: bio_ferilizer  </td><td colspan="3">สารชีวภาพ/ปุ๋ย</b><br>
+
+                   <tr><td>   bio_fer_id     </td><td>        รหัสสารชีวภาพ/ปุ๋ย  </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_fertilizer_id            </td><td>     ชนิดปุ๋ย 	   </td><td>     integer	  </td><td>	not null  fk (type_fertilizer->type_fertiltzer_id)</td></tr>
+		<tr><td>   bio_fer_name            </td><td>     ชื่อสารชีวภาพ/ปุ๋ย 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+		<tr><td>   bio_fer_properties            </td><td>     คุณสมบัติสารชีวภาพ/ปุ๋ย 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
+
+              </table>
+
+
+
+
+                </div>
+      </div>
+
+
+     <div class="card">
+         <a href="?TypePlant" class="btn yellow" >ชนิดของพืช  :Jui</a> <p>ไปสร้าง Module  TypePlant   จัดการชนิดของพืช เพิ่มลบแก้ไข  click ดู table : <a href='#TypePlant' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="TypePlant" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: type_plant </td><td colspan="3">	ชนิดของพืช </b><br>
+             <tr><td>   type_id     </td><td>       รหัสชนิดพืช       </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_name              </td><td>    ชื่อชนิด 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+             <tr><td>   note            </td><td>     หมายเหตุ	   </td><td>     varchar	200 </td><td>	can null </td></tr>
+
+              </table>
+
+
+
+
+                </div>
+      </div>
+
+
+    <div class="card">
+         <a href="?Plant" class="btn yellow" >พืช  :Jui</a> <p>ไปสร้าง Module  Plant   จัดการพืช เพิ่มลบแก้ไข  มี dropdown จาก TypePlant ด้วยเลือกว่าพืชเป้นชนิดไหน click ดู table : <a href='#Plant' class="modal-trigger"><i class="material-icons">view_list</i></a>
+
+            <div  id="Plant" class="modal">
+
+               <table class="bordered">
+                   <tr><td >Table: plant </td><td colspan="3">	รหัสพืช </b><br>
+             <tr><td>   plant_id     </td><td>       รหัสชนิดพืช       </td><td>	integer	 </td><td>	pk auto	 </td></tr>
+             <tr><td>   type_id              </td><td>    ชื่อชนิด 	   </td><td>     integer  </td><td>	not null fk->type_plant </td></tr>
+             <tr><td>   plant_name            </td><td>     ชื่อพืช 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
+            <tr><td>   caltivated_area            </td><td>     พื้นที่เพาะปลูก 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
+
+              </table>
+
+
+
+
+                </div>
+      </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!------------  level 2---------------->
+    
+    
+    
 
 
        <div class="card">
@@ -44,184 +239,8 @@ print_r($this->session("STAFF"));
 
 
 
-      <div class="card">
-         <a href="?DiseasePestWeed" class="btn " >ปัญหาต่างๆของพืชที่มักพบ  :Tik</a> <p>ไปสร้าง Module  DiseasePestWeed     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
+      
 
-            <div  id="DiseasePestWeed" class="modal">
-
-              ส่ง csv ไปใน face
-
-
-
-
-                </div>
-      </div>
-    <div class="card">
-         <a href="?Staff" class="btn " >เจ้าหน้าที่  :Nu</a> <p>ไปสร้าง Module  Staff     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="Staff" class="modal">
-
-               ใช้อันเดิมจากงานเก่า
-
-
-
-
-                </div>
-      </div>
-    <div class="card">
-         <a href="?Soil" class="btn " >ดิน  :Nu</a> <p>ไปสร้าง Module  Soil     พิ่มลบแก้ไข  click ดู table : <a href='#Staff' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="Soil" class="modal">
-
-              ส่ง csv ไปใน face
-
-
-
-
-                </div>
-      </div>
-
-    <div class="card">
-         <a href="?Symptom" class="btn " >อาการ   :Tik</a> <p>ไปสร้าง Module  Symptom   จัดการอาการผิดปกติของพืช click ดู table : <a href='#Symptom' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="Symptom" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: symptom   </td><td colspan="3">	 ลักษณะของอาการ  </b><br>
-             <tr><td>   symptom_id       </td><td>       รหัสการ      </td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   symptom_name            </td><td>     ชื่อของอาหาร  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-		<tr><td>   symptom_detail             </td><td>     รายละเอียดขงอาหาร    	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-
-              </table>
-
-
-
-
-                </div>
-      </div>
-    <div class="card">
-         <a href="?Standard" class="btn " >มาตราฐาน  :Tik</a> <p>ไปสร้าง Module  Standard   จัดการมาตราฐาน พิ่มลบแก้ไข  click ดู table : <a href='#Standard' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="Standard" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: standard  </td><td colspan="3">	มาตรฐาน/รางวัล  </b><br>
-             <tr><td>   sid     </td><td>       รหัสมาตรฐาน    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   type_fertilizer_name            </td><td>     ชื่อมาตรฐานที่ได้รับ  	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-		<tr><td>   org             </td><td>     สถาบันหรือน่วยงานที่กำหนดมฐ   	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-
-              </table>
-
-
-
-
-                </div>
-      </div>
-
-
-
-
-    <div class="card">
-         <a href="?TypeFertilizer" class="btn " >ชนิดของปุ๋ย  :Jui</a> <p>ไปสร้าง Module  TypeFertilizer   จัดการชนิดของปุ๋ย (มีข้อมูล2ชนิด ไบโอเคมี และ ชีวภาพ  )เพิ่มลบแก้ไข  click ดู table : <a href='#TypeFertilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="TypeFertilizer" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: type_fertilizer  </td><td colspan="3">	ชนิดของปุ๋ย </b><br>
-             <tr><td>   type_fertiltzer_id     </td><td>       รหัสชนิด    </td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   type_fertilizer_name            </td><td>     ชื่อชนิดปุ๋ย 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
-
-              </table>
-
-
-
-
-                </div>
-      </div>
-
-     <div class="card">
-         <a href="?BioFertilizer" class="btn " >ปุ๋ย  :Jui</a> <p>ไปสร้าง Module  BioFerilizer   จัดการชนิดปุ๋ยและสารชีวภาพ ( จะมีประเภทของปุ๋ย/สารชีภาพ  ที่ต้องเลือก ตอน add,edit,)เพิ่มลบแก้ไข  click ดู table : <a href='#BioFerilizer' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="BioFerilizer" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: bio_ferilizer  </td><td colspan="3">สารชีวภาพ/ปุ๋ย</b><br>
-
-                   <tr><td>   bio_fer_id     </td><td>        รหัสสารชีวภาพ/ปุ๋ย  </td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   type_fertilizer_id            </td><td>     ชนิดปุ๋ย 	   </td><td>     integer	  </td><td>	not null  fk (type_fertilizer->type_fertiltzer_id)</td></tr>
-		<tr><td>   bio_fer_name            </td><td>     ชื่อสารชีวภาพ/ปุ๋ย 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-		<tr><td>   bio_fer_properties            </td><td>     คุณสมบัติสารชีวภาพ/ปุ๋ย 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
-
-              </table>
-
-
-
-
-                </div>
-      </div>
-
-
-     <div class="card">
-         <a href="?TypePlant" class="btn " >ชนิดของพืช  :Jui</a> <p>ไปสร้าง Module  TypePlant   จัดการชนิดของพืช เพิ่มลบแก้ไข  click ดู table : <a href='#TypePlant' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="TypePlant" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: type_plant </td><td colspan="3">	ชนิดของพืช </b><br>
-             <tr><td>   type_id     </td><td>       รหัสชนิดพืช       </td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   type_name              </td><td>    ชื่อชนิด 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-             <tr><td>   note            </td><td>     หมายเหตุ	   </td><td>     varchar	200 </td><td>	can null </td></tr>
-
-              </table>
-
-
-
-
-                </div>
-      </div>
-
-
-    <div class="card">
-         <a href="?Plant" class="btn " >พืช  :Jui</a> <p>ไปสร้าง Module  Plant   จัดการพืช เพิ่มลบแก้ไข  มี dropdown จาก TypePlant ด้วยเลือกว่าพืชเป้นชนิดไหน click ดู table : <a href='#Plant' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="Plant" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: plant </td><td colspan="3">	รหัสพืช </b><br>
-             <tr><td>   plant_id     </td><td>       รหัสชนิดพืช       </td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   type_id              </td><td>    ชื่อชนิด 	   </td><td>     integer  </td><td>	not null fk->type_plant </td></tr>
-             <tr><td>   plant_name            </td><td>     ชื่อพืช 	   </td><td>     varchar	100 </td><td>	not null </td></tr>
-            <tr><td>   caltivated_area            </td><td>     พื้นที่เพาะปลูก 	   </td><td>     varchar	200 </td><td>	not null </td></tr>
-
-              </table>
-
-
-
-
-                </div>
-      </div>
-
-
-
-    <div class="card">
-         <a href="?Ageiculturist" class="btn " >เกษตรกร :TIK</a> <p>ไปสร้าง Module  Ageiculturist   จัดการเกษตรกร เพิ่มลบแก้ไข (มีเลือกจังหวัด อำเภอ ตำบล jQuery )  click ดู table : <a href='#ageiculturist' class="modal-trigger"><i class="material-icons">view_list</i></a>
-
-            <div  id="ageiculturist" class="modal">
-
-               <table class="bordered">
-                   <tr><td >Table: ageiculturist</td><td colspan="3">	ข้อมูลเกษตรกร</b><br>
-             <tr><td>   agriculturist_id	</td><td>รหัสเกษตรกร</td><td>	integer	 </td><td>	pk auto	 </td></tr>
-             <tr><td>   home_no             </td><td>    บ้านเลขที่	   </td><td>     varchar	50 </td><td>	not null </td></tr>
-             <tr><td>   phone_no            </td><td>     หมายเลขโทรศัพท์	   </td><td>     varchar	50 </td><td>	 null </td></tr>
-		<tr><td> agriculturist_name</td><td>	ชื่อเกษตรกร</td><td>	varchar	100 </td><td>	not null </td></tr>
-             <tr><td>   tambon_id	    </td><td>   รหัสจังหวัด	</td><td>	integer  </td><td>	not null fk ->tumbon  </td></tr>
-              </table>
-
-                note: สร้าง module AutoProvince  เพื่อการเลีอกที่อยู่ด้วย  table จังหวัดก็ตามที่ tik ทำมา
-
-
-                </div>
-      </div>
 
 
 

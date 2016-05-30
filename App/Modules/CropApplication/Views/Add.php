@@ -5,6 +5,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav3level(ID);
 $template->openMain( $this->param(-2));
 ?>
 <form class="col s12" action="" method="post">

@@ -3,6 +3,7 @@
   
     $template = new Template();
     $template->open();
+    $template->nav1level();
 ?>
 
 <script>
@@ -28,7 +29,7 @@
 <div class="container" id="container-center">
     <div class="row card center" style="padding: 10px;"> 
     <div class="input-field col s12">
-        <h4 class="pull-left">จัดการประเภทของพืช</h4>
+       <h4 class="pull-left">จัดการพืช</h4>
         <br/>
     </div>
     <form class="center" name="form_insert_plant" id="form_inert_plant" action="" method="post" onsubmit="return check(this);">

@@ -5,6 +5,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav1level();
 
 echo System\Utils\JS::load();
 ?>
@@ -45,10 +46,11 @@ echo System\Utils\JS::load();
                 <div class="input-field  col  s12 m6">
                     <select name="soil_type">
                         <!--<option disabled selected>กรุณาเลือกรายการ</option>-->
-                        <option value="1"> ดิน 1 </option>
-                        <option value="2"> ดิน 2 </option>
-                        <option value="3"> ดิน 3 </option>
-                        <option value="4"> ดิน 4 </option>
+                        <option value="1"> ดินทราย  </option>
+                        <option value="2"> ดินตะกอน </option>
+                        <option value="3"> ดินเหนียว </option>
+                        <option value="4"> ดินร่วน</option>
+                         <option value="5"> ดินเค็ม </option>
                     </select>
                     <label for="soil_type">ชนิดของดิน</label>
                 </div>

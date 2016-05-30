@@ -4,6 +4,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+ $template->nav1level();
 ?>
 
 <div class="container" id="container-center">

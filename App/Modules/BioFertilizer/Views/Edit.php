@@ -3,6 +3,7 @@
   
     $template = new Template();
     $template->open();
+    $template->nav1level();
 ?>
 <?php 
     echo System\Utils\JS::load();
@@ -30,7 +31,7 @@
 <div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 
     <div class="input-field col s12">
-        <h4 class="pull-left">จัดการชนิดปุ๋ยและสารชีวภาพ</h4>
+            <h4 class="pull-left">จัดการปุ๋ยและสารชีวภาพ</h4>
     </div>
         <br/>
         <form class="center" name="form_insert_bio_ferilizer" id="form_inert_plant" action="" method="post" onsubmit="return check(this);">
