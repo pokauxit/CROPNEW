@@ -46,6 +46,41 @@ class Template {
 
                 <?php
             }
+            public function nav1level(){
+                global  $_URL;
+                ?><nav style="line-height: 45px;height: 40px;" >
+    <div class="nav-wrapper container" >
+      <div class="col s12">
+        <a href="?" class="breadcrumb">หน้าหลัก</a>
+        <a href="javascript:;" class="breadcrumb"><?php
+        if($_URL[0] == "Staff")echo "เจ้าหน้าที่";
+        
+        ?></a>
+        
+      </div>
+    </div>
+  </nav>
+      <?php
+            }
+
+            
+
+
+
+
+
+
+
+
+
+            public function ageiculturistInfo($id){
+                 $service = new Service();
+                 ?><div class="container">
+
+                    <div class="card row" style="padding: 10px;"><?php
+                 $service->showAgeiculturist($id);
+                 ?></div></div><?php
+            }
 
             public function openMain($active) {
                  

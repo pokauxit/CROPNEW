@@ -4,6 +4,7 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->ageiculturistInfo(ID)
 ?>
 
 <div class="container" id="container-center">
