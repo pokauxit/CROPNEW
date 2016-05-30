@@ -48,8 +48,8 @@ $template->openMain($this->param(-2));
    $rc =  $service->getCropByID(ID);
     
     ?>
-    <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> Add</a>
-    <a class="btn waves-effect orange" href="?Crop//<?php echo $rc->argiculturist_id?>"><i class="fa fa-arrow-circle-left"></i> Back</a>
+    <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+    <a class="btn waves-effect orange" href="?Crop//<?php echo $rc->argiculturist_id?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
 </div>
 
 <?php
