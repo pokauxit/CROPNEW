@@ -44,8 +44,8 @@
         <br/>
     <div class="center"  >
         <a class="btn waves-effect green" href="<?php echo $this->route->Add();
-        echo '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> Add</a>
-        <a class="btn waves-effect orange" href="?"><i class="fa fa-arrow-circle-left"></i> Back</a>
+        echo '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+        <a class="btn waves-effect orange" href="?"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
     </div> 
     </div>
 </div>
