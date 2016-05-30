@@ -11,6 +11,7 @@ $template->open();
                     <div class="col m4"><br></div>
                     <div class="col m4">
                         <div class="row">
+                            <h4 class="center">เข้าสู่ระบบ</h4>
                             <div class="input-field col s12">
                                 <input id="staff_user" name="staff_user" type="text" class="validate" required>
                                 <label for="staff_user">บัญชีผู้ใช้</label>
