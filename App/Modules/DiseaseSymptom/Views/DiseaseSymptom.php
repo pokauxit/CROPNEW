@@ -67,7 +67,7 @@ $template->nav1level();
         <div class="center">
             <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i
                     class="fa fa-plus"></i> เพิ่มข้อมูล</a>
-            <a class="btn waves-effect orange" href="?"><i
+            <a class="btn waves-effect orange" href="?DiseasePestWeed"><i
                     class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
     </div>
