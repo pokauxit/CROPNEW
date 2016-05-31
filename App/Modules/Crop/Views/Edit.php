@@ -2,6 +2,7 @@
 
 use App\Modules\Crop\Controllers\Crop;
 use App\Modules\Plant\Controllers\Plant;
+use App\Modules\TypePlant\Controllers\TypePlant;
 Use System\Template\Template;
 
 $template = new Template();
@@ -26,40 +27,55 @@ $template->open();
                     <input name="water_source" type="text" class="validate" required value="<?php echo $this->rowId->water_source; ?>">
                     <label for="water_source">แหล่งน้ำ</label>
                 </div>
-
+                
                 <div class="input-field  col  s12 m6">
-                    <select id="plant_id" name="plant_id">
-                        <?php
-                        $plant = new Plant();
-                        echo $plant->getPlantAll($this->rowId->plant_id); // ส่ง ID ไป Selected
-                        ?>
+                    <?php
+                    
+                   
+                    $plantObj = $this->getTypeIdByPlantId($this->rowId->plant_id);
+                       
+                    ?>
+                   
+                    <select name="type_name" id="type_name">
+                    <?php
+                    
+                        $TypePlant = new TypePlant();
+                        echo $TypePlant->getTypePlantAll($plantObj->type_id); // ส่ง ID ไป Selected
+                    ?>
                     </select>
-                    <label for="plant_id">พืช</label>
+                    <label for="type_name">ชนิดพืช</label>
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="input-field  col  s12 m6">
+                    <input type="hidden" id="old_value" value="<?php echo $this->rowId->plant_id;?>">
+                    <select id="plant_id" name="plant_id">
+                    </select>
+                    <label for="plant_id">พืช</label>
+                </div>
 
             <div class="row">
                 <div class="input-field col  s12 m6">
                     <input name="sunlight" type="text" class="validate" required value="<?php echo $this->rowId->sunlight; ?>">
                     <label for="sunlight">ปริมาณแสง</label>
                 </div>
-                <div class="input-field col s12 m6"> 
-                    <input name="wind" type="text" class="validate" required value="<?php echo $this->rowId->wind; ?>">
-                    <label for="wind">ความเร็วลม <i class="pull-right" style="margin-right: 20px;">Km/h</i> </label>
-
-                </div>
 
 
+
+            </div>
             </div>
 
 
 
             <div class="row">   
+                <div class="input-field col s12 m6"> 
+                    <input name="wind" type="text" class="validate" required value="<?php echo $this->rowId->wind; ?>">
+                <label for="wind">ความเร็วลม <i class="pull-right" style="margin-right: 20px;">Km/h</i> </label>
 
-                <div class="input-field col m12 s12">
-                    <textarea name="spetial_information" class="materialize-textarea" rows="1" style="height:20px;"><?php echo $this->rowId->spetial_information; ?></textarea>
+                </div>
+                <div class="input-field col m6 s12">
+                    <input name="spetial_information" type="text" class="validate" required value="<?php echo $this->rowId->spetial_information; ?>">
                     <label for="spetial_information">ข้อมูลพิเศษ</label>
                 </div>
             </div>
@@ -79,3 +95,45 @@ $template->open();
 <?php
 $template->close();
 ?>
+<script>
+    $(function () {
+        edit();
+        $(document).on('change', '#type_name', function () {
+            var value = $(this).val();
+            $('#plant_id option').remove();
+            $.ajax({
+                'type': 'POST',
+                'url': '?Crop',
+                'cache': false,
+                'data': {'List': value},
+                'success': function (result) {
+                    $('#plant_id').append(result);
+                    $('#plant_id').trigger('contentChanged');
+                }
+            });
+        });
+
+        function edit() {
+            var value = $('#type_name').val();
+            var select = $('#old_value').val();
+           
+            $.ajax({
+                'type': 'POST',
+                'url': '?Crop',
+                'cache': false,
+                'data': {'List': value},
+                'success': function (result) { 
+                    $('#plant_id').append(result);
+                    $('#plant_id').trigger('contentChanged');
+                    $('#plant_id').val(select).trigger('contentChanged');
+                }
+            });
+        }
+
+        $('select').on('contentChanged', function () {
+            $(this).material_select('destroy');
+            $(this).material_select();
+        });
+    });
+
+</script>

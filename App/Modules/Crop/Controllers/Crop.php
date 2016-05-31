@@ -10,7 +10,9 @@ class Crop extends HMVC {
 
     protected $db;
     protected $dbPlan;
+    protected $dbList;
     protected $rowId;
+    protected $rowId2;
 
     public function __construct() {
         //ACL::check("STAFF");
@@ -18,11 +20,15 @@ class Crop extends HMVC {
     }
 
     public function index() {
-        $this->db = new tb_crop();
-        $this->db->where = "argiculturist_id='" . $this->param(0) . "'";
-        $this->db->orderSort = "crop_id ASC";
-        $this->db->left('plant_id', 'plant.plant_name');
-        $this->view();
+        if(!empty($_POST['List'])){
+            $this->getListByType($_POST['List']);
+        }else{
+            $this->db = new tb_crop();
+            $this->db->where = "argiculturist_id='" . $this->param(0) . "'";
+            $this->db->orderSort = "crop_id ASC";
+            $this->db->left('plant_id', 'plant.plant_name');
+            $this->view();
+        }
     }
 
     public function Add() {
@@ -40,8 +46,6 @@ class Crop extends HMVC {
         if (SUBMIT) {
             $this->controller();
         } else {
-            $this->dbPlan = new tb_plant();
-            $this->dbPlan->select();
             $this->rowId = $this->db->get($this->param(1));
             $this->view("Edit");
         }
@@ -49,6 +53,20 @@ class Crop extends HMVC {
 
     public function Delete() {
         $this->controller();
+    }
+    
+     public function getListByType($id) {
+        $this->id = $id;
+        $this->dbList = new tb_plant();
+        $this->dbList->where = "type_id='" . $this->id . "'";
+        $this->dbList->select();
+        $this->view("getList");
+    }
+    
+    public function getTypeIdByPlantId($plant_id){
+        
+        $tb = new tb_plant();
+        return  $tb->get($plant_id);
     }
 
 }

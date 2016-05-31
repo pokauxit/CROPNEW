@@ -44,6 +44,12 @@
         $this->controller();
     }
    
+    public function getTypePlantAll($id) {// รับ ID มา Selected
+        $this->id = $id;
+        $this->db = new tpl();
+        $this->db->select();
+        $this->view("Option_List");
+    }
 
 }
  
