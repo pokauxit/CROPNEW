@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2016 at 01:17 PM
+-- Generation Time: May 31, 2016 at 10:18 AM
 -- Server version: 5.7.10-log
 -- PHP Version: 5.6.18
 
@@ -1130,6 +1130,30 @@ INSERT INTO `biofertilizer` (`bio_fer_id`, `type_fertilizer_id`, `bio_fer_name`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `control`
+--
+
+CREATE TABLE `control` (
+  `control_id` int(11) NOT NULL COMMENT 'รหัสการควบคุม',
+  `crop_problem_id` int(11) NOT NULL COMMENT 'รหัสปัญหาของพืชที่ปลูก',
+  `bio_fer_id` int(11) NOT NULL COMMENT 'รหัสสารชีวภาพ/ปุ๋ย',
+  `control_detail` varchar(200) NOT NULL COMMENT 'รายละเอียดการควบคุม',
+  `cmaount` varchar(50) NOT NULL COMMENT 'จำนวนที่ใช้',
+  `unit` varchar(50) NOT NULL COMMENT 'หน่วย'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='การควบคุม';
+
+--
+-- Dumping data for table `control`
+--
+
+INSERT INTO `control` (`control_id`, `crop_problem_id`, `bio_fer_id`, `control_detail`, `cmaount`, `unit`) VALUES
+(1, 1, 10000001, 'ทดสอบแก้ไข', '20', 'ถุง'),
+(2, 1, 10000002, 'ทดสอบ', '10', 'ถัง'),
+(4, 1, 10000001, '44', '44', '44');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `crop`
 --
 
@@ -1152,6 +1176,29 @@ INSERT INTO `crop` (`crop_id`, `plant_id`, `argiculturist_id`, `sunlight`, `wate
 (12, 1, 2, 'sdfaf', 'sdf', 444.000, '4445'),
 (13, 8, 1, 'aaa', 'aa', 0.000, 'aa'),
 (14, 8, 2, '44', 'มุล', 44.000, 'ดินทรายร่วน');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crop_problem`
+--
+
+CREATE TABLE `crop_problem` (
+  `crop_problem_id` int(11) NOT NULL COMMENT 'รหัสปัญหาของพืชที่ปลูก',
+  `crop_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
+  `problem_type_id` int(11) NOT NULL COMMENT 'รหัสชนิดปัญหา',
+  `crop_problem_detail` varchar(200) NOT NULL COMMENT 'รายละเอียดปัญหาของพืชที่ปลูก',
+  `in_seiouscase` int(5) NOT NULL COMMENT 'ความร้ายแรงของปัญหา',
+  `note` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ปัญหาของพืชที่ปลูก';
+
+--
+-- Dumping data for table `crop_problem`
+--
+
+INSERT INTO `crop_problem` (`crop_problem_id`, `crop_id`, `problem_type_id`, `crop_problem_detail`, `in_seiouscase`, `note`) VALUES
+(1, 11, 3, 'sdfsdf', 1, '32454334dsvsdf'),
+(2, 14, 1, 'dddd', 1, 'sfddd');
 
 -- --------------------------------------------------------
 
@@ -1200,7 +1247,8 @@ INSERT INTO `cultivated_area` (`area_sequence`, `crop_id`, `soil_id`, `lat_map`,
 (1, 1, 3, '0.99999999', '0.99999999', 'test001', 'test002'),
 (3, 1, 0, '234234234', '324234234', '32423sfdfsdf', '32423dsffsdf'),
 (5, 0, 1, 'ss', 'ss', 'aaa', 'ssss'),
-(6, 14, 3, '333', '333', 'ดี', 'ดี');
+(6, 14, 3, '333', '333', 'ดี', 'ดี'),
+(7, 14, 0, '15.174204751663584', '102.3489761352539', '-ถภะ', 'ไำพไำพ');
 
 -- --------------------------------------------------------
 
@@ -1213,22 +1261,42 @@ CREATE TABLE `disease_pest_weed` (
   `plant_id` int(11) NOT NULL COMMENT 'รหัสที่ปลูกพืช',
   `problem_type_id` int(11) NOT NULL COMMENT 'รหัสชนิดปัญหา',
   `disease_pest_weed_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อโรค/ศัตรูพืช/วัชพืช',
-  `disease_pest_weed_detail` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดของโรค/ศัตรูพืช/วัชพืช',
-  `symptom_id` int(11) NOT NULL COMMENT 'รหัสอาการ'
+  `disease_pest_weed_detail` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดของโรค/ศัตรูพืช/วัชพืช'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `disease_pest_weed`
 --
 
-INSERT INTO `disease_pest_weed` (`disease_pest_weed_id`, `plant_id`, `problem_type_id`, `disease_pest_weed_name`, `disease_pest_weed_detail`, `symptom_id`) VALUES
-(1, 1, 2, 'sdfsdf', 'sadfasdf', 0),
-(2, 1, 1, 'aaaaaaaaaaassssssssssss', 'aaaaaaaaaaaaaaaassssssssssss', 2),
-(4, 8, 2, 'ffff', 'ffff', 0),
-(5, 1, 1, 'sssssssssssss', 'ssssssssssss', 2),
-(6, 1, 2, 'sdf', 'sdf', 0),
-(7, 1, 1, 'sdf', 'sdf', 2),
-(8, 8, 1, 'ไพำไพำ', 'ไำพพ', 2);
+INSERT INTO `disease_pest_weed` (`disease_pest_weed_id`, `plant_id`, `problem_type_id`, `disease_pest_weed_name`, `disease_pest_weed_detail`) VALUES
+(1, 1, 2, 'sdfsdf', 'sadfasdf'),
+(2, 1, 1, 'aaaaaaaaaaassssssssssss', 'aaaaaaaaaaaaaaaassssssssssss'),
+(4, 8, 2, 'ffff', 'ffff'),
+(5, 1, 1, 'sssssssssssss', 'ssssssssssss'),
+(6, 1, 2, 'sdf', 'sdf'),
+(7, 1, 1, 'sdf', 'sdf'),
+(8, 8, 1, 'ไพำไพำ', 'ไำพพ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `disease_symptom`
+--
+
+CREATE TABLE `disease_symptom` (
+  `disease_symptom_id` int(11) NOT NULL,
+  `disease_pest_weed_id` int(11) NOT NULL,
+  `symptom_id` int(11) NOT NULL,
+  `detail` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `disease_symptom`
+--
+
+INSERT INTO `disease_symptom` (`disease_symptom_id`, `disease_pest_weed_id`, `symptom_id`, `detail`) VALUES
+(10, 4, 4, 'เน่ารวดเร็ว'),
+(11, 2, 2, 'ผผผผผผผ');
 
 -- --------------------------------------------------------
 
@@ -10443,10 +10511,22 @@ ALTER TABLE `biofertilizer`
   ADD PRIMARY KEY (`bio_fer_id`);
 
 --
+-- Indexes for table `control`
+--
+ALTER TABLE `control`
+  ADD PRIMARY KEY (`control_id`);
+
+--
 -- Indexes for table `crop`
 --
 ALTER TABLE `crop`
   ADD PRIMARY KEY (`crop_id`);
+
+--
+-- Indexes for table `crop_problem`
+--
+ALTER TABLE `crop_problem`
+  ADD PRIMARY KEY (`crop_problem_id`);
 
 --
 -- Indexes for table `crop_standard`
@@ -10466,6 +10546,14 @@ ALTER TABLE `cultivated_area`
 --
 ALTER TABLE `disease_pest_weed`
   ADD PRIMARY KEY (`disease_pest_weed_id`);
+
+--
+-- Indexes for table `disease_symptom`
+--
+ALTER TABLE `disease_symptom`
+  ADD PRIMARY KEY (`disease_symptom_id`),
+  ADD KEY `FK_disease_symptom_disease_pest_weed` (`disease_pest_weed_id`),
+  ADD KEY `FK_disease_symptom_symptom` (`symptom_id`);
 
 --
 -- Indexes for table `geography`
@@ -10563,10 +10651,20 @@ ALTER TABLE `apply_fertilizer`
 ALTER TABLE `biofertilizer`
   MODIFY `bio_fer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสารชีวภาพ/ปุ๋ย', AUTO_INCREMENT=10000005;
 --
+-- AUTO_INCREMENT for table `control`
+--
+ALTER TABLE `control`
+  MODIFY `control_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการควบคุม', AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `crop`
 --
 ALTER TABLE `crop`
   MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `crop_problem`
+--
+ALTER TABLE `crop_problem`
+  MODIFY `crop_problem_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสปัญหาของพืชที่ปลูก', AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `crop_standard`
 --
@@ -10576,12 +10674,17 @@ ALTER TABLE `crop_standard`
 -- AUTO_INCREMENT for table `cultivated_area`
 --
 ALTER TABLE `cultivated_area`
-  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=7;
+  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `disease_pest_weed`
 --
 ALTER TABLE `disease_pest_weed`
   MODIFY `disease_pest_weed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `disease_symptom`
+--
+ALTER TABLE `disease_symptom`
+  MODIFY `disease_symptom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `geography`
 --
