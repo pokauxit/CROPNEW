@@ -8,10 +8,29 @@ $template->nav1level();
 
 
 <div class="container" id="container-center">
+
+    <div class="card row" style="padding: 10px;">
+        <div class="row  " style="padding: 10px;">
+            <div class=" col s12 left">
+                <b>ข้อมูลโรค </b>
+
+                <?php $diseasePestWeed = $this->diseasePestWeeds->fetch(); ?>
+            </div>
+            <div class=" col s12 m12 ">
+                <label>โรค : <?php echo $diseasePestWeed->disease_pest_weed_name; ?></label>
+
+            </div>
+            <div class=" col s12 m12 ">
+                <label>รายละเอียดของโรค : <?php echo $diseasePestWeed->disease_pest_weed_detail; ?></label>
+
+            </div>
+        </div>
+    </div>
+
     <div class="row card " style="padding: 10px;">
 
 
-        <h4 class="pull-left">จัดการข้อมูลโรค/แมลง/วัชพืช</h4>
+        <h4 class="pull-left">จัดการข้อมูลอาการ</h4>
 
         <p>
 
@@ -19,10 +38,9 @@ $template->nav1level();
             <thead class="green">
             <tr>
                 <th>ลำดับ</th>
-                <th>ชื่อโรค/ศัตรูพืช/วัชพืช</th>
-                <th>รายละเอียดของโรค/ศัตรูพืช/วัชพืช</th>
-                <th>ชนิดปัญหา</th>
-                <th style="width: 200px; text-align: center">จัดการ</th>
+                <th>อาการ</th>
+                <th>รายละเอียด</th>
+                <th>จัดการ</th>
             </tr>
             </thead>
 
@@ -31,20 +49,13 @@ $template->nav1level();
             <?php while ($rc = $this->db->fetch()) : ?>
                 <tr>
                     <td><?php echo $rowId++; ?></td>
-                    <td><?php echo $rc->disease_pest_weed_name; ?></td>
-                    <td><?php echo $rc->disease_pest_weed_detail; ?></td>
-                    <td><?php if ($rc->problem_type_id == 1): print 'โรค';
-                        elseif ($rc->probolem_type_id == 2): print 'ศัตรูพืช';
-                        else: print 'วัชพืช'; endif; ?></td>
-                    <td style="text-align: right">
-                        <?php if ($rc->problem_type_id == 1): ?>
-                            <a href='<?php echo "?DiseaseSymptom//{$rc->disease_pest_weed_id}"; ?>'><i
-                                    class="orange-text fa fa-sign-in"></i> เปิด</a>
-                        <?php endif; ?>
-                        |<a href=" <?php echo $this->route->Edit($rc->disease_pest_weed_id); ?>"><i
+                    <td><?php echo $rc->symptom_symptom_name; ?></td>
+                    <td><?php echo $rc->detail; ?></td>
+                    <td>
+                        <a href=" <?php echo $this->route->Edit($this->param(0) . '/' . $rc->disease_symptom_id); ?>"><i
                                 class="orange-text fa fa-edit"></i> แก้ไข</a>
                         | <a onclick="return confirm('ยืนยันการลบ')"
-                             href="<?php echo $this->route->Delete($rc->disease_pest_weed_id); ?>""><i
+                             href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->disease_symptom_id); ?>""><i
                             class="red-text fa fa-trash"></i> ลบ </a>
                     </td>
                 </tr>
