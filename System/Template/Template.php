@@ -164,7 +164,7 @@ public function nav3level($id){
                                     <li class="tab col s3"><a class="<?php if($active == "CropCultivatedArea"){echo "active";}?>" href="?CropCultivatedArea//<?php echo ID?>" onclick="window.location.href=this.href;">พื้นที่เพาะปลูก</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropApplyFertilizer"){echo "active";}?>" href="?CropApplyFertilizer//<?php echo ID?>" onclick="window.location.href=this.href;">การให้ปุ๋ย</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>" onclick="window.location.href=this.href;">มาตฐาน</a></li>
-                                    <li class="tab col s3"><a class="<?php if($active == "CropProblem"){echo "active";}?>" href="?CropProblem//<?php echo ID?>" onclick="window.location.href=this.href;">ปัญหาและการควบคุม</a></li> 
+                                    <li class="tab col s3"><a class="<?php if($active == "CropProblem" || $active == "ProblemControl"){echo "active";}?>" href="?CropProblem//<?php echo ID?>" onclick="window.location.href=this.href;">ปัญหาและการควบคุม</a></li> 
                                 </ul>
                             </div>
                             <div id="test1" class="col s12" style="">

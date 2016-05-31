@@ -43,7 +43,9 @@ $template->openMain($this->param(-2));
                 <td><?php echo $rc->crop_problem_detail; ?></td>
                 <td><?php echo $in_seiouscase; ?></td>
                 <td><?php echo $rc->note; ?></td>
-                <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->crop_problem_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
+                <td>
+                      <a href="?ProblemControl//<?php echo $this->param(0) . '/' . $rc->crop_problem_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
+                    | <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->crop_problem_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
                     | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->crop_problem_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
                 </td>
             </tr>
