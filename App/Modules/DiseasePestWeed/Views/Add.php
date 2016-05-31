@@ -1,6 +1,7 @@
 <?php
 Use System\Template\Template;
 use \App\Models\plant as pln;
+use App\Modules\TypePlant\Controllers\TypePlant;
 
 $template = new Template();
 $template->open();
@@ -14,17 +15,25 @@ $template->nav1level();
             <h4>ข้อมูลโรค/แมลง/วัชพืช</h4>
             <form class="col s12" action="" method="post">
                 <div class="row">
+                    <div class="input field col m6 s12">
+                        <label for="type_name">พืชที่ปลูก</label>
+                        <select id="type_name" name="type_name">
+                            <?php
+                                $TypePlant = new TypePlant();
+                                echo $TypePlant->getTypePlantAll();
+                            ?>
+                        </select>
+                    </div>
+                    
                     <div class="input-field col m6 s12">
                         <select id="plant_id" name="plant_id">
-                            <option selected disabled>กรุณาเลือกรายการ</option>
-                            <?php while ($plant = $this->plants->fetch()): ?>
-                                <option
-                                    value="<?php echo $plant->plant_id; ?>"><?php echo $plant->plant_name; ?></option>
-                            <?php endwhile; ?>
                         </select>
                         <label for="plant_id">พืชที่ปลูก</label>
                     </div>
-                    <div class="input-field col m6 s12">
+                </div>
+                
+                <div class="row">
+                         <div class="input-field col m6 s12">
                         <select id="problem_type_id" name="problem_type_id">
                             <option value="0" selected disabled>กรุณาเลือกรายการ</option>
                             <option value="1">โรค</option>
@@ -33,17 +42,19 @@ $template->nav1level();
                         </select>
                         <label for="problem_type_id">ชนิดปัญหา</label>
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col  m6 s12">
                         <input name="disease_pest_weed_name" type="text" class="validate" required>
                         <label for="disease_pest_weed_name">ชื่อโรค/ศัตรูพืช/วัชพืช</label>
                     </div>
-                    <div class="input-field col  m6 s12">
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col  m12 s12">
                         <input name="disease_pest_weed_detail" type="text" class="validate" required>
                         <label for="disease_pest_weed_detail">รายละเอียดของโรค/ศัตรูพืช/วัชพืช</label>
                     </div>
                 </div>
+
 
                 <div align="center" class="row">
                     <br> <br> <br>
@@ -68,3 +79,26 @@ $template->nav1level();
 <?php
 $template->close();
 ?>
+<script>
+    $(function () {
+        $(document).on('change', '#type_name', function () {
+            var value = $(this).val();
+            $('#plant_id option').remove();
+            $.ajax({
+                'type': 'POST',
+                'url': '?Crop',
+                'cache': false,
+                'data': {'List': value},
+                'success': function (result) {
+                    $('#plant_id').append(result);
+                    refreshOption();
+                }
+            });
+        });
+
+        function refreshOption() {
+            $('select').material_select('destroy');
+            $('select').material_select();
+        }
+    });
+</script>

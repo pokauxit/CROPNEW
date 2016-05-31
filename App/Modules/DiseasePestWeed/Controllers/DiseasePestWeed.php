@@ -19,7 +19,9 @@ class DiseasePestWeed extends HMVC
     protected $plants;
     protected $symptoms;
     protected $row;
+    protected $rowId;
     protected $db;
+    protected $dbList;
 
     public function index()
     {
@@ -56,6 +58,8 @@ class DiseasePestWeed extends HMVC
             $this->symptoms->select();
 
             $this->row = $this->db->get(ID);
+            
+            //$this->rowId = $this->db->get($this->param(1));
             $this->view("Edit");
         }
     }
@@ -63,5 +67,19 @@ class DiseasePestWeed extends HMVC
     public function Delete()
     {
         $this->controller();
+    }
+    
+    public function getListByType($id) {
+        $this->id = ID;
+        $this->dbList = new plt();
+        $this->dbList->where = "type_id='" . $this->id . "'";
+        $this->dbList->select();
+        $this->view("getList");
+    }
+    
+    public function getTypeIdByPlantId($plant_id){
+        
+        $tb = new plt();
+        return  $tb->get($plant_id);
     }
 }
