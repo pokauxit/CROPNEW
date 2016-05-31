@@ -2,31 +2,43 @@
 
 namespace App\Modules\ProblemControl\Controllers;
 
+use App\Models\crop_problem as cpm;
 use App\Models\control AS tb_method_5;
 use App\Models\biofertilizer AS tb_method_5_1;
 use System\HMVC\HMVC;
 
-class ProblemControl extends HMVC {
+class ProblemControl extends HMVC
+{
 
+    protected $problems;
     protected $db;
     protected $dbList;
     protected $rowId;
     protected $rowId2;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         parent::__construct();
     }
 
-    public function index() {
+    public function index()
+    {
         $this->db = new tb_method_5();
         $this->db->where = "crop_problem_id='" . $this->param(1) . "'";
         $this->db->orderSort = "control_id ASC";
         $this->db->left('bio_fer_id', 'biofertilizer.bio_fer_name');
+
+
+        $this->problems = new cpm();
+        $this->problems->where = "crop_problem_id='" . $this->param(1) . "'";
+        $this->problems->select();
+
         $this->view();
     }
 
-    public function Add() {
+    public function Add()
+    {
         if (SUBMIT) {
             $this->controller();
         } else {
@@ -34,7 +46,8 @@ class ProblemControl extends HMVC {
         }
     }
 
-    public function Edit() {
+    public function Edit()
+    {
         $this->db = new tb_method_5();
         if (SUBMIT) {
             $this->controller();
@@ -49,7 +62,8 @@ class ProblemControl extends HMVC {
         }
     }
 
-    public function Delete() {
+    public function Delete()
+    {
         $this->controller();
     }
 

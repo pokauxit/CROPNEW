@@ -9,8 +9,68 @@ $template->nav3level(ID);
 $template->openMain($this->param(-2));
 ?>
 
-<table class="bordered  striped "  style="min-width: 500px;"  >
-    <thead class="green">
+
+    <div class="container-fluid" style="margin: 13px;">
+        <div class="card row" style="padding: 10px; text-align: left">
+            <div class="row  " style="margin: 10px;">
+                <div class="col s12 left">
+                    <b>ข้อมูลของปัญหา </b>
+                    <?php $problem = $this->problems->fetch(); ?>
+                </div>
+                <div class=" col s12 m4 ">
+                    <label>ขนิดของปัญหา :
+                        <label style="color: #000"><?php
+
+                            switch ($problem->problem_type_id):
+                                case 1:
+                                    print 'โรค';
+                                    break;
+                                case 2:
+                                    print 'ศัตรูพืช';
+                                    break;
+                                case 3:
+                                    print 'วัชพืช';
+                                    break;
+                                default:
+                                    break;
+                            endswitch; ?>
+                        </label>
+                    </label>
+
+                </div>
+                <div class=" col s12 m4 ">
+                    <label>รายละเอียดปัญหาของพืชที่ปลูก :
+                         <label style="color: #000"><?php echo $problem->crop_problem_detail; ?></label>
+                    </label>
+                </div>
+                <div class=" col s12 m4 ">
+                    <label>ความร้ายแรงของปัญหา :
+                        <label style="color: #000"><?php
+
+                            switch ($problem->in_seiouscase):
+                                case 1:
+                                    print 'ใช่';
+                                    break;
+                                case 2:
+                                    print 'ไม่ใช่';
+                                    break;
+                                default:
+                                    break;
+                            endswitch; ?>
+                        </label>
+                    </label>
+                </div>
+
+                <div class=" col s12 m12 ">
+                    <label>หมายเหตุ : <label style="color: #000"><?php echo $problem->note; ?></label></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="bordered  striped " style="min-width: 500px;">
+        <thead class="green">
         <tr>
             <th>ลำดับ</th>
             <th>สารชีวภาพ/ปุ๋ย</th>
@@ -19,8 +79,8 @@ $template->openMain($this->param(-2));
             <th>รายละเอียด</th>
             <th>จัดการ</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <?php
         $rowId = 1;
         while ($rc = $this->db->fetch()) {
@@ -32,24 +92,30 @@ $template->openMain($this->param(-2));
                 <td><?php echo $rc->unit; ?></td>
                 <td><?php echo $rc->control_detail; ?></td>
                 <td>
-                    <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $this->param(1) . '/' . $rc->control_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
-                    | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $this->param(1) . "/" . $rc->control_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
+                    <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $this->param(1) . '/' . $rc->control_id); ?>"><i
+                            class="orange-text fa fa-edit"></i> แก้ไข </a>
+                    | <a onclick="return confirm('ยืนยันการลบ')"
+                         href="<?php echo $this->route->Delete($this->param(0) . '/' . $this->param(1) . "/" . $rc->control_id); ?>"><i
+                            class="red-text fa fa-trash"></i> ลบ </a>
                 </td>
             </tr>
         <?php } ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<p><br></p>
-<div class="center"  >
+    <p><br></p>
+    <div class="center">
 
-    <?php
-    $service = new Service();
-    $rc = $service->getCropByID(ID);
-    ?>
-    <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) . '/' . $this->param(1) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
-    <a class="btn waves-effect orange" href="?CropProblem//<?php echo $this->param(0) ?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
-</div>
+        <?php
+        $service = new Service();
+        $rc = $service->getCropByID(ID);
+        ?>
+        <a class="btn waves-effect green"
+           href="<?php echo $this->route->Add() . '/' . $this->param(0) . '/' . $this->param(1) ?>"><i
+                class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+        <a class="btn waves-effect orange" href="?CropProblem//<?php echo $this->param(0) ?>"><i
+                class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+    </div>
 
 <?php
 $template->closeMain();
