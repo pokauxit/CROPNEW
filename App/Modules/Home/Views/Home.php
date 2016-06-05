@@ -4,7 +4,10 @@
   $template = new Template();
   $template->open();
 
-//print_r($this->session("STAFF"));
+  
+  while($rc = $this->db->fetch()){
+      print_r($rc);
+  }
 ?>
 <div class="container">
 

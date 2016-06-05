@@ -33,9 +33,10 @@ $template->nav1level();
                     <td><?php echo $rowId++; ?></td>
                     <td><?php echo $rc->disease_pest_weed_name; ?></td>
                     <td><?php echo $rc->disease_pest_weed_detail; ?></td>
-                    <td><?php if ($rc->problem_type_id == 1): print 'โรค';
-                        elseif ($rc->probolem_type_id == 2): print 'ศัตรูพืช';
-                        else: print 'วัชพืช'; endif; ?></td>
+                    <td><?php  if($rc->problem_type_id == "1"){ echo 'โรค';};
+                        if($rc->problem_type_id == "2"){ echo 'ศัตรูพืช';};
+                        if($rc->problem_type_id == "3"){echo 'วัชพืช';};
+                         ?></td>
                     <td style="text-align: right">
                         <?php if ($rc->problem_type_id == 1): ?>
                             <a href='<?php echo "?DiseaseSymptom//{$rc->disease_pest_weed_id}"; ?>'><i

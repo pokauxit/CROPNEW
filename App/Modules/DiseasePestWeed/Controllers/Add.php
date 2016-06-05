@@ -20,11 +20,11 @@ class Add extends HMVC
     {
         Validate::has("disease_pest_weed_name");
         Validate::has("disease_pest_weed_detail");
-
+print_r($_POST);
         $sth = new dpw();
         if ($sth->insert()) {
-            echo JS::addComplate();
-            echo JS::re($this->route->backToModule());
+         ///   echo JS::addComplate();
+          //  echo JS::re($this->route->backToModule());
         } else {
             echo JS::addFail();
             echo JS::back();

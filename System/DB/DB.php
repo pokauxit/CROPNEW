@@ -105,6 +105,8 @@ class DB{
 		return $this->result = $this->query($sql);
     } 
     
+    
+    /*
     //ดึงข้อมูลในฟิลด์ โดยกำหนดค่า id
     public function getField($table="", $field="", $fieldid="" , $condition=""){
         if($fieldid){
@@ -122,5 +124,7 @@ class DB{
         }
     }
     
+     * 
+     */
 }
 ?>

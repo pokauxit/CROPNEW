@@ -61,6 +61,9 @@ class ORM extends DB {
         parent::__construct();
     }
 
+    public function setName($name){
+         $this->name = $name;
+    }
     public function left($fk,$field){
         $exp = explode(".", $field);
         $table = $exp[0];
@@ -68,11 +71,36 @@ class ORM extends DB {
         
          $sql = "SELECT ".$this->name.".*,".$table.".".$fr." AS ".$table."_".$fr." FROM ".$this->name." LEFT JOIN ".$table." ON (".$this->name.".".$fk." = ".$table.".".$this->findPK($table).") ";
          if($this->where){ $sql.= " WHERE ".$this->where;}
-         
-         
+         if($this->order){$sql.= " ORDER BY ".$this->order." ".$this->orderSort;}
+         if($this->limit){$sql.= " LIMIT ".$this->limit;}
          return $this->result = $this->query($sql);
     }
     
+    public function  multiLeftJoin($fk,$arrayJoinFormat = array()){
+        $sql_sec1 = "SELECT ".$this->name.".* ";
+        $sql_sec2 = " FROM ".$this->name." LEFT JOIN ".$arrayJoinFormat[0]->name." ON (".$this->name.".".$fk."=";
+       
+        for($i =0; $i < count($arrayJoinFormat);$i++){
+            $tbObj = $arrayJoinFormat[$i];
+            $sql_sec1.=",".$tbObj->name.".".$tbObj->display." AS ".$tbObj->name."_".$tbObj->display;
+            if($tbObj->moreDisplay){
+                  $sql_sec1.=",".$tbObj->name.".".$tbObj->moreDisplay;
+            }
+            if($i<(count($arrayJoinFormat)-1)){
+                $sql_sec2.= $tbObj->name.".".$tbObj->pk.") LEFT JOIN ".$arrayJoinFormat[$i+1]->name." ON (".$tbObj->name.".".$tbObj->fk."=";
+            }else{
+                $sql_sec2.= $tbObj->name.".".$tbObj->pk.")";
+            }
+        }
+          $sql = $sql_sec1.$sql_sec2;
+         if($this->where){ $sql.= " WHERE ".$this->where;}
+         if($this->order){$sql.= " ORDER BY ".$this->order." ".$this->orderSort;}
+         if($this->limit){$sql.= " LIMIT ".$this->limit;}
+         return $this->result = $this->query($sql);
+        
+     
+    }
+
     public function  right($fk,$field){
          $exp = explode(".", $field);
         $table = $exp[0];
