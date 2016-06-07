@@ -37,8 +37,9 @@ $template->open();
                     <td><?php echo $rc->phone_no; ?></td>
                     <td><?php echo $rc->agriculturist_name; ?></td>
                     <td><?php echo $rc->tambon_tambon_name; ?></td>
-                    <td>
-                          <a href="<?php echo '?Crop//' . $rc->agriculturist_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
+                    <td> <a href="<?php echo '?AgrCultivatedArea//' . $rc->agriculturist_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> พื้นที่ </a>
+                         <a href="<?php echo '?AgrStandard//' . $rc->agriculturist_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> มาตรฐาน </a>
+                        | <a href="<?php echo '?Crop//' . $rc->agriculturist_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
                        | <a  href="<?php echo $this->route->Edit($rc->agriculturist_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข</a>
                         | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->agriculturist_id);?>""><i class="red-text fa fa-trash"></i> ลบ </a>
                     </td>
