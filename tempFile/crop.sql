@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
+-- version 4.6.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 31, 2016 at 10:18 AM
--- Server version: 5.7.10-log
--- PHP Version: 5.6.18
+-- Generation Time: Jun 07, 2016 at 02:19 PM
+-- Server version: 5.7.12-log
+-- PHP Version: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,8 +39,7 @@ CREATE TABLE `ageiculturist` (
 --
 
 INSERT INTO `ageiculturist` (`agriculturist_id`, `home_no`, `phone_no`, `agriculturist_name`, `tambon_id`) VALUES
-(2, '11/2', '0945730039', 'วิทยา บุญคง', 2477),
-(3, '223/3', '0945730039', 'คุณเอ นาน้อย', 799);
+(1, '118 ม.3 บ้านกระเบื้อง', '0856342273', 'นางรำพึง  อินทร์สำราญ', 2363);
 
 -- --------------------------------------------------------
 
@@ -1070,16 +1069,6 @@ CREATE TABLE `application_method` (
   `fertiltzer_peroid` varchar(50) DEFAULT NULL COMMENT 'ช่วงเวลาที่ให้ปุ๋ย'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `application_method`
---
-
-INSERT INTO `application_method` (`step`, `crop_id`, `step_detail`, `time_start`, `fertiltzer_peroid`) VALUES
-(4, 1, 'ทดสอบขั้นตอน 1', '2016-10-01', 'เช้า เที่ยง เย็น หรือเวลาไม่มีแดด'),
-(5, 1, 'atyutyutyu6574567567567567', NULL, 'gfhgfjghkhl'),
-(6, 1, 'พะพ', '2016-05-26', 'พะพ'),
-(7, 14, 'เตรียมดิน', '2016-05-30', 'สัปดาห์แรก');
-
 -- --------------------------------------------------------
 
 --
@@ -1172,10 +1161,7 @@ CREATE TABLE `crop` (
 --
 
 INSERT INTO `crop` (`crop_id`, `plant_id`, `argiculturist_id`, `sunlight`, `water_source`, `wind`, `spetial_information`) VALUES
-(11, 1, 2, 'sdffsd', 'sdfsdf', 5.000, 'sdfsdfsdf'),
-(12, 1, 2, 'sdfaf', 'sdf', 444.000, '4445'),
-(13, 8, 1, 'aaa', 'aa', 0.000, 'aa'),
-(14, 8, 2, '44', 'มุล', 44.000, 'ดินทรายร่วน');
+(1, 9, 1, '0', '-', 0.000, '-');
 
 -- --------------------------------------------------------
 
@@ -1198,7 +1184,8 @@ CREATE TABLE `crop_problem` (
 
 INSERT INTO `crop_problem` (`crop_problem_id`, `crop_id`, `problem_type_id`, `crop_problem_detail`, `in_seiouscase`, `note`) VALUES
 (1, 11, 3, 'sdfsdf', 1, '32454334dsvsdf'),
-(2, 14, 1, 'dddd', 1, 'sfddd');
+(2, 14, 1, 'dddd', 1, 'sfddd'),
+(3, 1, 1, 'ใบหยิกงอ', 1, '-');
 
 -- --------------------------------------------------------
 
@@ -1275,7 +1262,11 @@ INSERT INTO `disease_pest_weed` (`disease_pest_weed_id`, `plant_id`, `problem_ty
 (5, 1, 1, 'sssssssssssss', 'ssssssssssss'),
 (6, 1, 2, 'sdf', 'sdf'),
 (7, 1, 1, 'sdf', 'sdf'),
-(8, 8, 1, 'ไพำไพำ', 'ไำพพ');
+(8, 8, 1, 'ไพำไพำ', 'ไำพพ'),
+(9, 1, 2, 'tryry', 'tytr'),
+(10, 8, 1, '655r', '45r'),
+(11, 8, 3, 'ewrwe', 'sef'),
+(12, 8, 2, '777', 'hg');
 
 -- --------------------------------------------------------
 
@@ -1364,7 +1355,8 @@ CREATE TABLE `plant` (
 INSERT INTO `plant` (`plant_id`, `type_id`, `plant_name`, `caltivated_area`) VALUES
 (1, 2, 'คุณนายตื่นสาย', 'ซึ่งควรปลูกอยู่กลางแจ้ง สามารถรับแสงแดดได้ทั้งวัน และควรรดน้ำทุกวันวันละครั้งแต่ระวังอย่าให้น้ำขัง'),
 (4, 2, 'วาสนา', 'พื้นหน้าบ้าน'),
-(8, 1, 'ดาวเรือง', 'กระถาง');
+(8, 1, 'ดาวเรือง', 'กระถาง'),
+(9, 6, 'ผักบุ้ง', 'ทั่วประเทศ');
 
 -- --------------------------------------------------------
 
@@ -1494,7 +1486,7 @@ INSERT INTO `soil` (`soil_id`, `soil_name`, `soil_type`, `soil_factor`, `soil_pr
 CREATE TABLE `staff` (
   `staff_id` int(11) NOT NULL,
   `staff_user` varchar(50) NOT NULL COMMENT 'Username',
-  `staff_pass` varchar(50) NOT NULL COMMENT 'Password',
+  `staff_pass` varchar(100) NOT NULL COMMENT 'Password',
   `staff_name` varchar(100) NOT NULL COMMENT 'ชื่อ',
   `staff_level` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1504,8 +1496,8 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_id`, `staff_user`, `staff_pass`, `staff_name`, `staff_level`) VALUES
-(1, 'asd', 'asdasd', 'asdr', 1),
-(2, 'asd', '555555', 'asd', 1);
+(1, 'admin', '4ffe85fcea3647ed5ec532339802e994', 'Staff1', 1),
+(2, 'admin2', '4ffe85fcea3647ed5ec532339802e994', 'Staff2', 2);
 
 -- --------------------------------------------------------
 
@@ -10629,7 +10621,7 @@ ALTER TABLE `typeplant`
 -- AUTO_INCREMENT for table `ageiculturist`
 --
 ALTER TABLE `ageiculturist`
-  MODIFY `agriculturist_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสเกษตรกร', AUTO_INCREMENT=4;
+  MODIFY `agriculturist_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสเกษตรกร', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `amphur`
 --
@@ -10639,7 +10631,7 @@ ALTER TABLE `amphur`
 -- AUTO_INCREMENT for table `application_method`
 --
 ALTER TABLE `application_method`
-  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน', AUTO_INCREMENT=8;
+  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน';
 --
 -- AUTO_INCREMENT for table `apply_fertilizer`
 --
@@ -10659,12 +10651,12 @@ ALTER TABLE `control`
 -- AUTO_INCREMENT for table `crop`
 --
 ALTER TABLE `crop`
-  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=15;
+  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `crop_problem`
 --
 ALTER TABLE `crop_problem`
-  MODIFY `crop_problem_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสปัญหาของพืชที่ปลูก', AUTO_INCREMENT=3;
+  MODIFY `crop_problem_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสปัญหาของพืชที่ปลูก', AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `crop_standard`
 --
@@ -10679,7 +10671,7 @@ ALTER TABLE `cultivated_area`
 -- AUTO_INCREMENT for table `disease_pest_weed`
 --
 ALTER TABLE `disease_pest_weed`
-  MODIFY `disease_pest_weed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `disease_pest_weed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `disease_symptom`
 --
@@ -10699,7 +10691,7 @@ ALTER TABLE `harvest`
 -- AUTO_INCREMENT for table `plant`
 --
 ALTER TABLE `plant`
-  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=9;
+  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `province`
 --
