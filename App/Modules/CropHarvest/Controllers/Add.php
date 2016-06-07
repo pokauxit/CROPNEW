@@ -11,7 +11,7 @@ class Add extends HMVC {
 
     public function index() {
 
-        Validate::has($_POST['unit']);
+        Validate::has($_POST['harvest_algorithm']);
 
         $STR = new tb_method_2();
         if ($STR->insert()) {

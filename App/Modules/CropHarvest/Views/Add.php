@@ -11,26 +11,9 @@ $template->openMain($this->param(-2));
 <form class="col s12" action="" method="post">
 
     <div class="row">
-        <div class="input-field col s12 m3">
+        <div class="input-field col s12 m12">
             <label for="harvest_algorithm">วิธีการเก็บเกียว</label>
             <input name="harvest_algorithm" type="text" class="validate" required>
-        </div>
-        <div class="input-field  col  s12 m3">
-            <select name="season">
-                <option selected disabled>กรุณาเลือกรายการ</option>
-                <option value="ฤดูร้อน">ฤดูร้อน</option>
-                <option value="ฤดูฝน">ฤดูฝน</option>
-                <option value="ฤดูหนาว">ฤดูหนาว</option>
-            </select>
-            <label for="season">ฤดูกาล</label>
-        </div>
-        <div class="input-field  col  s12 m3">
-            <label for="amout">จำนานผลผลิต</label>
-            <input name="amout" type="number" class="validate" required>
-        </div>
-        <div class="input-field col  s12 m3">
-            <label for="unit">หน่วยผลผลิต</label>
-            <input name="unit" type="text" class="validate" required>
         </div>
     </div>
     <div align="center">

@@ -12,7 +12,9 @@ $template->openMain($this->param(-2));
     <thead class="green">
         <tr>
             <th>ลำดับ</th>
-            <th>วิธีการเก็บเกียว</th>
+            <th>ฤดูกาล</th>
+            <th>จำนานผลผลิต</th>
+            <th>หน่วยผลผลิต</th>
             <th>จัดการ</th>
         </tr>
     </thead>
@@ -23,9 +25,11 @@ $template->openMain($this->param(-2));
             ?>
             <tr>
                 <td><?php echo $rowId++; ?></td>
-                <td><?php echo $rc->harvest_algorithm; ?></td>
-                <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->harvest_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
-                    | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->harvest_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
+                <td><?php echo $rc->season; ?></td>
+                <td><?php echo $rc->amout; ?></td>
+                <td><?php echo $rc->unit; ?></td>
+                <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->product_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
+                    | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->product_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
                 </td>
             </tr>
         <?php } ?>

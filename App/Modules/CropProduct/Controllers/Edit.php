@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\CropHarvest\Controllers;
+namespace App\Modules\CropProduct\Controllers;
 
-use App\Models\harvest AS tb_method_2;
+use App\Models\product AS tb_method_2;
 use System\HMVC\HMVC;
 use System\Utils\Validate;
 use System\Utils\JS;
@@ -11,7 +11,7 @@ class Edit extends HMVC {
 
     public function index() {
 
-        Validate::has($_POST['harvest_algorithm']);
+        Validate::has($_POST['unit']);
 
         $STR = new tb_method_2();
         if ($STR->update($this->param(1))) {

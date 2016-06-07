@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\CropHarvest\Controllers\CropHarvest;
+use App\Modules\CropProduct\Controllers\CropProduct;
 Use System\Template\Template;
 
 $template = new Template();
@@ -11,13 +11,23 @@ $template->openMain($this->param(-2));
 <form class="col s12" action="" method="post">
 
     <div class="row">
-        <div class="input-field col s12 m12">
-            <label for="harvest_algorithm">วิธีการเก็บเกียว</label>
-            <input name="harvest_algorithm" type="text" class="validate" required value="<?php echo $this->rowId->harvest_algorithm; ?>">
+        <div class="input-field  col  s12 m4">
+            <select name="season">
+                <option selected disabled>กรุณาเลือกรายการ</option>
+                <option value="ฤดูร้อน">ฤดูร้อน</option>
+                <option value="ฤดูฝน">ฤดูฝน</option>
+                <option value="ฤดูหนาว">ฤดูหนาว</option>
+            </select>
+            <label for="season">ฤดูกาล</label>
         </div>
-    </div>
-    
-    <div class="row  ">
+        <div class="input-field  col  s12 m4">
+            <label for="amout">จำนานผลผลิต</label>
+            <input name="amout" type="number" class="validate" required>
+        </div>
+        <div class="input-field col  s12 m4">
+            <label for="unit">หน่วยผลผลิต</label>
+            <input name="unit" type="text" class="validate" required>
+        </div>
     </div>
     <div align="center">
         <input name="crop_id" type="hidden" value="<?php echo ID; ?>">
