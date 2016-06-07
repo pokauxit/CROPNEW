@@ -16,7 +16,28 @@ $template->open();
 
 
         <form class="col s12" action="" method="post">
-
+<div class="row  ">
+                <div class="input-field  col  s12 m6">
+                    <select name="area_sequence">
+                        <option disabled selected>กรุณาเลือกรายการ</option>
+                        <?php while ($rc = $this->dbArea->fetch()) {
+                          ?>
+                          <option value="<?php echo $rc->area_sequence; ?>" <?php if($this->rowId->area_sequence==$rc->area_sequence){echo 'selected';} ?>><?php echo $rc->soil_soil_name; ?></option>
+                          <?php }  ?>
+                    </select>
+                    <label for="area_sequence">พื้นที่</label>
+                </div>
+                <div class="input-field  col  s12 m6">
+                    <select name="agr_standard_id">
+                        <option disabled selected>กรุณาเลือกรายการ</option>
+                        <?php while ($rc = $this->dbStandard->fetch()) {
+                          ?>
+                          <option value="<?php echo $rc->agr_standard_id; ?>" <?php if($this->rowId->agr_standard_id==$rc->agr_standard_id){echo 'selected';} ?>><?php echo $rc->standard_type_fertilizer_name; ?></option>
+                          <?php }  ?>
+                    </select>
+                    <label for="agr_standard_id">มาตราฐาน</label>
+                </div>
+            </div>
 
             <div class="row  ">
 

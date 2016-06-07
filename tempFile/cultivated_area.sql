@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-06-07 22:55:48
+Date: 2016-06-08 00:12:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,7 @@ CREATE TABLE `cultivated_area` (
 -- Records of cultivated_area
 -- ----------------------------
 INSERT INTO `cultivated_area` VALUES ('1', '1', '3', '0.99999999', '0.99999999', 'test001', 'test002');
-INSERT INTO `cultivated_area` VALUES ('3', '1', '0', '234234234', '324234234', '32423sfdfsdf', '32423dsffsdf');
+INSERT INTO `cultivated_area` VALUES ('3', '1', '1', '234234234', '324234234', '32423sfdfsdf', '32423dsffsdf');
 INSERT INTO `cultivated_area` VALUES ('5', '0', '1', 'ss', 'ss', 'aaa', 'ssss');
 INSERT INTO `cultivated_area` VALUES ('6', '14', '3', '333', '333', 'ดี', 'ดี');
 INSERT INTO `cultivated_area` VALUES ('7', '14', '0', '15.174204751663584', '102.3489761352539', '-ถภะ', 'ไำพไำพ');

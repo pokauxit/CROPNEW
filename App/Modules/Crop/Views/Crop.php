@@ -20,11 +20,13 @@ $template->ageiculturistInfo(ID);
             <thead class="green">
                 <tr>
                     <th>ลำดับ</th>
-                    <th>รหัสพืช</th>
+                    <th>พืช</th>
                     <th>ปริมาณแสง</th>
                     <th>แหล่งน้ำ</th>
                     <th>ความเร็วลม (Km/h)</th>
                     <th>ข้อมูลพิเศษ</th>
+                    <th>พื้นที่</th>
+                    <th>มาตราฐาน</th>
                     <th>จัดการ</th>
                 </tr>
             </thead>
@@ -40,6 +42,8 @@ $template->ageiculturistInfo(ID);
                         <td><?php echo $rc->water_source; ?></td>
                         <td><?php echo $rc->wind; ?></td>
                         <td><?php echo $rc->spetial_information; ?></td>
+                        <td><?php echo $rc->area_sequence; ?></td>
+                        <td><?php echo $rc->agr_standard_id; ?></td>
                         <td>
                             <a href="<?php echo '?CropApplication//' . $rc->crop_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
                             | <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->crop_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>

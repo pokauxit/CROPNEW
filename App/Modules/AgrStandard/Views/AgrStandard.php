@@ -35,8 +35,8 @@ $template->ageiculturistInfo(ID);
                 <td><?php echo $rc->start_year; ?></td>
                 <td><?php echo $rc->end_year; ?></td>
                 <td><?php echo $rc->remark; ?></td>
-                <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->crop_standard_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
-                    | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->crop_standard_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
+                <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->agr_standard_id ); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
+                    | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->agr_standard_id ); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
                 </td>
             </tr>
         <?php } ?>
