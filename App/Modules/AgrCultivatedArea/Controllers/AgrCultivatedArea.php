@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\CropStandard\Controllers;
-use App\Modules\ServiceData\Controllers\ServiceData as Service;
-use App\Models\crop_standard AS tb_method_6;
+namespace App\Modules\AgrCultivatedArea\Controllers;
+
+use App\Models\cultivated_area AS tb_method_4;
 use System\HMVC\HMVC;
 use System\Security\ACL;
 
-class CropStandard extends HMVC {
+class AgrCultivatedArea extends HMVC {
 
     protected $db;
     protected $rowId;
@@ -17,11 +17,10 @@ class CropStandard extends HMVC {
     }
 
     public function index() {
- 
-        $this->db = new tb_method_6();
-        $this->db->where = "crop_id='" . $this->param(0) . "'";
-        $this->db->orderSort = "crop_standard_id ASC";
-        $this->db->left('sid', 'standard.type_fertilizer_name');
+        $this->db = new tb_method_4();
+        $this->db->where = "agriculturist_id='" . $this->param(0) . "'";
+        $this->db->orderSort = "area_sequence ASC";
+        $this->db->left('soil_id', 'soil.soil_name');
         $this->view();
     }
 
@@ -34,7 +33,7 @@ class CropStandard extends HMVC {
     }
 
     public function Edit() {
-        $this->db = new tb_method_6();
+        $this->db = new tb_method_4();
         if (SUBMIT) {
             $this->controller();
         } else {

@@ -4,10 +4,16 @@ use System\Template\Template;
 use App\Modules\ServiceData\Controllers\ServiceData as Service;
 $template = new Template();
 $template->open();
-$template->nav3level(ID);
-$template->openMain($this->param(-2));
+$template->nav2level(ID);
+$template->ageiculturistInfo(ID);
 ?>
+<div class="container" id="container-center">
+    <div class="row card " style="padding: 10px;"> 
 
+
+        <h4 class="pull-left">จัดการพื้นที่</h4>
+
+        <p>
 <table class="bordered  striped "  style="min-width: 500px;"  >
     <thead class="green">
         <tr>
@@ -49,10 +55,10 @@ $template->openMain($this->param(-2));
     
     ?>
     <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
-    <a class="btn waves-effect orange" href="?Crop//<?php echo $rc->argiculturist_id?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+    <a class="btn waves-effect orange" href="?Ageiculturist"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
 </div>
-
+    </div>
+</div>
 <?php
-$template->closeMain();
 $template->close();
 ?>

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\CropCultivatedArea\Controllers;
+namespace App\Modules\AgrStandard\Controllers;
 
-use App\Models\cultivated_area AS tb_method_4;
+use App\Models\agr_standard AS tb_method_6;
 use System\HMVC\HMVC;
 use System\Utils\Validate;
 use System\Utils\JS;
@@ -11,10 +11,11 @@ class Edit extends HMVC {
 
     public function index() {
 
-        Validate::has($_POST['area_detail']);
-        Validate::has($_POST['soil_drainage']);
+        Validate::has($_POST['start_year']);
+        Validate::has($_POST['end_year']);
+        Validate::has($_POST['remark']);
 
-        $STR = new tb_method_4();
+        $STR = new tb_method_6();
         if ($STR->update($this->param(1))) {
             echo JS::editComplate();
             echo JS::re($this->route->backToModule() . '//' . $this->param(0));

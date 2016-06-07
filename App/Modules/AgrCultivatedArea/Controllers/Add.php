@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\CropStandard\Controllers;
+namespace App\Modules\AgrCultivatedArea\Controllers;
 
-use App\Models\crop_standard AS tb_method_6;
+use App\Models\cultivated_area AS tb_method_4;
 use System\HMVC\HMVC;
 use System\Utils\Validate;
 use System\Utils\JS;
@@ -11,11 +11,10 @@ class Add extends HMVC {
 
     public function index() {
 
-        Validate::has($_POST['start_year']);
-        Validate::has($_POST['end_year']);
-        Validate::has($_POST['remark']);
+        Validate::has($_POST['area_detail']);
+        Validate::has($_POST['soil_drainage']);
 
-        $STR = new tb_method_6();
+        $STR = new tb_method_4();
         if ($STR->insert()) {
             echo JS::addComplate();
             echo JS::re($this->route->backToModule() . '//' . $this->param(0));

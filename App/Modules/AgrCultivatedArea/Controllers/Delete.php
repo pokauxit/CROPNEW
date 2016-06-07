@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\CropStandard\Controllers;
+namespace App\Modules\AgrCultivatedArea\Controllers;
 
-use App\Models\crop_standard AS tb_method_6;
+use App\Models\cultivated_area AS tb_method_4;
 use System\HMVC\HMVC;
 use System\Utils\JS;
 
 class Delete extends HMVC {
 
     public function index() {
-        $STR = new tb_method_6();
+        $STR = new tb_method_4();
         if ($STR->delete($this->param(1))) {
             echo JS::deleteComplate();
             echo JS::re($this->route->backToModule() . '//' . $this->param(0));

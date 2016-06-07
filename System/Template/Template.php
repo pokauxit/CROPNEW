@@ -111,6 +111,13 @@ public function nav2level($id){
                 global  $_URL;
                    $service = new Service();
                       $rc =  $service->getAgeiculturist($id);
+                      if($_URL[0] == 'AgrCultivatedArea'){
+                          $text_nav2level = 'พื้นที่';
+                      }else if($_URL[0] == 'AgrStandard'){
+                          $text_nav2level = 'มาตรฐาน';
+                      }else{
+                          $text_nav2level = 'พืชที่ปลูก';
+                      }
                 ?><nav style="line-height: 45px;height: 40px;" >
     <div class="nav-wrapper container" >
       <div class="col s12">
@@ -120,7 +127,7 @@ public function nav2level($id){
 
         
         ?></a>
-        <a href="javascript:;" class="breadcrumb">พืชที่ปลูก</a>
+        <a href="javascript:;" class="breadcrumb"><?php echo $text_nav2level?></a>
       </div>
     </div>
   </nav>
@@ -193,9 +200,9 @@ public function nav3level($id){
                                     <li class="tab col s3"><a class="<?php if($active == "CropApplication"){echo "active";}?>" href="?CropApplication//<?php echo ID?>" onclick="window.location.href=this.href;" >ขั้นตอนการปลูก</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropHarvest"){echo "active";}?>" href="?CropHarvest//<?php echo ID?>" onclick="window.location.href=this.href;">การเก็บเกี่ยว</a></li>
                                     <li class="tab col s3"><a class="<?php if($active == "CropProduct"){echo "active";}?>" href="?CropProduct//<?php echo ID?>" onclick="window.location.href=this.href;">ผลผลิต</a></li>
-                                    <li class="tab col s3"><a class="<?php if($active == "CropCultivatedArea"){echo "active";}?>" href="?CropCultivatedArea//<?php echo ID?>" onclick="window.location.href=this.href;">พื้นที่เพาะปลูก</a></li>
+                                    <!--<li class="tab col s3"><a class="<?php if($active == "CropCultivatedArea"){echo "active";}?>" href="?CropCultivatedArea//<?php echo ID?>" onclick="window.location.href=this.href;">พื้นที่เพาะปลูก</a></li>-->
                                     <li class="tab col s3"><a class="<?php if($active == "CropApplyFertilizer"){echo "active";}?>" href="?CropApplyFertilizer//<?php echo ID?>" onclick="window.location.href=this.href;">การให้ปุ๋ย</a></li>
-                                    <li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>" onclick="window.location.href=this.href;">มาตฐาน</a></li>
+                                    <!--<li class="tab col s3"><a class="<?php if($active == "CropStandard"){echo "active";}?>" href="?CropStandard//<?php echo ID?>" onclick="window.location.href=this.href;">มาตฐาน</a></li>-->
                                     <li class="tab col s3"><a class="<?php if($active == "CropProblem" || $active == "ProblemControl"){echo "active";}?>" href="?CropProblem//<?php echo ID?>" onclick="window.location.href=this.href;">ปัญหาและการควบคุม</a></li> 
                                 </ul>
                             </div>
