@@ -23,7 +23,7 @@
             while ($rc  = $this->db->fetch()){
             ?>
             <tr>
-                <td><?php echo $i; ?>.</td>
+                <td><?php echo $i; ?></td>
                 <td><?php echo $rc->type_name; ?></td>
                 <td><?php echo $rc->note; ?></td>
                 <td>

@@ -4,6 +4,7 @@ namespace App\Modules\Soil\Controllers;
 
 use App\Models\soil AS tb_soil;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class Soil extends HMVC {
 
@@ -12,7 +13,7 @@ class Soil extends HMVC {
     protected $rowId;
 
     public function __construct() {
-        //ACL::check("STAFF");
+        ACL::check("STAFF");
         parent::__construct();
     }
 

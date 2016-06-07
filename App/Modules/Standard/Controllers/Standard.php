@@ -1,22 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Error404
- * Date: 29/5/2559
- * Time: 9:27
- */
+ 
 
 namespace App\Modules\Standard\Controllers;
 
 
 use System\HMVC\HMVC;
 use \App\Models\standard as std;
+use System\Security\ACL;
 
 class Standard extends HMVC
 {
 
     protected $db;
     protected $row;
+
+    
+    public function __construct() {
+        ACL::check("STAFF");
+        parent::__construct();
+    }
 
     public function index()
     {

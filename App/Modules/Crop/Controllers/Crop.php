@@ -5,6 +5,7 @@ namespace App\Modules\Crop\Controllers;
 use App\Models\crop AS tb_crop;
 use App\Models\plant AS tb_plant;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class Crop extends HMVC {
 
@@ -15,7 +16,7 @@ class Crop extends HMVC {
     protected $rowId2;
 
     public function __construct() {
-        //ACL::check("STAFF");
+        ACL::check("STAFF");
         parent::__construct();
     }
 

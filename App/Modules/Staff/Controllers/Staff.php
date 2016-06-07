@@ -4,6 +4,8 @@ namespace App\Modules\Staff\Controllers;
 
 use App\Models\staff AS tb_staff;
 use System\HMVC\HMVC;
+use System\Security\ACL;
+
 
 class Staff extends HMVC {
 
@@ -11,7 +13,7 @@ class Staff extends HMVC {
     protected $rowId;
 
     public function __construct() {
-        //ACL::check("STAFF");
+        ACL::check("STAFF");
         parent::__construct();
     }
 

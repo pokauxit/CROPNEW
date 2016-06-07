@@ -13,7 +13,7 @@ class Ageiculturist extends HMVC
 
     public function __construct()
     {
-//         ACL::check("STAFF");
+        ACL::check("STAFF");
         parent::__construct();
     }
 

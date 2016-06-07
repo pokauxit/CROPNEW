@@ -34,7 +34,7 @@ $template->nav1level();
                         <td><?php echo $rowId++; ?></td>
                         <td><?php echo $rc->staff_name; ?></td>
                         <td><?php echo $rc->staff_user; ?></td>
-                        <td><?php echo $rc->staff_level; ?></td>
+                        <td><?php if($rc->staff_level==1){echo "Admin";}else{echo "Staff";} ?></td>
                         <td>
                             <a href="<?php echo $this->route->Edit($rc->staff_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
                             | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->staff_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>

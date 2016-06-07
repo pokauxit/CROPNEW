@@ -4,6 +4,7 @@ namespace App\Modules\CropApplication\Controllers;
 
 use App\Models\application_method AS tb_method_1;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class CropApplication extends HMVC {
 
@@ -11,7 +12,7 @@ class CropApplication extends HMVC {
     protected $rowId;
 
     public function __construct() {
-        //ACL::check("STAFF");
+        ACL::check("STAFF");
         parent::__construct();
     }
 

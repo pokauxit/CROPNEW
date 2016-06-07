@@ -4,6 +4,8 @@ namespace App\Modules\CropHarvest\Controllers;
 
 use App\Models\harvest AS tb_method_2;
 use System\HMVC\HMVC;
+use System\Security\ACL;
+
 
 class CropHarvest extends HMVC {
 
@@ -13,7 +15,7 @@ class CropHarvest extends HMVC {
     protected $rowId2;
 
     public function __construct() {
-
+        ACL::check("STAFF");
         parent::__construct();
     }
 

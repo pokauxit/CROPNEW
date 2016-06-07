@@ -15,12 +15,12 @@ echo System\Utils\JS::load();
         if (!CHECK.val(obj.staff_user)) {
             return MSG.enter('ชื่อผู้ใช้');
         }
-        if (!CHECK.val(obj.staff_pass)) {
-            return MSG.enter('รหัสผ่าน');
+        if (CHECK.val(obj.staff_pass)) {
+              if (!CHECK.eda(obj.staff_pass, obj.staff_pass_confirm)) {
+                return MSG.enter('รหัสผ่านไม่ตรงกัน');
+            }
         }
-        if (!CHECK.eda(obj.staff_pass, obj.staff_pass_confirm)) {
-            return MSG.enter('รหัสผ่านไม่ตรงกัน');
-        }
+       
     }</script>
 <div class="container" id="container-center">
 
@@ -49,25 +49,23 @@ echo System\Utils\JS::load();
 
             <div class="row">
                 <div class="input-field col  s12 m6">
-                    <input name="staff_pass" type="password" class="validate" required value="<?php echo $this->rowId->staff_pass ?>">
+                    <input name="staff_pass" type="password" class="validate"  value="">
                     <label for="staff_pass">รหัสผ่าน</label>
                 </div>
-                <div class="input-field  col  s12 m6">
-                    <select name="staff_level">
-                        <option disabled selected>กรุณาเลือกรายการ</option>
-                        <option value="1" <?php if($this->rowId->staff_level == 1){echo 'selected';} ?>> ระดับ 1 </option>
-                        <option value="2" <?php if($this->rowId->staff_level == 2){echo 'selected';} ?>> ระดับ 2 </option>
-                        <option value="3" <?php if($this->rowId->staff_level == 3){echo 'selected';} ?>> ระดับ 3 </option>
-                        <option value="4" <?php if($this->rowId->staff_level == 4){echo 'selected';} ?>> ระดับ 4 </option>
-                    </select>
-                    <label for="staff_level">สิทธิ์เข้าใช้งาน</label>
+               <div class="input-field col  s12 m6">
+                    <input name="staff_pass_confirm" type="password" class="validate"  value="">
+                    <label for="staff_pass_confirm">ยืนยันรหัสผ่าน</label>
                 </div>
 
             </div>
             <div class="row">
-                <div class="input-field col  s12 m6">
-                    <input name="staff_pass_confirm" type="password" class="validate" required value="<?php echo $this->rowId->staff_pass ?>">
-                    <label for="staff_pass_confirm">ยืนยันรหัสผ่าน</label>
+                 <div class="input-field  col  s12 m6">
+                    <select name="staff_level">
+                        <option disabled selected>กรุณาเลือกรายการ</option>
+                        <option value="1" <?php if($this->rowId->staff_level == 1){echo 'selected';} ?>> Admin </option>
+                        <option value="2" <?php if($this->rowId->staff_level == 2){echo 'selected';} ?>> Staff </option>
+                     </select>
+                    <label for="staff_level">สิทธิ์เข้าใช้งาน</label>
                 </div>
             </div>
             <div class="row">

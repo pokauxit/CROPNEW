@@ -10,7 +10,7 @@
      protected  $row;
      
      public function __construct() {
-         //ACL::check("STAFF");
+         ACL::check("STAFF");
          parent::__construct();
      }
 

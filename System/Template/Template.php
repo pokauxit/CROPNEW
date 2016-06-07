@@ -37,6 +37,37 @@ var $mainPanel = "?";
                         </div>
 
 
+                <ul class="right hide-on-med-and-down nav-li-a" style="padding-right:10%;">
+                   
+                    
+					
+			  <li class="header-resources-link" ><a href="" data-hover="true" data-activates="resources-dropdown_panmai" data-constrainwidth="false" class="dropdown-button">Menu <i class="Tiny material-icons" style="display: inline;font-size: 10pt;">keyboard_arrow_down</i></a>
+                    
+                    
+                     <div id="resources-dropdown_panmai" class="collection dropdown-content" style="margin-top: 62px; "  >
+                            <a href="?Login" class="collection-item">Login</a>
+                            <a href="?Logout" class="collection-item  ">Logout</a>
+                       </div>      
+                    </li>
+
+
+                </ul>
+                        
+                        
+                        
+                         <ul id="slide-out" class="side-nav">
+                    <li class="header-resources-link" ><a href="" data-hover="true"  class="dropdown-button">Menu <i class="Tiny material-icons" style="display: inline;font-size: 10pt;">keyboard_arrow_down</i></a>
+                    
+                    
+                     <div id="resources-dropdown_panmaix" class="collection "  >
+                            <a href="?Login" class="collection-item">Login</a>
+                            <a href="?Logout" class="collection-item  ">Logout</a>
+                       </div>      
+                    </li>
+
+                </ul>
+
+                           <a href="#" style="padding-right:5%;float: right;" data-activates="slide-out" class="right button-collapse"><i class="material-icons main-color1">menu</i></a>
                     </nav>
 
 
@@ -269,6 +300,7 @@ public function nav3level($id){
                     <script type="text/javascript" src="Assets/js/materialize.min.js"></script>
                     <script>
                         $(document).ready(function() {
+                             $('.button-collapse').sideNav();
                             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                             $('.modal-trigger').leanModal();
                             $('select').material_select('destroy');

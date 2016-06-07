@@ -13,7 +13,7 @@
     <table class="bordered">
         <thead class="green">
         <tr>
-          <th>รหัสชนิดพืช</th>
+          <th>ลำดับ</th>
           <th>ชื่อประเภท</th>
           <th>ชื่อพืช</th>
           <th>พื้นที่เพาะปลูก</th>
@@ -26,7 +26,7 @@
         while($rc2 = $this->dbPlant->fetch()){
     ?>
         <tr>
-          <td><?php echo $rc2->plant_id; ?>.</td>
+          <td><?php echo $i; ?></td>
           <td><?php echo $rc2->typeplant_type_name ?></td>
           <td><?php echo $rc2->plant_name; ?></td>
           <td><?php echo $rc2->caltivated_area; ?></td>

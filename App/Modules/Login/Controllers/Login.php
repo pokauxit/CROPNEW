@@ -12,23 +12,24 @@ class Login extends HMVC
 
     public function index()
     {
-        $this->view();
+       
         if (SUBMIT) {
             $this->take();
+        }else{
+            $this->view();
         }
     }
 
     public function take()
     {
         Validate::has("staff_user");
-        Validate::has("staff_pass");
-
+        Validate::has("staff_pass"); 
         $this->staff = new stf();
-        $this->staff->find("staff_user = '" . trim($_POST['staff_user']) . "' AND staff_pass = '" . trim($_POST["staff_pass"]) . "' LIMIT 1");
+        $this->staff->find("staff_user = '" . trim($_POST['staff_user']) . "' AND staff_pass = '" . trim(md5($_POST["staff_pass"])) . "' LIMIT 1");
         if ($this->staff->num() == TRUE) {
             $row = $this->staff->fetch();
             $this->session("STAFF", $row);
-            print_r($this->session("STAFF"));
+           // print_r($this->session("STAFF"));
             echo JS::re('?');
         } else {
             echo JS::alert("ผิดพลาดกรุณาลองใหม่");

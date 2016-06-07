@@ -4,6 +4,7 @@ namespace App\Modules\CropCultivatedArea\Controllers;
 
 use App\Models\cultivated_area AS tb_method_4;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class CropCultivatedArea extends HMVC {
 
@@ -11,7 +12,7 @@ class CropCultivatedArea extends HMVC {
     protected $rowId;
 
     public function __construct() {
-
+        ACL::check("STAFF");
         parent::__construct();
     }
 

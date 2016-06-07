@@ -55,10 +55,9 @@ echo System\Utils\JS::load();
                 <div class="input-field  col  s12 m6">
                     <select name="staff_level">
                         <!--<option disabled selected>กรุณาเลือกรายการ</option>-->
-                        <option value="1"> ระดับ 1 </option>
-                        <option value="2"> ระดับ 2 </option>
-                        <option value="3"> ระดับ 3 </option>
-                        <option value="4"> ระดับ 4 </option>
+                        <option value="1">Admin </option>
+                        <option value="2">Staff</option>
+                        
                     </select>
                     <label for="staff_level">สิทธิ์เข้าใช้งาน</label>
                 </div>

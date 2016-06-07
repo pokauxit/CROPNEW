@@ -1,21 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Error404
- * Date: 29/5/2559
- * Time: 9:52
- */
+ 
 
 namespace App\Modules\Symptom\Controllers;
 
 use \App\Models\symptom as spm;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class Symptom extends HMVC
 {
 
     protected $db;
     protected $row;
+
+    
+    public function __construct() {
+        ACL::check("STAFF");
+        parent::__construct();
+    }
 
     public function index()
     {

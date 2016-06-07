@@ -14,7 +14,7 @@ class Add extends HMVC {
         Validate::has($_POST['staff_user']);
         Validate::has($_POST['staff_pass']);
         Validate::has($_POST['staff_name']);
-
+        $_POST['staff_pass'] = md5($_POST['staff_pass']);
         $STR = new tb_staff();
         if ($STR->insert()) {
             echo JS::addComplate();

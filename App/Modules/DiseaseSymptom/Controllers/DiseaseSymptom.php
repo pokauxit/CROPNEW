@@ -13,6 +13,7 @@ use App\Models\symptom as spm;
 use App\Models\disease_symptom as dsm;
 use System\HMVC\HMVC;
 use System\Utils\JS;
+use System\Security\ACL;
 
 class DiseaseSymptom extends HMVC
 {
@@ -21,6 +22,12 @@ class DiseaseSymptom extends HMVC
     protected $rowId;
     protected $diseasePests;
     protected $symptoms;
+
+    
+    public function __construct() {
+        ACL::check("STAFF");
+        parent::__construct();
+    }
 
     public function index()
     {

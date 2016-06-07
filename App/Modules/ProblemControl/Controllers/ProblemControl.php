@@ -6,6 +6,7 @@ use App\Models\crop_problem as cpm;
 use App\Models\control AS tb_method_5;
 use App\Models\biofertilizer AS tb_method_5_1;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class ProblemControl extends HMVC
 {
@@ -18,7 +19,7 @@ class ProblemControl extends HMVC
 
     public function __construct()
     {
-
+        ACL::check("STAFF");
         parent::__construct();
     }
 

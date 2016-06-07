@@ -12,6 +12,7 @@ use \App\Models\symptom as spm;
 use \App\Models\plant as plt;
 use \App\Models\disease_pest_weed as dpw;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class DiseasePestWeed extends HMVC
 {
@@ -28,6 +29,10 @@ class DiseasePestWeed extends HMVC
         $this->db = new dpw();
         $this->db->select();
         $this->view();
+    }
+    public function __construct() {
+        ACL::check("STAFF");
+        parent::__construct();
     }
 
     public function Add()

@@ -5,6 +5,7 @@ namespace App\Modules\CropApplyFertilizer\Controllers;
 use App\Models\apply_fertilizer AS tb_method_5;
 use App\Models\biofertilizer AS tb_method_5_1;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class CropApplyFertilizer extends HMVC {
 
@@ -14,7 +15,7 @@ class CropApplyFertilizer extends HMVC {
     protected $rowId2;
 
     public function __construct() {
-
+        ACL::check("STAFF");
         parent::__construct();
     }
 

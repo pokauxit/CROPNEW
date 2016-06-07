@@ -14,7 +14,7 @@
             <thead class="green">
             <tr>
               <th width="5%">No.</th>
-              <th width="15%">รหัสสารชีวภาพ/ปุ๋ย</th>
+        
               <th width="15%">ชนิดปุ๋ย</th>
               <th width="20%">ชื่อสารชีวภาพ/ปุ๋ย</th>
               <th width="30%">คุณสมบัติสารชีวภาพ/ปุ๋ย</th>
@@ -27,7 +27,7 @@
             ?>
             <tr>
               <td><?php echo $i; ?>.</td>
-              <td><?php echo $rc->bio_fer_id; ?></td>
+       
               <td><?php echo $rc->typefertilizer_type_fertilizer_name; ?></td>
               <td><?php echo $rc->bio_fer_name; ?></td>
               <td><?php echo $rc->bio_fer_properties; ?></td>

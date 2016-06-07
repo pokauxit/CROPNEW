@@ -4,6 +4,7 @@ namespace App\Modules\CropProblem\Controllers;
 use App\Modules\ServiceData\Controllers\ServiceData as Service;
 use App\Models\crop_problem AS tb_method_6;
 use System\HMVC\HMVC;
+use System\Security\ACL;
 
 class CropProblem extends HMVC {
 
@@ -11,7 +12,7 @@ class CropProblem extends HMVC {
     protected $rowId;
 
     public function __construct() {
-        
+        ACL::check("STAFF");
         parent::__construct();
     }
 
