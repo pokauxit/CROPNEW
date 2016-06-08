@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2016 at 02:19 PM
+-- Generation Time: Jun 08, 2016 at 07:30 AM
 -- Server version: 5.7.12-log
 -- PHP Version: 5.6.21
 
@@ -40,6 +40,29 @@ CREATE TABLE `ageiculturist` (
 
 INSERT INTO `ageiculturist` (`agriculturist_id`, `home_no`, `phone_no`, `agriculturist_name`, `tambon_id`) VALUES
 (1, '118 ม.3 บ้านกระเบื้อง', '0856342273', 'นางรำพึง  อินทร์สำราญ', 2363);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agr_standard`
+--
+
+CREATE TABLE `agr_standard` (
+  `agr_standard_id` int(11) NOT NULL COMMENT 'รหัสลำดับ',
+  `agriculturist_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
+  `sid` int(11) NOT NULL COMMENT 'รหัสมาตรฐาน',
+  `start_year` int(4) NOT NULL COMMENT 'ปีที่ได้รับมาตรฐาน',
+  `end_year` int(4) NOT NULL COMMENT 'ปีที่สิ้นสุด',
+  `remark` varchar(100) NOT NULL COMMENT 'noteเพิ่มเติม'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `agr_standard`
+--
+
+INSERT INTO `agr_standard` (`agr_standard_id`, `agriculturist_id`, `sid`, `start_year`, `end_year`, `remark`) VALUES
+(2, 0, 3, 2558, 2560, 'dsfsdfsdfsdfsdf'),
+(4, 1, 4, 2558, 2560, 'test');
 
 -- --------------------------------------------------------
 
@@ -1190,35 +1213,12 @@ INSERT INTO `crop_problem` (`crop_problem_id`, `crop_id`, `problem_type_id`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `crop_standard`
---
-
-CREATE TABLE `crop_standard` (
-  `crop_standard_id` int(11) NOT NULL COMMENT 'รหัสลำดับ',
-  `crop_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
-  `sid` int(11) NOT NULL COMMENT 'รหัสมาตรฐาน',
-  `start_year` int(4) NOT NULL COMMENT 'ปีที่ได้รับมาตรฐาน',
-  `end_year` int(4) NOT NULL COMMENT 'ปีที่สิ้นสุด',
-  `remark` varchar(100) NOT NULL COMMENT 'noteเพิ่มเติม'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `crop_standard`
---
-
-INSERT INTO `crop_standard` (`crop_standard_id`, `crop_id`, `sid`, `start_year`, `end_year`, `remark`) VALUES
-(2, 0, 3, 2558, 2560, 'dsfsdfsdfsdfsdf'),
-(3, 1, 3, 2557, 2559, 'TEst');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `cultivated_area`
 --
 
 CREATE TABLE `cultivated_area` (
   `area_sequence` int(11) NOT NULL COMMENT 'ลำดับของพื้นที่',
-  `crop_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
+  `agriculturist_id` int(11) NOT NULL COMMENT 'รหัสพืชที่ปลูก',
   `soil_id` int(11) NOT NULL COMMENT 'รหัสดิน',
   `lat_map` varchar(20) NOT NULL COMMENT 'ละติจูด',
   `long_map` varchar(20) NOT NULL COMMENT 'ลองติจูด',
@@ -1230,9 +1230,9 @@ CREATE TABLE `cultivated_area` (
 -- Dumping data for table `cultivated_area`
 --
 
-INSERT INTO `cultivated_area` (`area_sequence`, `crop_id`, `soil_id`, `lat_map`, `long_map`, `area_detail`, `soil_drainage`) VALUES
+INSERT INTO `cultivated_area` (`area_sequence`, `agriculturist_id`, `soil_id`, `lat_map`, `long_map`, `area_detail`, `soil_drainage`) VALUES
 (1, 1, 3, '0.99999999', '0.99999999', 'test001', 'test002'),
-(3, 1, 0, '234234234', '324234234', '32423sfdfsdf', '32423dsffsdf'),
+(3, 1, 1, '234234234', '324234234', '32423sfdfsdf', '32423dsffsdf'),
 (5, 0, 1, 'ss', 'ss', 'aaa', 'ssss'),
 (6, 14, 3, '333', '333', 'ดี', 'ดี'),
 (7, 14, 0, '15.174204751663584', '102.3489761352539', '-ถภะ', 'ไำพไำพ');
@@ -1321,19 +1321,16 @@ INSERT INTO `geography` (`geo_id`, `geo_name`) VALUES
 CREATE TABLE `harvest` (
   `harvest_id` int(11) NOT NULL COMMENT 'รหัสการเก็บเกี่ยว',
   `crop_id` int(11) NOT NULL COMMENT 'พืชที่ปลูก',
-  `harvest_algorithm` varchar(200) NOT NULL COMMENT 'วิธีการเก็บเกียว',
-  `season` varchar(100) NOT NULL COMMENT 'ฤดูกาล',
-  `amout` int(11) DEFAULT NULL COMMENT 'จำนานผลผลิต',
-  `unit` varchar(100) DEFAULT NULL COMMENT 'หน่วยผลผลิต'
+  `harvest_algorithm` varchar(200) NOT NULL COMMENT 'วิธีการเก็บเกียว'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `harvest`
 --
 
-INSERT INTO `harvest` (`harvest_id`, `crop_id`, `harvest_algorithm`, `season`, `amout`, `unit`) VALUES
-(3, 1, 'tertertertert', 'ฤดูร้อน', 23, 'fsfsdf'),
-(4, 14, 'ตัด', 'ฤดูหนาว', 44, 'กก.');
+INSERT INTO `harvest` (`harvest_id`, `crop_id`, `harvest_algorithm`) VALUES
+(3, 1, 'aaaaa'),
+(4, 14, 'ตัด');
 
 -- --------------------------------------------------------
 
@@ -1357,6 +1354,28 @@ INSERT INTO `plant` (`plant_id`, `type_id`, `plant_name`, `caltivated_area`) VAL
 (4, 2, 'วาสนา', 'พื้นหน้าบ้าน'),
 (8, 1, 'ดาวเรือง', 'กระถาง'),
 (9, 6, 'ผักบุ้ง', 'ทั่วประเทศ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL COMMENT 'รหัสการเก็บเกี่ยว',
+  `crop_id` int(11) NOT NULL COMMENT 'พืชที่ปลูก',
+  `season` varchar(100) NOT NULL COMMENT 'วิธีการเก็บเกียว',
+  `amout` varchar(100) NOT NULL,
+  `unit` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `crop_id`, `season`, `amout`, `unit`) VALUES
+(4, 14, 'ตัด', '', ''),
+(6, 1, 'ฤดูหนาว', '15', 'กิโลกรัม');
 
 -- --------------------------------------------------------
 
@@ -10478,6 +10497,13 @@ ALTER TABLE `ageiculturist`
   ADD PRIMARY KEY (`agriculturist_id`);
 
 --
+-- Indexes for table `agr_standard`
+--
+ALTER TABLE `agr_standard`
+  ADD PRIMARY KEY (`agr_standard_id`),
+  ADD KEY `corp_id` (`agriculturist_id`);
+
+--
 -- Indexes for table `amphur`
 --
 ALTER TABLE `amphur`
@@ -10521,13 +10547,6 @@ ALTER TABLE `crop_problem`
   ADD PRIMARY KEY (`crop_problem_id`);
 
 --
--- Indexes for table `crop_standard`
---
-ALTER TABLE `crop_standard`
-  ADD PRIMARY KEY (`crop_standard_id`),
-  ADD KEY `corp_id` (`crop_id`);
-
---
 -- Indexes for table `cultivated_area`
 --
 ALTER TABLE `cultivated_area`
@@ -10564,6 +10583,12 @@ ALTER TABLE `harvest`
 --
 ALTER TABLE `plant`
   ADD PRIMARY KEY (`plant_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `province`
@@ -10623,6 +10648,11 @@ ALTER TABLE `typeplant`
 ALTER TABLE `ageiculturist`
   MODIFY `agriculturist_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสเกษตรกร', AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `agr_standard`
+--
+ALTER TABLE `agr_standard`
+  MODIFY `agr_standard_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสลำดับ', AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `amphur`
 --
 ALTER TABLE `amphur`
@@ -10658,15 +10688,10 @@ ALTER TABLE `crop`
 ALTER TABLE `crop_problem`
   MODIFY `crop_problem_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสปัญหาของพืชที่ปลูก', AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `crop_standard`
---
-ALTER TABLE `crop_standard`
-  MODIFY `crop_standard_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสลำดับ', AUTO_INCREMENT=4;
---
 -- AUTO_INCREMENT for table `cultivated_area`
 --
 ALTER TABLE `cultivated_area`
-  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=8;
+  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `disease_pest_weed`
 --
@@ -10692,6 +10717,11 @@ ALTER TABLE `harvest`
 --
 ALTER TABLE `plant`
   MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `province`
 --
