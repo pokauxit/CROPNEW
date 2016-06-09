@@ -31,8 +31,8 @@
           <td><?php echo $rc2->plant_name; ?></td>
           <td><?php echo $rc2->caltivated_area; ?></td>
           <td>
-              <a href="<?php echo $this->route->Edit($rc2->plant_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
-              <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc2->plant_id);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
+              <a href="<?php echo $this->route->Edit($rc2->plant_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+              <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc2->plant_id);?>/<?php echo $this->param(1);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
           </td>
         </tr>
     <?php
@@ -48,7 +48,7 @@
         <br/>
     <div class="center"  >
         <a class="btn waves-effect green" href="<?php echo $this->route->Add();
-        echo '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+        echo '//' . $this->param(1); ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
         <a class="btn waves-effect orange" href="?"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
     </div> 
     </div>

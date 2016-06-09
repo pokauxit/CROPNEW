@@ -15,7 +15,7 @@ namespace App\Modules\Plant\Controllers;
         $std =  new pln();
         if($std->insert()){
             echo JS::addComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule().'///' . $this->param(1));
         }else{
             echo JS::addFail();
             echo JS::back();
