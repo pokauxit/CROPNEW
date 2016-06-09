@@ -5,7 +5,9 @@
     $template->open();
     $template->nav1level();
 ?>
-
+<?php 
+    echo System\Utils\JS::load();
+?>
 <script>
     
     function check(obj){

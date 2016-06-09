@@ -9,7 +9,7 @@ namespace App\Modules\BioFertilizer\Controllers;
         $std =  new btz();
         if($std->delete(ID)){
             echo JS::deleteComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule().'///' . $this->param(1));
         }else{
             echo JS::deleteFail();
             echo JS::back();

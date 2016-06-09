@@ -23,7 +23,7 @@ class Plant extends HMVC {
     public function index() {
 
         $this->dbPlant = new pln();
-         $this->allRow = $this->dbPlant->count($this->dbPlant->pk());
+        $this->allRow = $this->dbPlant->count($this->dbPlant->pk());
         $this->dbPlant->limit = Paging::limit($this->pageLimit, $this->param(1));
         $this->dbPlant->order = $this->dbPlant->pk();
         $this->dbPlant->orderSort = "DESC";

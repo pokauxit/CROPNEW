@@ -5,12 +5,15 @@ use System\HMVC\HMVC;
 use App\Models\biofertilizer as bfz;
 use App\Models\typefertilizer as typeftz;
 use System\Security\ACL;
+use System\Utils\Paging;
 
 class BioFertilizer extends HMVC {
 
     protected $db;
     protected $dbTypeFtz;
     protected $row;
+    protected $allRow;
+    protected $pageLimit = 2;
 
     public function __construct() {
         ACL::check("STAFF");
@@ -18,8 +21,14 @@ class BioFertilizer extends HMVC {
     }
 
     public function index() {
+        
         $this->db = new bfz();
+        $this->allRow = $this->db->count($this->db->pk());
+        $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
+        $this->db->order = $this->db->pk();
+        $this->db->orderSort = "DESC";
         $this->db->left("type_fertilizer_id", "typefertilizer.type_fertilizer_name");
+        //$this->db = new bfz();
 
         $this->view();
     }

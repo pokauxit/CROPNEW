@@ -14,7 +14,7 @@ namespace App\Modules\BioFertilizer\Controllers;
         $std =  new bfz();
         if($std->insert()){
             echo JS::addComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule().'///');
         }else{
             echo JS::addFail();
             echo JS::back();
