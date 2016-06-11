@@ -13,6 +13,7 @@ use \App\Models\plant as plt;
 use \App\Models\disease_pest_weed as dpw;
 use System\HMVC\HMVC;
 use System\Security\ACL;
+use System\Utils\Paging;
 
 class DiseasePestWeed extends HMVC
 {
@@ -23,10 +24,17 @@ class DiseasePestWeed extends HMVC
     protected $rowId;
     protected $db;
     protected $dbList;
+    protected $allRow;
+    protected $pageLimit = 2;
 
     public function index()
     {
         $this->db = new dpw();
+        $this->allRow = $this->db->count($this->db->pk());
+        $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
+        $this->db->order = $this->db->pk();
+        $this->db->orderSort = "DESC";
+        
         $this->db->select();
         $this->view();
     }

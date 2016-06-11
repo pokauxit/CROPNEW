@@ -1,6 +1,6 @@
 <?php
 Use System\Template\Template;
-
+Use System\Utils\Paging;
 $template = new Template();
 $template->open();
 $template->nav1level();
@@ -42,10 +42,8 @@ $template->nav1level();
                             <a href='<?php echo "?DiseaseSymptom//{$rc->disease_pest_weed_id}"; ?>'><i
                                     class="orange-text fa fa-sign-in"></i> เปิด</a>
                         <?php endif; ?>
-                        |<a href=" <?php echo $this->route->Edit($rc->disease_pest_weed_id); ?>"><i
-                                class="orange-text fa fa-edit"></i> แก้ไข</a>
-                        | <a onclick="return confirm('ยืนยันการลบ')"
-                             href="<?php echo $this->route->Delete($rc->disease_pest_weed_id); ?>""><i
+                        |<a href=" <?php echo $this->route->Edit($rc->disease_pest_weed_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข</a>
+                        | <a onclick="return confirm('ยืนยันการลบ')" href="<?php echo $this->route->Delete($rc->disease_pest_weed_id);?>/<?php echo $this->param(1);?>"><i
                             class="red-text fa fa-trash"></i> ลบ </a>
                     </td>
                 </tr>
@@ -53,19 +51,19 @@ $template->nav1level();
             </tbody>
         </table>
         <p><br></p>
-
         <div class="center">
-            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i
-                    class="fa fa-plus"></i> เพิ่มข้อมูล</a>
-            <a class="btn waves-effect orange" href="?"><i
-                    class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+            <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule()."///")?>
+        </div>
+        <br/>
+        <div class="center">
+            <div class="center"  >
+                <a class="btn waves-effect green" href="<?php echo $this->route->Add();
+                echo '//' . $this->param(1); ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+                <a class="btn waves-effect orange" href="?"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+            </div> 
         </div>
     </div>
 </div>
-<?php
-
-?>
-
 <?php
 $template->close();
 ?>
