@@ -19,7 +19,7 @@ class Add extends HMVC {
         $STR = new tb_soil();
         if ($STR->insert()) {
             echo JS::addComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule()."///");
         } else {
             echo JS::addFail();
             echo JS::back();
