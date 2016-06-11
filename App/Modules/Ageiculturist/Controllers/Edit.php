@@ -17,7 +17,7 @@ class Edit extends HMVC
         $sth = new agl();
         if ($sth->update(ID)) {
             echo JS::editComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule(). '///'. $this->param(1));
         } else {
             echo JS::editFail();
             echo JS::back();

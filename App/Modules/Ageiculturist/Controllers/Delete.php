@@ -12,7 +12,7 @@ class Delete extends HMVC
         $sth = new agl();
         if ($sth->delete(ID)) {
             echo JS::deleteComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule(). '///'. $this->param(1));
         } else {
             echo JS::deleteFail();
             echo JS::back();

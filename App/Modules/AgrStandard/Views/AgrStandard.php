@@ -46,7 +46,7 @@ $template->ageiculturistInfo(ID);
 <p><br></p>
 <div class="center"  >
     <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
-    <a class="btn waves-effect orange" href="?Ageiculturist"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
+    <a class="btn waves-effect orange" href="?Ageiculturist///<?php echo $this->param(1); ?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
 </div>
    </div>
 
