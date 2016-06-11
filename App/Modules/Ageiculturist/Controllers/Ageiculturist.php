@@ -4,6 +4,9 @@ namespace App\Modules\Ageiculturist\Controllers;
 
 use System\HMVC\HMVC;
 use App\Models\ageiculturist as agl;
+use App\Models\tambon;
+use App\Models\amphur;
+use App\Models\province;
 use System\Security\ACL;
 use System\Utils\Paging;
 
@@ -23,7 +26,21 @@ class Ageiculturist extends HMVC {
         $this->db = new agl();
         $this->allRow = $this->db->count($this->db->pk());
         $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
-        $this->db->left("tambon_id", "tambon.tambon_name");
+       // $this->db->left("tambon_id", "tambon.tambon_name");
+        
+        $tumbon = new tambon();
+        $tumbon->display = "tambon_name"; 
+        $tumbon->fk = "amphur_id";       
+        
+        $amphur = new amphur();
+        $amphur->fk = "province_id";
+        $amphur->display = "amphur_name";
+        $amphur->moreDisplay = "postcode";
+        
+        $province = new province();  
+        $province->display = "province_name";
+        
+        $this->db->multiLeftJoin("tambon_id", array($tumbon,$amphur,$province));
 
         $this->view();
     }

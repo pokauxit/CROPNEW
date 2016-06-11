@@ -36,7 +36,7 @@ $template->open();
                     <td><?php echo $rc->home_no; ?></td>
                     <td><?php echo $rc->phone_no; ?></td>
                     <td><?php echo $rc->agriculturist_name; ?></td>
-                    <td><?php echo $rc->tambon_tambon_name; ?></td>
+                    <td><?php echo $rc->tambon_tambon_name; echo $rc->amphur_amphur_name; echo $rc->province_province_name;  echo $rc->postcode; ?></td>
                     <td> <a href="<?php echo '?AgrCultivatedArea//' . $rc->agriculturist_id; ?>/<?php echo $this->param(1);?>"><i class="green-text fa fa-arrow-circle-right"></i> พื้นที่ </a>
                          <a href="<?php echo '?AgrStandard//' . $rc->agriculturist_id; ?>/<?php echo $this->param(1);?>"><i class="green-text fa fa-arrow-circle-right"></i> มาตรฐาน </a>
                         | <a href="<?php echo '?Crop//' . $rc->agriculturist_id; ?>/<?php echo $this->param(1);?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>

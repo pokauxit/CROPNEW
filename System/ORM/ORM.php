@@ -16,6 +16,13 @@ class ORM extends DB {
      * @var String  
      */
     private $pk = "";
+    
+    
+    public $fk = null;
+    public $display = null;
+    public $moreDisplay = null;
+    
+    
     /**
      * กำหนดเงื่อนไขการ Query  คือ WHERE นั่นเอง เช่น เรากำหนด $whare ="id=1" เป็นการกำหนดเงื่อไขการ Query เลิอกเฉพาะ id =1
      * @var String   
@@ -87,9 +94,9 @@ class ORM extends DB {
                   $sql_sec1.=",".$tbObj->name.".".$tbObj->moreDisplay;
             }
             if($i<(count($arrayJoinFormat)-1)){
-                $sql_sec2.= $tbObj->name.".".$tbObj->pk.") LEFT JOIN ".$arrayJoinFormat[$i+1]->name." ON (".$tbObj->name.".".$tbObj->fk."=";
+                $sql_sec2.= $tbObj->name.".".$tbObj->pk().") LEFT JOIN ".$arrayJoinFormat[$i+1]->name." ON (".$tbObj->name.".".$tbObj->fk."=";
             }else{
-                $sql_sec2.= $tbObj->name.".".$tbObj->pk.")";
+                $sql_sec2.= $tbObj->name.".".$tbObj->pk().")";
             }
         }
           $sql = $sql_sec1.$sql_sec2;
