@@ -16,7 +16,9 @@ class ServiceData extends HMVC {
     protected $db;
 
     public function index() {
-        
+        if (!empty($_POST['showPlant'])) {
+            $this->showPlant($_POST['showPlant']);
+        }
     }
 
     public function getCropByID($id) {

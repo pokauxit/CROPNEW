@@ -37,7 +37,7 @@ $template->ageiculturistInfo(ID);
                     ?>
                     <tr>
                         <td><?php echo $rowId++; ?></td>
-                        <td><?php echo $rc->plant_plant_name; ?></td>
+                        <td><a href="javascropt:" onclick="showPlantInfo('<?php echo $rc->plant_id; ?>');"><?php echo $rc->plant_plant_name; ?></a></td>
                         <td><?php echo $rc->sunlight; ?></td>
                         <td><?php echo $rc->water_source; ?></td>
                         <td><?php echo $rc->wind; ?></td>
@@ -62,6 +62,29 @@ $template->ageiculturistInfo(ID);
     </div>
 
 </div>
+<div id="plant" class="modal">
+    <div style="text-align: center;padding: 3px">
+        <span style="float: right">
+            <a href="javascript:;" class="modal-action modal-close red-text"><i class="fa fa-lg fa-times"></i></a>
+        </span>
+    </div>
+    <div id="plant_detail"></div>
+</div>
 <?php
 $template->close();
 ?>
+<script>
+    function showPlantInfo(plant_id) {
+        var value = plant_id;
+        $.ajax({
+            'type': 'POST',
+            'url': '?ServiceData',
+            'cache': false,
+            'data': {'showPlant': value},
+            'success': function (result) {
+                $('#plant_detail').html(result);
+                $('#plant').openModal();
+            }
+        });
+    }
+</script>
