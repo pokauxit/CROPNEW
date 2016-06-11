@@ -19,7 +19,7 @@ class Paging {
 
     public static function build($total, $limit, $pagenumber=1, $baseurl) {
          if($pagenumber=="" || $pagenumber=="0"){$pagenumber=1;}
-    if ($total < $limit) {
+    if ($total <= $limit) {
         return $html = "";
     }
     
