@@ -5,6 +5,8 @@ Use System\Template\Template;
 
 $template = new Template();
 $template->open();
+$template->nav2level(ID);
+$template->ageiculturistInfo(ID);
 ?>
 
 <div class="container" id="container-center">
