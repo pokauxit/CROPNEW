@@ -35,10 +35,10 @@ class Paging {
     $previous = $pagenumber - 1;
     if ($pagenumber > 1){
         $html .= '<li class=""><a class="padding-5" href="'.$baseurl.'1" title="หน้าแรก"><i class="fa fa-angle-double-left"></i></a></li>';
-        $html .= '<li class=""><a class="padding-5" href="'.$baseurl.$previous.'" title="ถัดไป"><i class="fa fa-angle-left"></i></a></li>';
+        $html .= '<li class=""><a class="padding-5" href="'.$baseurl.$previous.'" title="หน้าถัดไป"><i class="fa fa-angle-left"></i></a></li>';
     }else{
         $html .= '<li class="disabled"><a class="padding-5" title="หน้าแรก"><i class="fa fa-angle-double-left"></i></a></li>';
-        $html .= '<li class="disabled"><a class="padding-5" title="ถัดไป"><i class="fa fa-angle-left"></i></a></li>';
+        $html .= '<li class="disabled"><a class="padding-5" title="หน้าถัดไป"><i class="fa fa-angle-left"></i></a></li>';
     }
     if ($pages >= 2) {
         $p = 1;
@@ -77,10 +77,10 @@ class Paging {
 
     $next = $pagenumber + 1;
     if ($pagenumber < $pages){
-        $html .= '<li class=""><a class="padding-5" href="'.$baseurl.$next.'" title="ย้อนกลับ"><i class="fa fa-angle-right"></i></a></li>';
+        $html .= '<li class=""><a class="padding-5" href="'.$baseurl.$next.'" title="หน้าก่อนหน้า"><i class="fa fa-angle-right"></i></a></li>';
         $html .= '<li class=""><a class="padding-5" href="'.$baseurl.$pages.'" title="หน้าสุดท้าย"><i class="fa fa-angle-double-right"></i></a></li>';
     }else{
-        $html .= '<li class="disabled"><a class="padding-5" title="ย้อนกลับ"><i class="fa fa-angle-right"></i></a></li>';
+        $html .= '<li class="disabled"><a class="padding-5" title="หน้าก่อนหน้า"><i class="fa fa-angle-right"></i></a></li>';
         $html .= '<li class="disabled"><a class="padding-5" title="หน้าสุดท้าย"><i class="fa fa-angle-double-right"></i></a></li>';
     }
     $html .= '</ul>';
