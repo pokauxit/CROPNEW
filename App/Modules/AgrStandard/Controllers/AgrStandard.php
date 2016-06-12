@@ -21,7 +21,7 @@ class AgrStandard extends HMVC {
         $this->db = new tb_method_6();
         $this->db->where = "agriculturist_id='" . $this->param(0) . "'";
         $this->db->orderSort = "crop_standard_id ASC";
-        $this->db->left('sid', 'standard.type_fertilizer_name');
+        $this->db->left('sid', 'standard.standrad_name');
         $this->view();
     }
 
