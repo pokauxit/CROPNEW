@@ -10,7 +10,7 @@ $template->nav1level();
 <div class="container" id="container-center">
     <div class="row card " style="padding: 10px;"> 
         <div>
-            <h4 class="pull-left">จัดการหน่วยผลผลิต</h4>
+            <h4 class="pull-left">หน่วยการให้ปุ๋ย</h4>
             <br/>
             <table class="bordered">
                 <thead class="green">

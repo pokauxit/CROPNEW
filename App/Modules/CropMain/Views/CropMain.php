@@ -62,6 +62,9 @@ $template->nav1level();
             <a href="?ProductUnit"> <p class="z-depth-1 center">หน่วยผลผลิต</p></a>
         </div>
 
+        <div class="col s5 m2 menu-item">
+            <a href="?FertilizerUnit"> <p class="z-depth-1 center">หน่วยการให้ปุ๋ย</p></a>
+        </div>
     </div>
 </div>
 <?
