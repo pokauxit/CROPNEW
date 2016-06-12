@@ -18,7 +18,7 @@ class Add extends HMVC
 
     public function index()
     {
-        Validate::has("type_fertilizer_name");
+        Validate::has("standard_name");
         Validate::has("org");
 
         $sth = new std();

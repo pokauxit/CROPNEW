@@ -30,7 +30,7 @@ $template->nav1level();
             <?php while ($rc = $this->db->fetch()) : ?>
                 <tr>
                     <td><?php echo $rowId++; ?>.</td>
-                    <td><?php echo $rc->type_fertilizer_name; ?></td>
+                    <td><?php echo $rc->standard_name; ?></td>
                     <td><?php echo $rc->org; ?></td>
                     <td>
                         <a  href="<?php echo $this->route->Edit($rc->sid);?>/<?php echo $this->param(1)?>"><i class="orange-text fa fa-edit"></i> แก้ไข</a>

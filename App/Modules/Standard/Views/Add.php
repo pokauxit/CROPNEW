@@ -14,8 +14,8 @@ $template->nav1level();
             <form class="col s12" action="" method="post">
                 <div class="row">
                     <div class="input-field col m6 s12">
-                        <input name="type_fertilizer_name" type="text" class="validate" required>
-                        <label for="type_fertilizer_name">ชื่อมาตรฐานที่ได้รับ</label>
+                        <input name="standard_name" type="text" class="validate" required>
+                        <label for="standard_name">ชื่อมาตรฐานที่ได้รับ</label>
                     </div>
                     <div class="input-field col m6 s12">
                         <input name="org" type="text" class="validate" required>
