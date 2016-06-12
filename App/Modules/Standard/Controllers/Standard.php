@@ -7,14 +7,17 @@ namespace App\Modules\Standard\Controllers;
 use System\HMVC\HMVC;
 use \App\Models\standard as std;
 use System\Security\ACL;
+use System\Utils\Paging;
 
 class Standard extends HMVC
 {
 
     protected $db;
     protected $row;
+    protected $allRow;
+    protected $pageLimit = 2;
 
-    
+
     public function __construct() {
         ACL::check("STAFF");
         parent::__construct();
@@ -23,6 +26,10 @@ class Standard extends HMVC
     public function index()
     {
         $this->db = new std();
+        $this->allRow = $this->db->count($this->db->pk());
+        $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
+        $this->db->order = $this->db->pk();
+        $this->db->orderSort = "DESC";
         $this->db->select();
         $this->view();
     }

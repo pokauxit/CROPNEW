@@ -1,7 +1,7 @@
 <?php
 
 Use System\Template\Template;
-
+Use System\Utils\Paging;
 $template = new Template();
 $template->open();
 $template->nav1level();
@@ -49,18 +49,20 @@ $template->nav1level();
                         <td><?php echo $rc->soil_problem; ?></td>
                         <td><?php echo $rc->soil_nutrition; ?></td>
                         <td>
-                            <a href="<?php echo $this->route->Edit($rc->soil_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
-                            | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->soil_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>
+                            <a href="<?php echo $this->route->Edit($rc->soil_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
+                            | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->soil_id); ?>/<?php echo $this->param(1);?>"><i class="red-text fa fa-trash"></i> ลบ </a>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
         <p><br></p>
-
- 
+        <div class="center">
+            <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule()."///")?>
+        </div>
+        <br/>
           <div class="center"  >
-            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/'  ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+            <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '//' . $this->param(1) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
             <a class="btn waves-effect orange" href="<?php echo $template->mainPanel?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
     </div>

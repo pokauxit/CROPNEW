@@ -12,7 +12,7 @@ class Delete extends HMVC {
         $STR = new tb_soil();
         if ($STR->delete(ID)) {
             echo JS::deleteComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule()."///".$this->param(1));
         } else {
             echo JS::deleteFail();
             echo JS::back();

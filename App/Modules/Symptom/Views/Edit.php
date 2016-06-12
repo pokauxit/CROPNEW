@@ -35,7 +35,7 @@ $template->nav1level();
                                 value="ss"><i class="fa fa-refresh"></i> เริ่มใหม่
                         </button>
                         <button class="btn waves-effect orange" style="margin: 5px;" type="button"
-                                onclick="window.location.href = '<?php echo $this->route->backToModule() . '//' . $this->param(0); ?>'">
+                                onclick="window.location.href = '<?php echo $this->route->backToModule() . '///' . $this->param(1); ?>'">
                             <i class="fa fa-arrow-circle-left"></i> ย้อนกลับ
                         </button>
                     </div>
