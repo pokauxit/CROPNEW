@@ -15,15 +15,22 @@ class Plant extends HMVC {
     protected $row;
     protected $allRow;
     protected $pageLimit =2;
+    protected $paging;
     public function __construct() {
         ACL::check("STAFF");
         parent::__construct();
     }
 
-    public function index(){
+    public function index(){ 
         $this->dbPlant = new pln();
-        $this->allRow = $this->dbPlant->count($this->dbPlant->pk());
-        $this->dbPlant->limit = Paging::limit($this->pageLimit, $this->param(1));
+  
+             $this->paging = new Paging();
+             $this->paging->total =  $this->dbPlant->count($this->dbPlant->pk());
+             $this->paging->currentPage = $this->param(1);
+             $this->paging->perPage = $this->pageLimit;
+             $this->paging->url =  $this->route->backToModule()."///";
+             
+        $this->dbPlant->limit =  $this->paging->limit();
         $this->dbPlant->order = $this->dbPlant->pk();
         $this->dbPlant->orderSort = "DESC";
         $this->dbPlant->left("type_id", "typeplant.type_name");
