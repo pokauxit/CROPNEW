@@ -25,7 +25,7 @@ class Paging {
         return $start.",".$perPage;
     }
     public function start(){
-        return $this->start;
+        return $this->start; 
     }
 
     public  function build() {

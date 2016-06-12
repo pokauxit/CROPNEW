@@ -23,7 +23,7 @@ class Plant extends HMVC {
 
     public function index(){ 
         $this->dbPlant = new pln();
-  
+   
              $this->paging = new Paging();
              $this->paging->total =  $this->dbPlant->count($this->dbPlant->pk());
              $this->paging->currentPage = $this->param(1);

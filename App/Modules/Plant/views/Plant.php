@@ -18,7 +18,7 @@
           <th>ชื่อพืช</th>
           <th>พื้นที่เพาะปลูก</th>
           <th>ตัวเลือก</th>
-        </tr>
+        </tr> 
         </thead>
     <?php
         echo $i=1+$this->paging->start();
