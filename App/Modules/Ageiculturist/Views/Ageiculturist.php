@@ -29,10 +29,13 @@ $template->open();
             </thead>
 
             <tbody>
-            <?php $rowId = 1; ?>
-            <?php while ($rc = $this->db->fetch()) : ?>
+            <?php 
+                $i=1+$this->paging->start();
+                $pk = $this->pk;
+                while ($rc = $this->db->fetch()) : 
+            ?>
                 <tr>
-                    <td><?php echo $rowId++; ?></td>
+                    <td><?php echo $i ?>.</td>
                     <td><?php echo $rc->home_no; ?></td>
                     <td><?php echo $rc->phone_no; ?></td>
                     <td><?php echo $rc->agriculturist_name; ?></td>
@@ -44,12 +47,15 @@ $template->open();
                         | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->agriculturist_id)?>/<?php echo $this->param(1);?>"><i class="red-text fa fa-trash"></i> ลบ </a>
                     </td>
                 </tr>
-            <?php endwhile; ?>
+            <?php 
+                $i++;
+                endwhile; 
+            ?>
             </tbody>
         </table>
     <br/>
     <div class="center">
-         <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule()."///")?>
+         <?php echo $this->paging->build();?>
     </div>
         <br/>
         <div class="center"  >

@@ -16,6 +16,7 @@ class Ageiculturist extends HMVC {
     protected $row;
     protected $allRow;
     protected $pageLimit = 2;
+    protected $paging;
 
     public function __construct() {
         ACL::check("STAFF");
@@ -24,8 +25,19 @@ class Ageiculturist extends HMVC {
 
     public function index() {
         $this->db = new agl();
-        $this->allRow = $this->db->count($this->db->pk());
-        $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
+        $this->paging = new Paging();
+        
+        $this->paging->total = $this->db->count($this->db->pk());
+        $this->paging->currentPage = $this->param(1);
+        $this->paging->perPage = $this->pageLimit;
+        $this->paging->url = $this->route->backToModule()."///";
+        
+        $this->db->limit = $this->paging->limit();
+        $this->db->order = $this->db->pk();
+        $this->db->orderSort = "DESC";
+        
+        //$this->allRow = $this->db->count($this->db->pk());
+        //$this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
        // $this->db->left("tambon_id", "tambon.tambon_name");
         
         $tumbon = new tambon();
