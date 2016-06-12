@@ -109,6 +109,7 @@ $template->close();
             'data': {'unit_name': data},
             'success': function (result) {
                 if ($.trim(result) == 'Success') {
+                    $('#unit_add').val('')
                     ReData();
                     $('#unit_add_m').closeModal();
                 } else {
