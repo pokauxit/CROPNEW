@@ -29,7 +29,7 @@ $template->nav1level();
             <?php $rowId = 1+$this->paging->start(); ?>
             <?php while ($rc = $this->db->fetch()) : ?>
                 <tr>
-                    <td><?php echo $rowId++; ?></td>
+                    <td><?php echo $rowId++; ?>.</td>
                     <td><?php echo $rc->symptom_name; ?></td>
                     <td><?php echo $rc->symptom_detail; ?></td>
                     <td>
