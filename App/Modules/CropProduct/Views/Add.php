@@ -25,9 +25,14 @@ $template->openMain($this->param(-2));
             <input name="amout" type="number" class="validate" required>
         </div>
         <div class="input-field col  s12 m4">
-            <select id="unit" name="unit">
-            </select>
-            <label for="unit">หน่วยผลผลิต</label>
+            <div class="pull-left" style="width:80%;display: inline-block;">   
+                <select id="unit" name="unit"  >
+            </select> 
+                 <label  for="unit" class="pull-right">หน่วยนับผลผลิต  </label>
+  
+          </div>
+            <a class="btn-floating center-align"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
+        
         </div>
     </div>
     <div align="center">
