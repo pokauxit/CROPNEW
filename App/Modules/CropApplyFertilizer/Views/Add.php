@@ -122,7 +122,8 @@ $template->close();
             'success': function (result) {
                 alert(result);
                 if ($.trim(result) == 'Success') {
-                    $('#unit_add').val('')
+                    $('#unit_add').val('');
+                    alert('บันทึกสำเร็จ');
                     ReData();
                     $('#unit_add_m').closeModal();
                 } else {
