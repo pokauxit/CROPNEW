@@ -43,7 +43,7 @@ $template->ageiculturistInfo(ID);
                         <td><?php echo $rc->wind; ?></td>
                         <td><?php echo $rc->spetial_information; ?></td>
                         <td><?php echo $rc->soil_soil_name; ?></td>
-                        <td><?php echo $rc->standrad_name; ?></td>
+                        <td><?php echo $rc->standard_standard_name; ?></td>
                         <td>
                             <a href="<?php echo '?CropApplication//' . $rc->crop_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>
                             | <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->crop_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>

@@ -44,7 +44,7 @@ class Crop extends HMVC {
             $standard->fk = "sid";
             
             $govStd  = new GOV_std();
-            $govStd->display = "standrad_name";
+            $govStd->display = "standard_name";
             
              //
             
