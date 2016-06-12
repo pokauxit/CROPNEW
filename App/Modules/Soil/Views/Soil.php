@@ -29,11 +29,11 @@ $template->nav1level();
             </thead>
             <tbody>
                 <?php
-                $rowId = 1;
+                $rowId=1+$this->paging->start();
                 while ($rc = $this->db->fetch()) {
                     ?>
                     <tr>
-                        <td><?php echo $rowId++; ?></td>
+                        <td><?php echo $rowId++; ?>.</td>
                         <td><?php echo $rc->soil_name; ?></td>
                         <td>
                             
@@ -58,7 +58,7 @@ $template->nav1level();
         </table>
         <p><br></p>
         <div class="center">
-            <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule()."///")?>
+            <?php echo $this->paging->build();?>
         </div>
         <br/>
           <div class="center"  >
