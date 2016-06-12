@@ -22,12 +22,11 @@ $template->nav1level();
                     </tr>  
                 </thead>
                 <?php
-                $i = $this->row_start;
+                $i = 1+$this->paging->start();
                 while ($rc = $this->db->fetch($rs)) {
-                    $i++;
                     ?>
                     <tr>
-                        <td><?php echo $i; ?>.</td>
+                        <td><?php echo $i++; ?>.</td>
 
                         <td><?php echo $rc->unit_name; ?></td>
                         <td>
@@ -40,7 +39,7 @@ $template->nav1level();
             </table>
             <br/>
             <div class="center">
-                <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule() . "///") ?>
+                <?php echo $this->paging->build(); ?>
             </div>
         </div>
         <br/>
