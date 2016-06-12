@@ -5,7 +5,10 @@ namespace App\Modules\Crop\Controllers;
 use App\Models\crop AS tb_crop;
 use App\Models\plant AS tb_plant;
 use App\Models\agr_standard AS tb_standard;
-use App\Models\cultivated_area AS tb_area;
+use App\Models\cultivated_area AS tb_area; 
+ use App\Models\soil; 
+ use App\Models\standard as GOV_std;
+ 
 use System\HMVC\HMVC;
 use System\Security\ACL;
 
@@ -31,8 +34,55 @@ class Crop extends HMVC {
             $this->db = new tb_crop();
             $this->db->where = "argiculturist_id='" . $this->param(0) . "'";
             $this->db->orderSort = "crop_id ASC";
-            $this->db->left('plant_id', 'plant.plant_name');
-            $this->view();
+   
+            
+            
+            //// br1
+            $standard = new tb_standard();
+            $standard->display = "start_year";
+            $standard->moreDisplay = "end_year as ".$standard->getName()."_end_year";
+            $standard->fk = "sid";
+            
+            $govStd  = new GOV_std();
+            $govStd->display = "standrad_name";
+            
+             //
+            
+            
+            //br2
+             $plant =  new tb_plant();
+             $plant->display = "plant_name"; 
+            
+            //
+            
+           // br3
+            $area = new tb_area();
+            $area->display = "area_detail";
+            $area->fk ="soil_id";
+            
+            $soil = new soil();
+            $soil->display = "soil_name";
+            ///
+            
+            
+           
+            //set br
+            $fk1 = "agr_standard_id";
+            $branch1 = array($standard,$govStd);
+            
+            $fk2 = "plant_id";
+            $branch2 = array($plant);
+            
+            
+            $fk3 = "area_sequence";
+            $branch3 = array($area,$soil);
+            
+            
+            
+            $fkList = array($fk1,$fk2,$fk3);
+            $arrayFomat = array($branch1,$branch2,$branch3);
+            $this->db->multiFKJoin($fkList, $arrayFomat);
+             $this->view();
         }
     }
 

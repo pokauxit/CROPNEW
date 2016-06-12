@@ -21,7 +21,7 @@
         </tr> 
         </thead>
     <?php
-        echo $i=1+$this->paging->start();
+          $i=1+$this->paging->start();
         $pk = $this->pk;
         while($rc2 = $this->dbPlant->fetch()){
     ?>

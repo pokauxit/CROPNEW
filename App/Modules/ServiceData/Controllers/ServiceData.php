@@ -68,7 +68,7 @@ class ServiceData extends HMVC {
         return $this->db->get($id);
     }
     
-    public function showSoil($id) {
+    public function showSoil() {
         $id = $_POST['value'];
         $this->dbSoil = new soil();
         $this->dbSoil->where = $this->dbSoil->pk() . "=" . $id;
