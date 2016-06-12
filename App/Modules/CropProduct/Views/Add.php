@@ -27,12 +27,11 @@ $template->openMain($this->param(-2));
         <div class="input-field col  s12 m4">
             <div class="pull-left" style="width:80%;display: inline-block;">   
                 <select id="unit" name="unit"  >
-            </select> 
-                 <label  for="unit" class="pull-right">หน่วยนับผลผลิต  </label>
-  
-          </div>
-            <a class="btn-floating center-align"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
-        
+                </select> 
+                <label  for="unit" class="pull-right">หน่วยนับผลผลิต  </label>
+            </div>
+            <a class="btn-floating center-align modal-trigger" href="#unit_add_m"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
+
         </div>
     </div>
     <div align="center">
@@ -43,28 +42,65 @@ $template->openMain($this->param(-2));
     </div>
     <p><br></p>
 </form>
+
+<div id="unit_add_m" class="modal" style="max-width: 400px">
+    <div style="text-align: center;padding: 3px">
+        <span style="float: right">
+            <a href="javascript:;" class="modal-action modal-close red-text"><i class="fa fa-lg fa-times"></i></a>
+        </span>
+    </div>
+    <div>
+        <div class="input-field  col  s12 m12">
+            <label for="unit_add">หน่วยนับผลผลิต</label>
+            <input name="unit_add" id="unit_add" type="text">
+        </div>
+        <br>
+        <button class="btn waves-effect green" type="button" id="save_add" onclick="save_add();"><i class="fa fa-save"></i> บันทึก </button>
+        <button class="btn waves-effect red modal-action modal-close" type="button"><i class="fa fa-times"></i> ยกเลิก </button>
+        <br><br>
+    </div>
+</div>
 <?php
 $template->closeMain();
 $template->close();
 ?>
 <script>
     $(function () {
-        var select = $('#old_value').val();
-        $.ajax({
-            'type': 'POST',
-            'url': '?ProductUnit',
-            'cache': false,
-            'data': {'getList': '1'},
-            'success': function (result) {
-                $('#unit').append(result);
-                $('#unit').trigger('contentChanged');
-                $('#unit').val(select).trigger('contentChanged');
-            }
-        });
-
+        ReData();
         $('select').on('contentChanged', function () {
             $(this).material_select('destroy');
             $(this).material_select();
         });
     });
+    function ReData() {
+        var select = $('#old_value').val();
+        $.ajax({
+            'type': 'GET',
+            'url': '?ProductUnit/getUnitAll/',
+            'cache': false,
+            'success': function (result) {
+                $('#unit').empty();
+                $('#unit').append(result);
+                $('#unit').trigger('contentChanged');
+                $('#unit').val(select).trigger('contentChanged');
+            }
+        });
+    }
+    function save_add() {
+        var data = $('#unit_add').val();
+        $.ajax({
+            'type': 'POST',
+            'url': '?ProductUnit/AddByAJAX/',
+            'cache': false,
+            'data': {'unit_name': data},
+            'success': function (result) {
+                if ($.trim(result) == 'Success') {
+                    ReData();
+                    $('#unit_add_m').closeModal();
+                }else{
+                    alert('บันทึกไม่สำเร็จ');
+                }
+            }
+        });
+    }
 </script>

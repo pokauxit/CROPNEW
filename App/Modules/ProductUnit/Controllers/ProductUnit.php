@@ -28,17 +28,13 @@ class ProductUnit extends HMVC {
     }
 
     public function index() {
-        if (!empty($_POST['getList'])) {
-            $this->getUnitAll();
-        } else {
-            $this->db = new product_unit();
-            $this->allRow = $this->db->count($this->db->pk());
-            $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
-            $this->db->order = $this->db->pk();
-            $this->db->orderSort = "DESC";
-            $this->db->select();
-            $this->view();
-        }
+        $this->db = new product_unit();
+        $this->allRow = $this->db->count($this->db->pk());
+        $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
+        $this->db->order = $this->db->pk();
+        $this->db->orderSort = "DESC";
+        $this->db->select();
+        $this->view();
     }
 
     public function Add() {
@@ -68,6 +64,10 @@ class ProductUnit extends HMVC {
         $this->db = new product_unit();
         $this->db->select();
         $this->view("Option_List");
+    }
+
+    public function AddByAJAX() {
+        $this->controller();
     }
 
 }
