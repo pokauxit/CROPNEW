@@ -28,7 +28,7 @@ $template->openMain($this->param(-2));
                 <td><?php echo $rowId++; ?></td>
                 <td><?php echo $rc->biofertilizer_bio_fer_name; ?></td>
                 <td><?php echo $rc->apply_fertilizer_amout; ?></td>
-                <td><?php echo $rc->apply_fertiltzer_unit; ?></td>
+                <td><?php echo $rc->fertilizer_unit_unit_name; ?></td>
                 <td><?php echo $rc->appy_fertilizer_frequency; ?></td>
                 <td><a href="<?php echo $this->route->Edit($this->param(0) . '/' . $rc->apply_fertilizer_id); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>
                     | <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($this->param(0) . '/' . $rc->apply_fertilizer_id); ?>"><i class="red-text fa fa-trash"></i> ลบ </a>

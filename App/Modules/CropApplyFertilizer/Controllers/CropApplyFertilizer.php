@@ -4,6 +4,7 @@ namespace App\Modules\CropApplyFertilizer\Controllers;
 
 use App\Models\apply_fertilizer AS tb_method_5;
 use App\Models\biofertilizer AS tb_method_5_1;
+use App\Models\fertilizer_unit;
 use System\HMVC\HMVC;
 use System\Security\ACL;
 
@@ -26,7 +27,22 @@ class CropApplyFertilizer extends HMVC {
             $this->db = new tb_method_5();
             $this->db->where = "crop_id='" . $this->param(0) . "'";
             $this->db->orderSort = "apply_fertilizer_id ASC";
-            $this->db->left('bio_fer_id', 'biofertilizer.bio_fer_name');
+
+            $funit = new fertilizer_unit();
+            $funit->display = "unit_name";
+
+            $fk1 = "apply_fertiltzer_unit";
+            $branch1 = array($funit);
+
+            $bio = new tb_method_5_1();
+            $bio->display = "bio_fer_name";
+
+            $fk2 = "bio_fer_id";
+            $branch2 = array($bio);
+
+            $fkList = array($fk1, $fk2);
+            $arrayFomat = array($branch1, $branch2);
+            $this->db->multiFKJoin($fkList, $arrayFomat);
             $this->view();
         }
     }
