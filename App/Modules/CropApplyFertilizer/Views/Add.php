@@ -33,9 +33,12 @@ $template->openMain($this->param(-2));
             <input name="apply_fertilizer_amout" type="number" class="validate" required>
         </div>
         <div class="input-field col  s12 m4">
-            <select id="apply_fertiltzer_unit" name="apply_fertiltzer_unit">
-            </select>
-            <label for="apply_fertiltzer_unit">หน่วยการให้ปุ๋ย</label>
+            <div class="pull-left" style="width:80%;display: inline-block;">
+                <select id="apply_fertiltzer_unit" name="apply_fertiltzer_unit">
+                </select>
+                <label for="apply_fertiltzer_unit">หน่วยการให้ปุ๋ย</label>
+            </div>
+            <a class="btn-floating center-align modal-trigger" href="#unit_add_m"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
         </div>
         <div class="input-field col s12 m4">
             <label for="appy_fertilizer_frequency">ความถี่ในการให้ปุ๋ย</label>
@@ -50,12 +53,34 @@ $template->openMain($this->param(-2));
     </div>
     <p><br></p>
 </form>
+<div id="unit_add_m" class="modal" style="max-width: 400px">
+    <div style="text-align: center;padding: 3px">
+        <span style="float: right">
+            <a href="javascript:;" class="modal-action modal-close red-text"><i class="fa fa-lg fa-times"></i></a>
+        </span>
+    </div>
+    <div>
+        <div class="input-field  col  s12 m12">
+            <label for="unit_add">หน่วยการให้ปุ๋ย</label>
+            <input name="unit_add" id="unit_add" type="text">
+        </div>
+        <br>
+        <button class="btn waves-effect green" type="button" id="save_add" onclick="save_add();"><i class="fa fa-save"></i> บันทึก </button>
+        <button class="btn waves-effect red modal-action modal-close" type="button"><i class="fa fa-times"></i> ยกเลิก </button>
+        <br><br>
+    </div>
+</div>
 <?php
 $template->closeMain();
 $template->close();
 ?>
 <script>
     $(function () {
+        $('select').on('contentChanged', function () {
+            $(this).material_select('destroy');
+            $(this).material_select();
+        });
+
         $(document).on('change', '#type_bio', function () {
             var value = $(this).val();
             $('#bio_fer_id option').remove();
@@ -66,27 +91,44 @@ $template->close();
                 'data': {'List': value},
                 'success': function (result) {
                     $('#bio_fer_id').append(result);
-                    refreshOption();
+                    $('#bio_fer_id').trigger('contentChanged');
+                    $('#bio_fer_id').val(select).trigger('contentChanged');
                 }
             });
         });
 
-        window.setTimeout(function () {
-            $.ajax({
-                'type': 'POST',
-                'url': '?ProductUnit',
-                'cache': false,
-                'data': {'getList': '1'},
-                'success': function (result2) {
-                    $('#apply_fertiltzer_unit').append(result2);
-                    refreshOption();
-                }
-            });
-        }, 100);
-
-        function refreshOption() {
-            $('select').material_select('destroy');
-            $('select').material_select();
-        }
+        ReData();
     });
+    function ReData() {
+        $.ajax({
+            'type': 'GET',
+            'url': '?FertilizerUnit/getUnitAll/',
+            'cache': false,
+            'success': function (result) {
+                $('#apply_fertiltzer_unit').empty();
+                $('#apply_fertiltzer_unit').append(result);
+                $('#apply_fertiltzer_unit').trigger('contentChanged');
+                $('#apply_fertiltzer_unit').val(select).trigger('contentChanged');
+            }
+        });
+    }
+    function save_add() {
+        var data = $('#unit_add').val();
+        $.ajax({
+            'type': 'POST',
+            'url': '?FertilizerUnit/AddByAJAX/',
+            'cache': false,
+            'data': {'unit_name': data},
+            'success': function (result) {
+                alert(result);
+                if ($.trim(result) == 'Success') {
+                    $('#unit_add').val('')
+                    ReData();
+                    $('#unit_add_m').closeModal();
+                } else {
+                    alert('บันทึกไม่สำเร็จ');
+                }
+            }
+        });
+    }
 </script>

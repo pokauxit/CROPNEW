@@ -21,7 +21,9 @@ class FertilizerUnit extends HMVC {
         parent::__construct();
 
         $this->page = $this->param(1);
-        if ($this->page < 1) {$this->page = 1;}
+        if ($this->page < 1) {
+            $this->page = 1;
+        }
         $this->row_start = ($this->page - 1) * $this->pageLimit;
     }
 
@@ -63,6 +65,10 @@ class FertilizerUnit extends HMVC {
         $this->db = new fertilizer_unit();
         $this->db->select();
         $this->view("Option_List");
+    }
+
+    public function AddByAJAX() {
+        $this->controller();
     }
 
 }
