@@ -38,11 +38,11 @@ $template->nav1level();
                         <td>
                             
                             
-                              <?php if($this->rowId->soil_type==1){echo 'ดินทราย';} ?> 
-                     <?php if($this->rowId->soil_type==2){echo 'ดินตะกอน';} ?> 
-                       <?php if($this->rowId->soil_type==3){echo 'ดินเหนียว';} ?> 
-                      <?php if($this->rowId->soil_type==4){echo 'ดินร่วน';} ?> 
-                        <?php if($this->rowId->soil_type==5){echo 'ดินเค็ม';} ?> 
+                              <?php if($rc->soil_type==1){echo 'ดินทราย';} ?> 
+                     <?php if($rc->soil_type==2){echo 'ดินตะกอน';} ?> 
+                       <?php if($rc->soil_type==3){echo 'ดินเหนียว';} ?> 
+                      <?php if($rc->soil_type==4){echo 'ดินร่วน';} ?> 
+                        <?php if($rc->soil_type==5){echo 'ดินเค็ม';} ?> 
                         
                         </td>
                         <td><?php echo $rc->soil_factor; ?></td>

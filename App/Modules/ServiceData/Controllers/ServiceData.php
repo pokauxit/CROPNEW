@@ -9,11 +9,13 @@ use App\Models\ageiculturist as agl;
 use App\Models\tambon;
 use App\Models\amphur;
 use App\Models\province;
+use App\Models\soil;
 
 class ServiceData extends HMVC {
 
     protected $dbPlant;
     protected $db;
+    protected $dbSoil;
 
     public function index() {
         if (!empty($_POST['showPlant'])) {
@@ -64,6 +66,15 @@ class ServiceData extends HMVC {
     public function getPlant($id) {
         $this->db = new pln();
         return $this->db->get($id);
+    }
+    
+    public function showSoil($id) {
+        $id = $_POST['value'];
+        $this->dbSoil = new soil();
+        $this->dbSoil->where = $this->dbSoil->pk() . "=" . $id;
+        $this->dbSoil->select();
+//$this->dbPlant->left("type_id", "typeplant.type_name");
+        $this->view("Soil");
     }
 
 }
