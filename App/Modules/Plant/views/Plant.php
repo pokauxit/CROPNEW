@@ -21,7 +21,7 @@
         </tr>
         </thead>
     <?php
-        $i=1;
+        echo $i=1+$this->paging->start();
         $pk = $this->pk;
         while($rc2 = $this->dbPlant->fetch()){
     ?>
@@ -42,7 +42,7 @@
     </table>
     <br/>
     <div class="center">
-         <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule()."///")?>
+         <?php echo $this->paging->build()?>
     </div>
     </div>
         <br/>

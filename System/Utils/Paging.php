@@ -10,14 +10,29 @@ namespace System\Utils;
  * @author 
  */
 class Paging {
-    
-    public static  function limit($perPage,$page){
-        if($page=="" || $page=="0"){$page=1;}
+    private $start = 0 ;
+    var $perPage  =0;
+    var $currentPage = 0;
+    var $total = 0;
+    var $url = "";
+    public function limit(){
+        
+        $perPage = $this->perPage;
+        $page  = $this->currentPage;
+        if($page=="" || $page=="0"){$page=1;$this->currentPage=1;} 
         $start = ($page*$perPage)-($perPage);
+        $this->start = $start;
         return $start.",".$perPage;
     }
+    public function start(){
+        return $this->start;
+    }
 
-    public static function build($total, $limit, $pagenumber=1, $baseurl) {
+    public  function build() {
+        $total = $this->total;
+        $limit = $this->perPage;
+        $baseurl =  $this->url;
+        $pagenumber = $this->currentPage;
          if($pagenumber=="" || $pagenumber=="0"){$pagenumber=1;}
     if ($total <= $limit) {
         return $html = "";
