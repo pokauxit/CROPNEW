@@ -25,8 +25,9 @@ $template->openMain($this->param(-2));
             <input name="amout" type="number" class="validate" required>
         </div>
         <div class="input-field col  s12 m4">
+            <select id="unit" name="unit">
+            </select>
             <label for="unit">หน่วยผลผลิต</label>
-            <input name="unit" type="text" class="validate" required>
         </div>
     </div>
     <div align="center">
@@ -41,3 +42,24 @@ $template->openMain($this->param(-2));
 $template->closeMain();
 $template->close();
 ?>
+<script>
+    $(function () {
+        var select = $('#old_value').val();
+        $.ajax({
+            'type': 'POST',
+            'url': '?ProductUnit',
+            'cache': false,
+            'data': {'getList': '1'},
+            'success': function (result) {
+                $('#unit').append(result);
+                $('#unit').trigger('contentChanged');
+                $('#unit').val(select).trigger('contentChanged');
+            }
+        });
+
+        $('select').on('contentChanged', function () {
+            $(this).material_select('destroy');
+            $(this).material_select();
+        });
+    });
+</script>

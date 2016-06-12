@@ -33,8 +33,10 @@ $template->openMain($this->param(-2));
             <input name="apply_fertilizer_amout" type="number" class="validate" required value="<?php echo $this->rowId->apply_fertilizer_amout; ?>">
         </div>
         <div class="input-field col  s12 m4">
+            <input type="hidden" id="unit_value" value="<?php echo $this->rowId->apply_fertiltzer_unit; ?>">
+            <select id="apply_fertiltzer_unit" name="apply_fertiltzer_unit">
+            </select>
             <label for="apply_fertiltzer_unit">หน่วยการให้ปุ๋ย</label>
-            <input name="apply_fertiltzer_unit" type="text" class="validate" required value="<?php echo $this->rowId->apply_fertiltzer_unit; ?>">
         </div>
         <div class="input-field col s12 m4">
             <label for="appy_fertilizer_frequency">ความถี่ในการให้ปุ๋ย</label>
@@ -86,6 +88,21 @@ $template->close();
                     $('#bio_fer_id').val(select).trigger('contentChanged');
                 }
             });
+
+            window.setTimeout(function () {
+                var select_unit = $('#unit_value').val();
+                $.ajax({
+                    'type': 'POST',
+                    'url': '?ProductUnit',
+                    'cache': false,
+                    'data': {'getList': '1'},
+                    'success': function (result2) {
+                        $('#apply_fertiltzer_unit').append(result2);
+                        $('#apply_fertiltzer_unit').trigger('contentChanged');
+                        $('#apply_fertiltzer_unit').val(select_unit).trigger('contentChanged');
+                    }
+                });
+            }, 100);
         }
 
         $('select').on('contentChanged', function () {

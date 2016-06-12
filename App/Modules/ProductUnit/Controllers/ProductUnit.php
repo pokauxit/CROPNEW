@@ -21,19 +21,24 @@ class ProductUnit extends HMVC {
         parent::__construct();
 
         $this->page = $this->param(1);
-        if ($this->page < 1) {$this->page = 1;}
+        if ($this->page < 1) {
+            $this->page = 1;
+        }
         $this->row_start = ($this->page - 1) * $this->pageLimit;
     }
 
     public function index() {
-
-        $this->db = new product_unit();
-        $this->allRow = $this->db->count($this->db->pk());
-        $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
-        $this->db->order = $this->db->pk();
-        $this->db->orderSort = "DESC";
-        $this->db->select();
-        $this->view();
+        if (!empty($_POST['getList'])) {
+            $this->getUnitAll();
+        } else {
+            $this->db = new product_unit();
+            $this->allRow = $this->db->count($this->db->pk());
+            $this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
+            $this->db->order = $this->db->pk();
+            $this->db->orderSort = "DESC";
+            $this->db->select();
+            $this->view();
+        }
     }
 
     public function Add() {

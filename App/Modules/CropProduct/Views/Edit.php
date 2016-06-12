@@ -14,9 +14,21 @@ $template->openMain($this->param(-2));
         <div class="input-field  col  s12 m4">
             <select name="season">
                 <option selected disabled>กรุณาเลือกรายการ</option>
-                <option value="ฤดูร้อน" <?php if($this->rowId->season=='ฤดูร้อน'){echo 'selected';} ?>>ฤดูร้อน</option>
-                <option value="ฤดูฝน" <?php if($this->rowId->season=='ฤดูฝน'){echo 'selected';} ?>>ฤดูฝน</option>
-                <option value="ฤดูหนาว" <?php if($this->rowId->season=='ฤดูหนาว'){echo 'selected';} ?>>ฤดูหนาว</option>
+                <option value="ฤดูร้อน" <?php
+                if ($this->rowId->season == 'ฤดูร้อน') {
+                    echo 'selected';
+                }
+                ?>>ฤดูร้อน</option>
+                <option value="ฤดูฝน" <?php
+                if ($this->rowId->season == 'ฤดูฝน') {
+                    echo 'selected';
+                }
+                ?>>ฤดูฝน</option>
+                <option value="ฤดูหนาว" <?php
+                if ($this->rowId->season == 'ฤดูหนาว') {
+                    echo 'selected';
+                }
+                ?>>ฤดูหนาว</option>
             </select>
             <label for="season">ฤดูกาล</label>
         </div>
@@ -25,11 +37,13 @@ $template->openMain($this->param(-2));
             <input name="amout" type="number" class="validate" required value="<?php echo $this->rowId->amout; ?>">
         </div>
         <div class="input-field col  s12 m4">
+            <input type="hidden" id="old_value" value="<?php echo $this->rowId->unit; ?>">
+            <select id="unit" name="unit">
+            </select>
             <label for="unit">หน่วยผลผลิต</label>
-            <input name="unit" type="text" class="validate" required value="<?php echo $this->rowId->unit; ?>">
         </div>
     </div>
-    
+
     <div class="row  ">
     </div>
     <div align="center">
@@ -44,3 +58,27 @@ $template->openMain($this->param(-2));
 $template->closeMain();
 $template->close();
 ?>
+<script>
+    $(function () {
+        edit();
+        function edit() {
+            var select = $('#old_value').val();
+            $.ajax({
+                'type': 'POST',
+                'url': '?ProductUnit',
+                'cache': false,
+                'data': {'getList': '1'},
+                'success': function (result) {
+                    $('#unit').append(result);
+                    $('#unit').trigger('contentChanged');
+                    $('#unit').val(select).trigger('contentChanged');
+                }
+            });
+        }
+
+        $('select').on('contentChanged', function () {
+            $(this).material_select('destroy');
+            $(this).material_select();
+        });
+    });
+</script>

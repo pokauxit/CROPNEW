@@ -23,7 +23,7 @@ class CropProduct extends HMVC {
         $this->db = new tb_method_2();
         $this->db->where = "crop_id='" . $this->param(0) . "'";
         $this->db->orderSort = "product_id ASC";
-        $this->db->select();
+        $this->db->left('unit', 'product_unit.unit_name');
         $this->view();
     }
 
