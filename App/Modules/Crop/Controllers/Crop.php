@@ -99,7 +99,7 @@ class Crop extends HMVC {
             
             $this->dbStandard = new tb_standard();
             $this->dbStandard->where = "agriculturist_id='" . $this->param(0) . "'";
-            $this->dbStandard->left('sid', 'standard.type_fertilizer_name');
+            $this->dbStandard->left('sid', 'standard.standard_name');
 
             $this->view("Add");
         }
@@ -118,7 +118,7 @@ class Crop extends HMVC {
             
             $this->dbStandard = new tb_standard();
             $this->dbStandard->where = "agriculturist_id='" . $this->param(0) . "'";
-            $this->dbStandard->left('sid', 'standard.type_fertilizer_name');
+            $this->dbStandard->left('sid', 'standard.standard_name');
             
             $this->view("Edit");
         }

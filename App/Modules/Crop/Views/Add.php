@@ -34,7 +34,7 @@ $template->ageiculturistInfo(ID);
                         <option disabled selected>กรุณาเลือกรายการ</option>
                         <?php while ($rc = $this->dbStandard->fetch()) {
                           ?>
-                          <option value="<?php echo $rc->agr_standard_id; ?>" <?php if($this->rowId->agr_standard_id==$rc->agr_standard_id){echo 'selected';} ?>><?php echo $rc->standard_type_fertilizer_name; ?></option>
+                          <option value="<?php echo $rc->agr_standard_id; ?>" <?php if($this->rowId->agr_standard_id==$rc->agr_standard_id){echo 'selected';} ?>><?php echo $rc->standard_standard_name; ?></option>
                           <?php }  ?>
                     </select>
                     <label for="agr_standard_id">มาตราฐาน</label>

@@ -31,7 +31,7 @@ $template->ageiculturistInfo(ID);
             ?>
             <tr>
                 <td><?php echo $rowId++; ?></td>
-                <td><?php echo $rc->standard_type_fertilizer_name; ?></td>
+                <td><?php echo $rc->standard_standard_name; ?></td>
                 <td><?php echo $rc->start_year; ?></td>
                 <td><?php echo $rc->end_year; ?></td>
                 <td><?php echo $rc->remark; ?></td>
