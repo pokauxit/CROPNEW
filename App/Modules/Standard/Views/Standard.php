@@ -26,7 +26,7 @@ $template->nav1level();
             </thead>
 
             <tbody>
-            <?php $rowId = 1; ?>
+            <?php $rowId = 1+$this->paging->start(); ?>
             <?php while ($rc = $this->db->fetch()) : ?>
                 <tr>
                     <td><?php echo $rowId++; ?></td>
@@ -42,7 +42,7 @@ $template->nav1level();
         </table>
         <p><br></p>
         <div class="center">
-            <?php echo Paging::build($this->allRow, $this->pageLimit, $this->param(1), $this->route->backToModule()."///")?>
+            <?php echo $this->paging->build();?>
         </div>
         <br/>
         <div class="center"  >
