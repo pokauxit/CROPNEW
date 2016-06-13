@@ -25,7 +25,7 @@ $template->ageiculturistInfo(ID);
                         <option disabled selected>กรุณาเลือกรายการ</option>
                         <?php while ($rc = $this->dbArea->fetch()) {
                           ?>
-                          <option value="<?php echo $rc->area_sequence; ?>" <?php if($this->rowId->area_sequence==$rc->area_sequence){echo 'selected';} ?>><?php echo $rc->soil_soil_name; ?></option>
+                          <option value="<?php echo $rc->area_sequence; ?>" <?php if($this->rowId->area_sequence==$rc->area_sequence){echo 'selected';} ?>><?php echo $rc->call_area.' '.$rc->area_detail; ?></option>
                           <?php }  ?>
                     </select>
                     <label for="area_sequence">พื้นที่</label>
@@ -35,7 +35,7 @@ $template->ageiculturistInfo(ID);
                         <option disabled selected>กรุณาเลือกรายการ</option>
                         <?php while ($rc = $this->dbStandard->fetch()) {
                           ?>
-                          <option value="<?php echo $rc->agr_standard_id; ?>" <?php if($this->rowId->agr_standard_id==$rc->agr_standard_id){echo 'selected';} ?>><?php echo $rc->standard_standard_name; ?></option>
+                          <option value="<?php echo $rc->agr_standard_id; ?>" <?php if($this->rowId->agr_standard_id==$rc->agr_standard_id){echo 'selected';} ?>><?php echo $rc->standard_standard_name . ' ' . $rc->start_year . ' - ' . $rc->end_year; ?></option>
                           <?php }  ?>
                     </select>
                     <label for="agr_standard_id">มาตราฐาน</label>

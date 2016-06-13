@@ -44,7 +44,7 @@ class Crop extends HMVC {
             $standard->fk = "sid";
             
             $govStd  = new GOV_std();
-            $govStd->display = "standard_name";
+            $govStd->display = "standard_name,start_year,end_year";
             
              //
             
@@ -57,7 +57,7 @@ class Crop extends HMVC {
             
            // br3
             $area = new tb_area();
-            $area->display = "area_detail";
+            $area->display = "area_detail,call_area";
             $area->fk ="soil_id";
             
             $soil = new soil();
