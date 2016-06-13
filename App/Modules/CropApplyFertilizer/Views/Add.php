@@ -120,7 +120,6 @@ $template->close();
             'cache': false,
             'data': {'unit_name': data},
             'success': function (result) {
-                alert(result);
                 if ($.trim(result) == 'Success') {
                     $('#unit_add').val('');
                     alert('บันทึกสำเร็จ');

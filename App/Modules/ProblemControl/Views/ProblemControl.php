@@ -95,7 +95,7 @@ $template->openMain($this->param(-2));
                 <td><?php echo $rowId++; ?></td>
                 <td><?php echo $rc->biofertilizer_bio_fer_name; ?></td>
                 <td><?php echo $rc->cmaount; ?></td>
-                <td><?php echo $rc->unit; ?></td>
+                <td><?php echo $rc->fertilizer_unit_unit_name; ?></td>
                 <td><?php echo $rc->control_detail; ?></td>
                 <td>
                     <a href="<?php echo $this->route->Edit($this->param(0) . '/' . $this->param(1) . '/' . $rc->control_id); ?>"><i
