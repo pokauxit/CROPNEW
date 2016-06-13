@@ -1,15 +1,19 @@
 <?php
 
 use App\Modules\CropProblem\Controllers\CropProblem;
+use App\Modules\ServiceData\Controllers\ServiceData as Service;
 Use System\Template\Template;
 
 $template = new Template();
 $template->open();
 $template->nav3level(ID);
 $template->openMain($this->param(-2));
+
+$service = new Service();
+$sv =  $service->getCropByID(ID);
 ?>
 <form class="col s12" action="" method="post">
-    <input type="hidden" id="id_plant" value="<?php echo $this->param(0); ?>">
+    <input type="hidden" id="id_plant" value="<?php echo $sv->plant_id; ?>">
     <input type="hidden" id="old_id" value="<?php echo $this->rowId->disease_pest_weed_id; ?>">
     <div class="row">
         <div class="input-field  col  s12 m4">
