@@ -39,8 +39,8 @@ $template->openMain($this->param(-2));
 
                 </div>
                 <div class=" col s12 m4 ">
-                    <label>รายละเอียดปัญหาของพืชที่ปลูก :
-                         <label style="color: #000"><?php echo $problem->crop_problem_detail; ?></label>
+                    <label>ชื่อปัญหา :
+                         <label style="color: #000"><?php echo $problem->disease_pest_weed_disease_pest_weed_name; ?></label>
                     </label>
                 </div>
                 <div class=" col s12 m4 ">
@@ -61,7 +61,13 @@ $template->openMain($this->param(-2));
                     </label>
                 </div>
 
-                <div class=" col s12 m12 ">
+                
+                <div class=" col s12 m8 ">
+                    <label>รายละเอียดปัญหาของพืชที่ปลูก :
+                         <label style="color: #000"><?php echo $problem->crop_problem_detail; ?></label>
+                    </label>
+                </div>
+                <div class=" col s12 m4 ">
                     <label>หมายเหตุ : <label style="color: #000"><?php echo $problem->note; ?></label></label>
                 </div>
             </div>
