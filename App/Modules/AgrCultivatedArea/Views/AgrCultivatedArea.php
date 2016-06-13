@@ -19,10 +19,11 @@ $template->ageiculturistInfo(ID);
             <thead class="green">
                 <tr>
                     <th>ลำดับ</th>
+                    <th>ชื่อพื้นที่</th>
                     <th>ชื่อดิน</th>
                     <th>ละติจูด</th>
                     <th>ลองติจูด</th>
-                    <th>ข้อมูลพื้นที่</th>
+                    <th>ขนาดพื้นที่</th>
                     <th>การระบายน้ำของดิน</th>
                     <th>จัดการ</th>
                 </tr>
@@ -34,6 +35,7 @@ $template->ageiculturistInfo(ID);
                     ?>
                     <tr>
                         <td><?php echo $rowId++; ?></td>
+                        <td><?php echo $rc->call_area; ?></td>
                         <td><a href="javascropt:" onclick="showPlantInfo('<?php echo $rc->soil_id; ?>');"><?php echo $rc->soil_soil_name; ?></a></td>
                         <td><?php echo $rc->lat_map; ?></td>
                         <td><?php echo $rc->long_map; ?></td>

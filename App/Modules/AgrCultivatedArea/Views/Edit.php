@@ -43,11 +43,15 @@ $template->ageiculturistInfo(ID);
             </div>
 
             <div class="row">
-                <div class="input-field col s12 m6">
-                    <label for="area_detail">ข้อมูลพื้นที่</label>
+                <div class="input-field col s12 m4">
+                    <label for="call_area">ชื่อพื้นที่</label>
+                    <input name="call_area" type="text" class="validate" required value="<?php echo $this->rowId->call_area; ?>">
+                </div>
+                <div class="input-field col s12 m4">
+                    <label for="area_detail">ขนาดพื้นที่</label>
                     <input name="area_detail" type="text" class="validate" required value="<?php echo $this->rowId->area_detail; ?>">
                 </div>
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 m4">
                     <label for="soil_drainage">การระบายน้ำของดิน</label>
                     <input name="soil_drainage" type="text" class="validate" required value="<?php echo $this->rowId->soil_drainage; ?>">
                 </div>
