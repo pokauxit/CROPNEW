@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 08, 2016 at 07:30 AM
+-- Generation Time: Jun 13, 2016 at 02:12 PM
 -- Server version: 5.7.12-log
 -- PHP Version: 5.6.21
 
@@ -39,7 +39,9 @@ CREATE TABLE `ageiculturist` (
 --
 
 INSERT INTO `ageiculturist` (`agriculturist_id`, `home_no`, `phone_no`, `agriculturist_name`, `tambon_id`) VALUES
-(1, '118 ม.3 บ้านกระเบื้อง', '0856342273', 'นางรำพึง  อินทร์สำราญ', 2363);
+(1, '118 ม.3 บ้านกระเบื้อง', '0856342273', 'นางรำพึง  อินทร์สำราญ', 2363),
+(2, 'eryt', '456456', 'eeee', 1),
+(3, 'rtyury', '456', 'rtyr', 1);
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,8 @@ CREATE TABLE `agr_standard` (
 
 INSERT INTO `agr_standard` (`agr_standard_id`, `agriculturist_id`, `sid`, `start_year`, `end_year`, `remark`) VALUES
 (2, 0, 3, 2558, 2560, 'dsfsdfsdfsdfsdf'),
-(4, 1, 4, 2558, 2560, 'test');
+(4, 1, 4, 2558, 2560, 'test'),
+(5, 1, 4, 444, 444, '44');
 
 -- --------------------------------------------------------
 
@@ -1092,6 +1095,13 @@ CREATE TABLE `application_method` (
   `fertiltzer_peroid` varchar(50) DEFAULT NULL COMMENT 'ช่วงเวลาที่ให้ปุ๋ย'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `application_method`
+--
+
+INSERT INTO `application_method` (`step`, `crop_id`, `step_detail`, `time_start`, `fertiltzer_peroid`) VALUES
+(1, 3, 'ddee', '2016-06-21', 'ee');
+
 -- --------------------------------------------------------
 
 --
@@ -1113,9 +1123,12 @@ CREATE TABLE `apply_fertilizer` (
 
 INSERT INTO `apply_fertilizer` (`apply_fertilizer_id`, `crop_id`, `bio_fer_id`, `apply_fertilizer_amout`, `apply_fertiltzer_unit`, `appy_fertilizer_frequency`) VALUES
 (1, 1, 10000001, 111, '111', '111'),
-(3, 1, 10000001, 324234, '324234dfgdfgdf', 'gdfgdfgdfg'),
+(3, 1, 10000001, 324234, '9', 'gdfgdfgdfg'),
 (4, 0, 10000002, 33, '33', '33'),
-(5, 14, 10000002, 1, 'กระสอบ/ไร่', '1 สัปดาห์');
+(5, 14, 10000002, 1, 'กระสอบ/ไร่', '1 สัปดาห์'),
+(6, 3, 10000002, 44, '8', '222'),
+(7, 5, 10000001, 55, '4', '555'),
+(8, 6, 10000002, 555, '10', '555');
 
 -- --------------------------------------------------------
 
@@ -1176,15 +1189,21 @@ CREATE TABLE `crop` (
   `sunlight` varchar(50) NOT NULL COMMENT 'ปริมาณแสง',
   `water_source` varchar(100) NOT NULL COMMENT 'แหล่งน้ำ',
   `wind` double(7,3) NOT NULL COMMENT 'ความเร็วลม',
-  `spetial_information` varchar(200) NOT NULL COMMENT 'ข้อมูลพิเศษ'
+  `spetial_information` varchar(200) NOT NULL COMMENT 'ข้อมูลพิเศษ',
+  `area_sequence` int(11) NOT NULL,
+  `agr_standard_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `crop`
 --
 
-INSERT INTO `crop` (`crop_id`, `plant_id`, `argiculturist_id`, `sunlight`, `water_source`, `wind`, `spetial_information`) VALUES
-(1, 9, 1, '0', '-', 0.000, '-');
+INSERT INTO `crop` (`crop_id`, `plant_id`, `argiculturist_id`, `sunlight`, `water_source`, `wind`, `spetial_information`, `area_sequence`, `agr_standard_id`) VALUES
+(1, 9, 1, '0', '-', 0.000, '-', 3, 4),
+(3, 8, 1, '444', 'ertetr', 44.000, '44', 0, 0),
+(4, 8, 1, 's', 'sss', 44.000, '-', 0, 0),
+(5, 10, 1, 'ภภ', 'sss', 0.000, 'ภภ', 1, 4),
+(6, 8, 1, '55', '55', 44.000, '555', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -1265,8 +1284,9 @@ INSERT INTO `disease_pest_weed` (`disease_pest_weed_id`, `plant_id`, `problem_ty
 (8, 8, 1, 'ไพำไพำ', 'ไำพพ'),
 (9, 1, 2, 'tryry', 'tytr'),
 (10, 8, 1, '655r', '45r'),
-(11, 8, 3, 'ewrwe', 'sef'),
-(12, 8, 2, '777', 'hg');
+(11, 8, 3, '5555', '44444'),
+(12, 8, 2, '777', 'hg'),
+(13, 8, 2, 'sdf', 'sdf');
 
 -- --------------------------------------------------------
 
@@ -1288,6 +1308,31 @@ CREATE TABLE `disease_symptom` (
 INSERT INTO `disease_symptom` (`disease_symptom_id`, `disease_pest_weed_id`, `symptom_id`, `detail`) VALUES
 (10, 4, 4, 'เน่ารวดเร็ว'),
 (11, 2, 2, 'ผผผผผผผ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fertilizer_unit`
+--
+
+CREATE TABLE `fertilizer_unit` (
+  `unit_id` int(11) NOT NULL,
+  `unit_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `fertilizer_unit`
+--
+
+INSERT INTO `fertilizer_unit` (`unit_id`, `unit_name`) VALUES
+(3, 'Anusit'),
+(4, 'zxczxcxcz'),
+(5, 'zxczxcz'),
+(6, 'sadasd'),
+(7, 'asdasdasd'),
+(8, 'eeeeee'),
+(9, '44444444444'),
+(10, 'ggggg');
 
 -- --------------------------------------------------------
 
@@ -1330,7 +1375,8 @@ CREATE TABLE `harvest` (
 
 INSERT INTO `harvest` (`harvest_id`, `crop_id`, `harvest_algorithm`) VALUES
 (3, 1, 'aaaaa'),
-(4, 14, 'ตัด');
+(4, 14, 'ตัด'),
+(5, 3, 'eeee');
 
 -- --------------------------------------------------------
 
@@ -1350,10 +1396,12 @@ CREATE TABLE `plant` (
 --
 
 INSERT INTO `plant` (`plant_id`, `type_id`, `plant_name`, `caltivated_area`) VALUES
-(1, 2, 'คุณนายตื่นสาย', 'ซึ่งควรปลูกอยู่กลางแจ้ง สามารถรับแสงแดดได้ทั้งวัน และควรรดน้ำทุกวันวันละครั้งแต่ระวังอย่าให้น้ำขัง'),
+(1, 2, 'คุณนายตื่นสาย', 'ซึ่งควรปลูกอยู่กลางแจ้ง สามารถรับแสงแดดได้ทั้งวัน และควรรดน้ำทุกวันวันละครั้งแต่ระวังอย่าให้น้ำขังนน'),
 (4, 2, 'วาสนา', 'พื้นหน้าบ้าน'),
 (8, 1, 'ดาวเรือง', 'กระถาง'),
-(9, 6, 'ผักบุ้ง', 'ทั่วประเทศ');
+(9, 6, 'ผักบุ้ง', 'ทั่วประเทศ'),
+(10, 1, 'ผักบุ้ง', 'stsre'),
+(11, 3, 'erte', 'ertert');
 
 -- --------------------------------------------------------
 
@@ -1375,7 +1423,34 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `crop_id`, `season`, `amout`, `unit`) VALUES
 (4, 14, 'ตัด', '', ''),
-(6, 1, 'ฤดูหนาว', '15', 'กิโลกรัม');
+(6, 1, 'ฤดูหนาว', '15', '8'),
+(7, 1, 'ฤดูร้อน', '333', '11'),
+(8, 3, 'ฤดูฝน', '444', '11'),
+(9, 5, 'ฤดูฝน', '55', '11'),
+(10, 6, 'ฤดูหนาว', '344', '13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_unit`
+--
+
+CREATE TABLE `product_unit` (
+  `unit_id` int(11) NOT NULL,
+  `unit_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product_unit`
+--
+
+INSERT INTO `product_unit` (`unit_id`, `unit_name`) VALUES
+(8, 'ddssswwwwww'),
+(9, 'sdfwerwerw'),
+(10, 'werwer'),
+(11, 'ttttt'),
+(12, '5555555'),
+(13, 'yyyyy');
 
 -- --------------------------------------------------------
 
@@ -1494,7 +1569,9 @@ CREATE TABLE `soil` (
 
 INSERT INTO `soil` (`soil_id`, `soil_name`, `soil_type`, `soil_factor`, `soil_problem`, `soil_nutrition`) VALUES
 (1, 'ฟหกฟหก', 1, 'ฟหกฟหก', 'ฟหกฟหกฟหก', 'หฟกฟหกฟหก'),
-(3, 'Anusit', 3, 'Khuandee', 'TEst', 'VAlue');
+(3, 'Anusit', 3, 'Khuandee', 'TEst', 'VAlue'),
+(4, 'ำำำ', 2, 'ำำ', 'ำำ', 'ำำ'),
+(5, 'ำำำ', 2, 'ำำ', 'ำำ', 'ำำ');
 
 -- --------------------------------------------------------
 
@@ -1526,7 +1603,7 @@ INSERT INTO `staff` (`staff_id`, `staff_user`, `staff_pass`, `staff_name`, `staf
 
 CREATE TABLE `standard` (
   `sid` int(11) NOT NULL COMMENT 'รหัสมาตรฐาน',
-  `type_fertilizer_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อมาตรฐานที่ได้รับ',
+  `standard_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อมาตรฐานที่ได้รับ',
   `org` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'สถาบันหรือน่วยงานที่กำหนดมฐ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1534,9 +1611,11 @@ CREATE TABLE `standard` (
 -- Dumping data for table `standard`
 --
 
-INSERT INTO `standard` (`sid`, `type_fertilizer_name`, `org`) VALUES
+INSERT INTO `standard` (`sid`, `standard_name`, `org`) VALUES
 (3, 'ทดสอบ๑', 'ทดสอบ๑'),
-(4, 'ทดสอบ๒', 'ทดสอบ๒');
+(4, 'ทดสอบ๒', 'ทดสอบ๒'),
+(5, 'wไ', 'wไก'),
+(6, 'ภภภภ', 'ภภภ');
 
 -- --------------------------------------------------------
 
@@ -10567,6 +10646,12 @@ ALTER TABLE `disease_symptom`
   ADD KEY `FK_disease_symptom_symptom` (`symptom_id`);
 
 --
+-- Indexes for table `fertilizer_unit`
+--
+ALTER TABLE `fertilizer_unit`
+  ADD PRIMARY KEY (`unit_id`);
+
+--
 -- Indexes for table `geography`
 --
 ALTER TABLE `geography`
@@ -10589,6 +10674,12 @@ ALTER TABLE `plant`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `product_unit`
+--
+ALTER TABLE `product_unit`
+  ADD PRIMARY KEY (`unit_id`);
 
 --
 -- Indexes for table `province`
@@ -10646,7 +10737,7 @@ ALTER TABLE `typeplant`
 -- AUTO_INCREMENT for table `ageiculturist`
 --
 ALTER TABLE `ageiculturist`
-  MODIFY `agriculturist_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสเกษตรกร', AUTO_INCREMENT=2;
+  MODIFY `agriculturist_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสเกษตรกร', AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `agr_standard`
 --
@@ -10661,12 +10752,12 @@ ALTER TABLE `amphur`
 -- AUTO_INCREMENT for table `application_method`
 --
 ALTER TABLE `application_method`
-  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน';
+  MODIFY `step` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับขั้นตอน', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `apply_fertilizer`
 --
 ALTER TABLE `apply_fertilizer`
-  MODIFY `apply_fertilizer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการให้ปุ๋ย', AUTO_INCREMENT=6;
+  MODIFY `apply_fertilizer_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการให้ปุ๋ย', AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `biofertilizer`
 --
@@ -10681,7 +10772,7 @@ ALTER TABLE `control`
 -- AUTO_INCREMENT for table `crop`
 --
 ALTER TABLE `crop`
-  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=2;
+  MODIFY `crop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสพืชที่ปลูก', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `crop_problem`
 --
@@ -10691,17 +10782,22 @@ ALTER TABLE `crop_problem`
 -- AUTO_INCREMENT for table `cultivated_area`
 --
 ALTER TABLE `cultivated_area`
-  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=9;
+  MODIFY `area_sequence` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ลำดับของพื้นที่', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `disease_pest_weed`
 --
 ALTER TABLE `disease_pest_weed`
-  MODIFY `disease_pest_weed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `disease_pest_weed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `disease_symptom`
 --
 ALTER TABLE `disease_symptom`
   MODIFY `disease_symptom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `fertilizer_unit`
+--
+ALTER TABLE `fertilizer_unit`
+  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `geography`
 --
@@ -10711,17 +10807,22 @@ ALTER TABLE `geography`
 -- AUTO_INCREMENT for table `harvest`
 --
 ALTER TABLE `harvest`
-  MODIFY `harvest_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=5;
+  MODIFY `harvest_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `plant`
 --
 ALTER TABLE `plant`
-  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=10;
+  MODIFY `plant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสชนิดพืช', AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=7;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการเก็บเกี่ยว', AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `product_unit`
+--
+ALTER TABLE `product_unit`
+  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `province`
 --
@@ -10731,7 +10832,7 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT for table `soil`
 --
 ALTER TABLE `soil`
-  MODIFY `soil_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสดิน', AUTO_INCREMENT=4;
+  MODIFY `soil_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสดิน', AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `staff`
 --
@@ -10741,7 +10842,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `standard`
 --
 ALTER TABLE `standard`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสมาตรฐาน', AUTO_INCREMENT=5;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสมาตรฐาน', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `symptom`
 --
