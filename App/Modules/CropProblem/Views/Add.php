@@ -9,10 +9,10 @@ $template->nav3level(ID);
 $template->openMain($this->param(-2));
 ?>
 <form class="col s12" action="" method="post">
-
+    <input type="hidden" id="id_plant" value="<?php echo $this->param(0); ?>">
     <div class="row">
         <div class="input-field  col  s12 m4">
-            <select name="problem_type_id">
+            <select name="problem_type_id" id="problem_type_id">
                 <option disabled selected>กรุณาเลือกรายการ</option>
                 <option value="1">โรค</option>
                 <option value="2">ศัตรูพืช</option>
@@ -20,7 +20,12 @@ $template->openMain($this->param(-2));
             </select>
             <label for="problem_type_id">ชนิดปัญหา</label>
         </div>
-        <div class="input-field  col  s12 m8">
+        <div class="input-field  col  s12 m4">
+            <select name="disease_pest_weed_id" id="disease_pest_weed_id">
+            </select>
+            <label for="disease_pest_weed_id">ชื่อปัญหา</label>
+        </div>
+        <div class="input-field  col  s12 m4">
             <label for="crop_problem_detail">รายละเอียด</label>
             <input name="crop_problem_detail" type="text" class="validate" required>
         </div>
@@ -53,3 +58,31 @@ $template->openMain($this->param(-2));
 $template->closeMain();
 $template->close();
 ?>
+<script>
+    $(function () {
+        $('select').on('contentChanged', function () {
+            $(this).material_select('destroy');
+            $(this).material_select();
+        });
+        $(document).on('change', '#problem_type_id', function () {
+            reData();
+        });
+    });
+
+    function reData() {
+        var id1 = $('#problem_type_id').val();
+        var id2 = $('#id_plant').val();
+        $('#disease_pest_weed_id option').remove();
+        $.ajax({
+            'type': 'POST',
+            'url': '?DiseasePestWeed/getWeed',
+            'cache': false,
+            'data': {'id1': id1, 'id2': id2},
+            'success': function (result) {
+                $('#disease_pest_weed_id').append(result);
+                $('#disease_pest_weed_id').trigger('contentChanged');
+                $('#disease_pest_weed_id').val(select).trigger('contentChanged');
+            }
+        });
+    }
+</script>

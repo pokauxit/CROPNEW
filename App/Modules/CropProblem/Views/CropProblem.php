@@ -14,6 +14,7 @@ $template->openMain($this->param(-2));
         <tr>
             <th>ลำดับ</th>
             <th>ชนิดปัญหา</th>
+            <th>ชื่อปัญหา</th>
             <th>รายละเอียด</th>
             <th>ความร้ายแรง</th>
             <th>เพิ่มเติม</th>
@@ -40,6 +41,7 @@ $template->openMain($this->param(-2));
             <tr>
                 <td><?php echo $rowId++; ?></td>
                 <td><?php echo $problem_type; ?></td>
+                <td><?php echo $rc->disease_pest_weed_disease_pest_weed_name; ?></td>
                 <td><?php echo $rc->crop_problem_detail; ?></td>
                 <td><?php echo $in_seiouscase; ?></td>
                 <td><?php echo $rc->note; ?></td>

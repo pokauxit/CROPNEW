@@ -21,7 +21,7 @@ class CropProblem extends HMVC {
         $this->db = new tb_method_6();
         $this->db->where = "crop_id='" . $this->param(0) . "'";
         $this->db->orderSort = "crop_problem_id ASC";
-        $this->db->select();
+        $this->db->left('disease_pest_weed_id', 'disease_pest_weed.disease_pest_weed_name');
         $this->view();
     }
 

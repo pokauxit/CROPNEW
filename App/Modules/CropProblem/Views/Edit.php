@@ -9,18 +9,36 @@ $template->nav3level(ID);
 $template->openMain($this->param(-2));
 ?>
 <form class="col s12" action="" method="post">
-
+    <input type="hidden" id="id_plant" value="<?php echo $this->param(0); ?>">
+    <input type="hidden" id="old_id" value="<?php echo $this->rowId->disease_pest_weed_id; ?>">
     <div class="row">
         <div class="input-field  col  s12 m4">
-            <select name="problem_type_id">
+            <select name="problem_type_id" id="problem_type_id">
                 <option disabled selected>กรุณาเลือกรายการ</option>
-                <option value="1" <?php if($this->rowId->problem_type_id == 1){echo 'selected';} ?>>โรค</option>
-                <option value="2" <?php if($this->rowId->problem_type_id == 2){echo 'selected';} ?>>ศัตรูพืช</option>
-                <option value="3" <?php if($this->rowId->problem_type_id == 3){echo 'selected';} ?>>วัชพืช</option>
+                <option value="1" <?php
+                if ($this->rowId->problem_type_id == 1) {
+                    echo 'selected';
+                }
+                ?>>โรค</option>
+                <option value="2" <?php
+                if ($this->rowId->problem_type_id == 2) {
+                    echo 'selected';
+                }
+                ?>>ศัตรูพืช</option>
+                <option value="3" <?php
+                if ($this->rowId->problem_type_id == 3) {
+                    echo 'selected';
+                }
+                ?>>วัชพืช</option>
             </select>
             <label for="problem_type_id">ชนิดปัญหา</label>
         </div>
-        <div class="input-field  col  s12 m8">
+        <div class="input-field  col  s12 m4">
+            <select name="disease_pest_weed_id" id="disease_pest_weed_id">
+            </select>
+            <label for="disease_pest_weed_id">ชื่อปัญหา</label>
+        </div>
+        <div class="input-field  col  s12 m4">
             <label for="crop_problem_detail">รายละเอียด</label>
             <input name="crop_problem_detail" type="text" class="validate" required value="<?php echo $this->rowId->crop_problem_detail; ?>">
         </div>
@@ -30,8 +48,16 @@ $template->openMain($this->param(-2));
         <div class="input-field  col  s12 m4">
             <select name="in_seiouscase">
                 <option disabled selected>กรุณาเลือกรายการ</option>
-                <option value="1" <?php if($this->rowId->in_seiouscase == 1){echo 'selected';} ?>>ใช่</option>
-                <option value="2" <?php if($this->rowId->in_seiouscase == 2){echo 'selected';} ?>>ไม่</option>
+                <option value="1" <?php
+                if ($this->rowId->in_seiouscase == 1) {
+                    echo 'selected';
+                }
+                ?>>ใช่</option>
+                <option value="2" <?php
+                if ($this->rowId->in_seiouscase == 2) {
+                    echo 'selected';
+                }
+                ?>>ไม่</option>
             </select>
             <label for="in_seiouscase">ความร้ายแรง</label>
         </div>
@@ -53,3 +79,33 @@ $template->openMain($this->param(-2));
 $template->closeMain();
 $template->close();
 ?>
+<script>
+    $(function () {
+        $('select').on('contentChanged', function () {
+            $(this).material_select('destroy');
+            $(this).material_select();
+        });
+        $(document).on('change', '#problem_type_id', function () {
+            reData();
+        });
+        reData();
+    });
+
+    function reData() {
+        var id1 = $('#problem_type_id').val();
+        var id2 = $('#id_plant').val();
+        var select = $('#old_id').val();
+        $('#disease_pest_weed_id option').remove();
+        $.ajax({
+            'type': 'POST',
+            'url': '?DiseasePestWeed/getWeed',
+            'cache': false,
+            'data': {'id1': id1, 'id2': id2},
+            'success': function (result) {
+                $('#disease_pest_weed_id').append(result);
+                $('#disease_pest_weed_id').trigger('contentChanged');
+                $('#disease_pest_weed_id').val(select).trigger('contentChanged');
+            }
+        });
+    }
+</script>
