@@ -6,6 +6,7 @@ use System\HMVC\HMVC;
 use App\Models\crop;
 use App\Models\plant as pln;
 use App\Models\ageiculturist as agl;
+use App\Models\standard as std;
 use App\Models\tambon;
 use App\Models\amphur;
 use App\Models\province;
@@ -16,6 +17,7 @@ class ServiceData extends HMVC {
     protected $dbPlant;
     protected $db;
     protected $dbSoil;
+    protected $dbStandard;
 
     public function index() {
         if (!empty($_POST['showPlant'])) {
@@ -62,6 +64,15 @@ class ServiceData extends HMVC {
         $this->dbPlant->left("type_id", "typeplant.type_name");
         $this->view("Plant");
     }
+    
+        public function showStandard(){
+        $id = $_POST['value'];
+        $this->dbStandard = new std();
+        $this->dbStandard->where = $this->dbStandard->pk(). "=" . $id;
+        $this->dbStandard->select();
+        $this->view("Standard");
+    }
+    
 
     public function getPlant($id) {
         $this->db = new pln();
@@ -76,5 +87,5 @@ class ServiceData extends HMVC {
 //$this->dbPlant->left("type_id", "typeplant.type_name");
         $this->view("Soil");
     }
-
+    
 }

@@ -1,6 +1,7 @@
 <?php
 
 use System\Template\Template;
+use App\Modules\ServiceData\Controllers\ServiceData as Service;
 $template = new Template();
 $template->open();
 $template->nav2level(ID);
@@ -30,8 +31,8 @@ $template->ageiculturistInfo(ID);
         while ($rc = $this->db->fetch()) {
             ?>
             <tr>
-                <td><?php echo $rowId++; ?></td>
-                <td><?php echo $rc->standard_standard_name; ?></td>
+                <td><?php echo $rowId++ ;?></td>
+                <td><a href="javascropt:" onclick="showStandardInfo('<?php echo $rc->sid; ?>');"><?php echo $rc->standard_standard_name; ?></a></td>
                 <td><?php echo $rc->start_year; ?></td>
                 <td><?php echo $rc->end_year; ?></td>
                 <td><?php echo $rc->remark; ?></td>
@@ -44,13 +45,39 @@ $template->ageiculturistInfo(ID);
 </table>
 
 <p><br></p>
-<div class="center"  >
+<div class="center">
+    <?php
+        $service = new Service();
+        $rc = $service->getCropByID(ID);
+    ?>
     <a class="btn waves-effect green" href="<?php echo $this->route->Add() . '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
     <a class="btn waves-effect orange" href="?Ageiculturist///<?php echo $this->param(1); ?>"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
 </div>
    </div>
 
 </div>
+<div id="standard" class="modal">
+    <div style="text-align: center;padding: 3px">
+        <span style="float: right">
+            <a href="javascript:;" class="modal-action modal-close red-text"><i class="fa fa-lg fa-times"></i></a>
+        </span>
+    </div>
+    <div id="standard_detail"></div>
+</div>
 <?php
 $template->close();
 ?>
+<script>
+    function showStandardInfo(value) {
+        $.ajax({
+            'type': 'POST',
+            'url': '?ServiceData/showStandard',
+            'cache': false,
+            'data': {'value': value},
+            'success': function (result) {
+                $('#standard_detail').html(result);
+                $('#standard').openModal();
+            }
+        });
+    }
+</script>
