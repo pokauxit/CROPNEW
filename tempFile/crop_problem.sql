@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-06-14 22:22:12
+Date: 2016-06-14 23:38:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,16 +27,19 @@ CREATE TABLE `crop_problem` (
   `in_seiouscase` int(5) NOT NULL COMMENT 'ความร้ายแรงของปัญหา',
   `note` varchar(200) NOT NULL,
   `disease_pest_weed_id` int(11) NOT NULL,
-  `symptom_id` int(11) NOT NULL,
+  `disease_symptom_id` int(11) NOT NULL,
   PRIMARY KEY (`crop_problem_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='ปัญหาของพืชที่ปลูก';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='ปัญหาของพืชที่ปลูก';
 
 -- ----------------------------
 -- Records of crop_problem
 -- ----------------------------
 INSERT INTO `crop_problem` VALUES ('1', '11', '3', 'sdfsdf', '1', '32454334dsvsdf', '0', '0');
 INSERT INTO `crop_problem` VALUES ('2', '14', '1', 'dddd', '1', 'sfddd', '0', '0');
-INSERT INTO `crop_problem` VALUES ('3', '1', '1', 'ใบหยิกงอ', '1', '-', '7', '0');
+INSERT INTO `crop_problem` VALUES ('3', '1', '1', 'ใบหยิกงอ', '1', 'TEST', '14', '2');
 INSERT INTO `crop_problem` VALUES ('4', '1', '2', 'test', '0', 'testtest', '6', '0');
 INSERT INTO `crop_problem` VALUES ('5', '1', '1', 'dfgdfg', '1', 'dfgdfgdfg', '2', '0');
 INSERT INTO `crop_problem` VALUES ('6', '5', '2', 'erertert', '1', 'ertertertet', '13', '0');
+INSERT INTO `crop_problem` VALUES ('7', '1', '1', 'dfgdfgd', '1', 'dfgdfg', '0', '0');
+INSERT INTO `crop_problem` VALUES ('8', '1', '1', '546', '1', 'fdgdfgdfgd', '14', '2');
+INSERT INTO `crop_problem` VALUES ('9', '1', '1', 'TEST NEW', '1', 'TEST NEW', '14', '2');
