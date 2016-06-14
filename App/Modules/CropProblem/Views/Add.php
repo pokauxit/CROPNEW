@@ -10,7 +10,7 @@ $template->nav3level(ID);
 $template->openMain($this->param(-2));
 
 $service = new Service();
-$sv =  $service->getCropByID(ID);
+$sv = $service->getCropByID(ID);
 ?>
 <form class="col s12" action="" method="post">
     <input type="hidden" id="id_plant" value="<?php echo $sv->plant_id; ?>">
@@ -37,6 +37,11 @@ $sv =  $service->getCropByID(ID);
 
     <div class="row">
         <div class="input-field  col  s12 m4">
+            <select name="disease_symptom_id" id="disease_symptom_id">
+            </select>
+            <label for="disease_symptom_id">อาการ</label>
+        </div>
+        <div class="input-field  col  s12 m4">
             <select name="in_seiouscase">
                 <option disabled selected>กรุณาเลือกรายการ</option>
                 <option value="1">ใช่</option>
@@ -44,7 +49,7 @@ $sv =  $service->getCropByID(ID);
             </select>
             <label for="in_seiouscase">ความร้ายแรง</label>
         </div>
-        <div class="input-field col  s12 m8">
+        <div class="input-field col  s12 m4">
             <label for="note">เพิ่มเติม</label>
             <input name="note" type="text" class="validate" required>
         </div>
@@ -69,7 +74,19 @@ $template->close();
             $(this).material_select();
         });
         $(document).on('change', '#problem_type_id', function () {
+            $('#disease_symptom_id').empty();
+            $('#disease_symptom_id').trigger('contentChanged');
             reData();
+            window.setTimeout(function () {
+                reSymptom();
+            }, 500);
+        });
+        $(document).on('change', '#disease_pest_weed_id', function () {
+            $('#disease_symptom_id').empty();
+            $('#disease_symptom_id').trigger('contentChanged');
+            window.setTimeout(function () {
+                reSymptom();
+            }, 500);
         });
     });
 
@@ -88,5 +105,26 @@ $template->close();
                 $('#disease_pest_weed_id').val(select).trigger('contentChanged');
             }
         });
+    }
+
+    function reSymptom() {
+        var id1 = $('#problem_type_id').val();
+        var id2 = $('#disease_pest_weed_id').val();
+        var select = $('#old_disease_symptom_id').val();
+        $('#disease_symptom_id').empty();
+        if (id1=='1' && id2>'0'){
+            $.ajax({
+                'type': 'POST',
+                'url': '?DiseaseSymptom/getSymptom',
+                'cache': false,
+                'data': {'id1': id2},
+                'success': function (result) {
+                    $('#disease_symptom_id').empty();
+                    $('#disease_symptom_id').append(result);
+                    $('#disease_symptom_id').trigger('contentChanged');
+                    $('#disease_symptom_id').val(select).trigger('contentChanged');
+                }
+            });
+        }
     }
 </script>

@@ -1,5 +1,4 @@
 <?php
- 
 
 namespace App\Modules\Symptom\Controllers;
 
@@ -8,8 +7,7 @@ use System\HMVC\HMVC;
 use System\Security\ACL;
 use System\Utils\Paging;
 
-class Symptom extends HMVC
-{
+class Symptom extends HMVC {
 
     protected $db;
     protected $row;
@@ -22,16 +20,15 @@ class Symptom extends HMVC
         parent::__construct();
     }
 
-    public function index()
-    {
+    public function index() {
         $this->db = new spm();
         $this->paging = new Paging();
-        
+
         $this->paging->total = $this->db->count($this->db->pk());
         $this->paging->currentPage = $this->param(1);
         $this->paging->perPage = $this->pageLimit;
-        $this->paging->url = $this->route->backToModule()."///";
-        
+        $this->paging->url = $this->route->backToModule() . "///";
+
         $this->db->limit = $this->paging->limit();
         $this->db->order = $this->db->pk();
         $this->db->orderSort = "DESC";
@@ -39,8 +36,7 @@ class Symptom extends HMVC
         $this->view();
     }
 
-    public function Add()
-    {
+    public function Add() {
         if (SUBMIT) {
             $this->controller();
         } else {
@@ -48,8 +44,7 @@ class Symptom extends HMVC
         }
     }
 
-    public function Edit()
-    {
+    public function Edit() {
         $this->db = new spm();
         if (SUBMIT) {
             $this->controller();
@@ -59,8 +54,8 @@ class Symptom extends HMVC
         }
     }
 
-    public function Delete()
-    {
+    public function Delete() {
         $this->controller();
     }
+
 }

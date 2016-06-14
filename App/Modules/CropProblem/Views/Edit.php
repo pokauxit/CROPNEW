@@ -10,11 +10,12 @@ $template->nav3level(ID);
 $template->openMain($this->param(-2));
 
 $service = new Service();
-$sv =  $service->getCropByID(ID);
+$sv = $service->getCropByID(ID);
 ?>
 <form class="col s12" action="" method="post">
     <input type="hidden" id="id_plant" value="<?php echo $sv->plant_id; ?>">
     <input type="hidden" id="old_id" value="<?php echo $this->rowId->disease_pest_weed_id; ?>">
+    <input type="hidden" id="old_disease_symptom_id" value="<?php echo $this->rowId->disease_symptom_id; ?>">
     <div class="row">
         <div class="input-field  col  s12 m4">
             <select name="problem_type_id" id="problem_type_id">
@@ -50,6 +51,11 @@ $sv =  $service->getCropByID(ID);
 
     <div class="row">
         <div class="input-field  col  s12 m4">
+            <select name="disease_symptom_id" id="disease_symptom_id">
+            </select>
+            <label for="disease_symptom_id">อาการ</label>
+        </div>
+        <div class="input-field  col  s12 m4">
             <select name="in_seiouscase">
                 <option disabled selected>กรุณาเลือกรายการ</option>
                 <option value="1" <?php
@@ -65,7 +71,7 @@ $sv =  $service->getCropByID(ID);
             </select>
             <label for="in_seiouscase">ความร้ายแรง</label>
         </div>
-        <div class="input-field col  s12 m8">
+        <div class="input-field col  s12 m4">
             <label for="note">เพิ่มเติม</label>
             <input name="note" type="text" class="validate" required value="<?php echo $this->rowId->note; ?>">
         </div>
@@ -85,14 +91,31 @@ $template->close();
 ?>
 <script>
     $(function () {
+        reData();
         $('select').on('contentChanged', function () {
             $(this).material_select('destroy');
             $(this).material_select();
         });
+
         $(document).on('change', '#problem_type_id', function () {
+            $('#disease_symptom_id').empty();
+            $('#disease_symptom_id').trigger('contentChanged');
             reData();
+            window.setTimeout(function () {
+                reSymptom();
+            }, 500);
         });
-        reData();
+        $(document).on('change', '#disease_pest_weed_id', function () {
+            $('#disease_symptom_id').empty();
+            $('#disease_symptom_id').trigger('contentChanged');
+            window.setTimeout(function () {
+                reSymptom();
+            }, 500);
+        });
+
+        window.setTimeout(function () {
+            reSymptom();
+        }, 200);
     });
 
     function reData() {
@@ -111,5 +134,26 @@ $template->close();
                 $('#disease_pest_weed_id').val(select).trigger('contentChanged');
             }
         });
+    }
+
+    function reSymptom() {
+        var id1 = $('#problem_type_id').val();
+        var id2 = $('#disease_pest_weed_id').val();
+        var select = $('#old_disease_symptom_id').val();
+        $('#disease_symptom_id').empty();
+        if (id1 == '1' && id2 > '0') {
+            $.ajax({
+                'type': 'POST',
+                'url': '?DiseaseSymptom/getSymptom',
+                'cache': false,
+                'data': {'id1': id2},
+                'success': function (result) {
+                    $('#disease_symptom_id').empty();
+                    $('#disease_symptom_id').append(result);
+                    $('#disease_symptom_id').trigger('contentChanged');
+                    $('#disease_symptom_id').val(select).trigger('contentChanged');
+                }
+            });
+        }
     }
 </script>

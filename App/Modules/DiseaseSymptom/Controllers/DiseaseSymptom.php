@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Error404
@@ -15,22 +16,20 @@ use System\HMVC\HMVC;
 use System\Utils\JS;
 use System\Security\ACL;
 
-class DiseaseSymptom extends HMVC
-{
+class DiseaseSymptom extends HMVC {
+
     protected $diseasePestWeeds;
     protected $db;
     protected $rowId;
     protected $diseasePests;
     protected $symptoms;
 
-    
     public function __construct() {
         ACL::check("STAFF");
         parent::__construct();
     }
 
-    public function index()
-    {
+    public function index() {
         $this->diseasePestWeeds = new dpw();
         $this->diseasePestWeeds->where = "disease_pest_weed_id='" . ID . "'";
         $this->diseasePestWeeds->select();
@@ -41,8 +40,7 @@ class DiseaseSymptom extends HMVC
         $this->view();
     }
 
-    public function Add()
-    {
+    public function Add() {
         if (SUBMIT) {
             $this->controller();
         } else {
@@ -55,8 +53,7 @@ class DiseaseSymptom extends HMVC
         }
     }
 
-    public function Edit()
-    {
+    public function Edit() {
         $this->db = new dsm();
         if (SUBMIT) {
             $this->controller();
@@ -69,9 +66,15 @@ class DiseaseSymptom extends HMVC
         }
     }
 
-    public function Delete()
-    {
+    public function Delete() {
         $this->controller();
+    }
+
+    public function getSymptom() {
+        $this->db = new dsm();
+        $this->db->where = "disease_pest_weed_id='".$_POST['id1']."'";
+        $this->db->select();
+        $this->view("getSymptom");
     }
 
 }

@@ -17,6 +17,7 @@ $template->openMain($this->param(-2));
             <th>ชื่อปัญหา</th>
             <th>รายละเอียด</th>
             <th>ความร้ายแรง</th>
+            <th>อาการ</th>
             <th>เพิ่มเติม</th>
             <th>จัดการ</th>
         </tr>
@@ -44,6 +45,7 @@ $template->openMain($this->param(-2));
                 <td><?php echo $rc->disease_pest_weed_disease_pest_weed_name; ?></td>
                 <td><?php echo $rc->crop_problem_detail; ?></td>
                 <td><?php echo $in_seiouscase; ?></td>
+                <td><?php echo $rc->symptom_symptom_name; ?></td>
                 <td><?php echo $rc->note; ?></td>
                 <td>
                       <a href="?ProblemControl//<?php echo $this->param(0) . '/' . $rc->crop_problem_id; ?>"><i class="green-text fa fa-arrow-circle-right"></i> เปิด </a>

@@ -15,7 +15,8 @@ $template->openMain($this->param(-2));
             <div class="row  " style="margin: 10px;">
                 <div class="col s12 left">
                     <b>ข้อมูลของปัญหา </b>
-                    <?php $problem = $this->problems->fetch(); ?>
+                    <?php $problem = $this->problems->fetch();
+                                        print_r($problem); ?>
                 </div>
                 <div class=" col s12 m4 ">
                     <label>ขนิดของปัญหา :
@@ -44,6 +45,17 @@ $template->openMain($this->param(-2));
                     </label>
                 </div>
                 <div class=" col s12 m4 ">
+                    <label>อาการ :
+                        <label style="color: #000"><?php echo $problem->symptom_name; ?></label>
+                    </label>
+
+                </div>
+                <div class=" col s12 m4 ">
+                    <label>รายละเอียดปัญหาของพืชที่ปลูก :
+                         <label style="color: #000"><?php echo $problem->crop_problem_detail; ?></label>
+                    </label>
+                </div>
+                <div class=" col s12 m4 ">
                     <label>ความร้ายแรงของปัญหา :
                         <label style="color: #000"><?php
 
@@ -58,13 +70,6 @@ $template->openMain($this->param(-2));
                                     break;
                             endswitch; ?>
                         </label>
-                    </label>
-                </div>
-
-                
-                <div class=" col s12 m8 ">
-                    <label>รายละเอียดปัญหาของพืชที่ปลูก :
-                         <label style="color: #000"><?php echo $problem->crop_problem_detail; ?></label>
                     </label>
                 </div>
                 <div class=" col s12 m4 ">
