@@ -16,7 +16,7 @@ $template->openMain($this->param(-2));
                 <div class="col s12 left">
                     <b>ข้อมูลของปัญหา </b>
                     <?php $problem = $this->problems->fetch();
-                                        print_r($problem); ?>
+                                       ?>
                 </div>
                 <div class=" col s12 m4 ">
                     <label>ขนิดของปัญหา :
@@ -46,7 +46,7 @@ $template->openMain($this->param(-2));
                 </div>
                 <div class=" col s12 m4 ">
                     <label>อาการ :
-                        <label style="color: #000"><?php echo $problem->symptom_name; ?></label>
+                        <label style="color: #000"><?php echo $problem->symptom_symptom_name; ?></label>
                     </label>
 
                 </div>

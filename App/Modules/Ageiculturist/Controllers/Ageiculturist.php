@@ -36,10 +36,6 @@ class Ageiculturist extends HMVC {
         $this->db->order = $this->db->pk();
         $this->db->orderSort = "DESC";
         
-        //$this->allRow = $this->db->count($this->db->pk());
-        //$this->db->limit = Paging::limit($this->pageLimit, $this->param(1));
-       // $this->db->left("tambon_id", "tambon.tambon_name");
-        
         $tumbon = new tambon();
         $tumbon->display = "tambon_name"; 
         $tumbon->fk = "amphur_id";       

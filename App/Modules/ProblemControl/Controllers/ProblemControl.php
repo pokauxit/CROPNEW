@@ -8,6 +8,9 @@ use App\Models\biofertilizer AS tb_method_5_1;
 use App\Models\fertilizer_unit;
 use System\HMVC\HMVC;
 use System\Security\ACL;
+use App\Models\disease_pest_weed;
+use App\Models\disease_symptom;
+use App\Models\symptom;
 
 class ProblemControl extends HMVC {
 
@@ -26,7 +29,7 @@ class ProblemControl extends HMVC {
         $this->db = new tb_method_5();
         $this->db->where = "crop_problem_id='" . $this->param(1) . "'";
         $this->db->orderSort = "control_id ASC";
-        //$this->db->left('bio_fer_id', 'biofertilizer.bio_fer_name');
+       
 
         $funit = new fertilizer_unit();
         $funit->display = "unit_name";
@@ -44,10 +47,42 @@ class ProblemControl extends HMVC {
         $arrayFomat = array($branch1, $branch2);
         $this->db->multiFKJoin($fkList, $arrayFomat);
 
+        
+        
         $this->problems = new cpm();
         $this->problems->where = "crop_problem_id='" . $this->param(1) . "'";
-        $this->problems->left('disease_pest_weed_id', 'disease_pest_weed.disease_pest_weed_name');
+      
 
+        
+        $disease_pest_weed = new disease_pest_weed();
+        $disease_pest_weed->display = "disease_pest_weed_name";
+         
+        
+        
+        
+        $disease_symptom = new disease_symptom();
+        $disease_symptom->display = "detail";
+        $disease_symptom->fk = "symptom_id";
+        
+        $symptom = new symptom();
+         $symptom->display = "symptom_name";   
+         
+         //set param
+          
+         $fk1 = "disease_pest_weed_id";
+         $tb1 = array($disease_pest_weed);
+         
+         
+         $fk2 = "disease_symptom_id";
+         $tb2 = array($disease_symptom,$symptom);
+         
+         //
+         
+         
+         $this->problems->multiFKJoin(array($fk1,$fk2), array($tb1,$tb2));
+        
+        
+        
         $this->view();
     }
 

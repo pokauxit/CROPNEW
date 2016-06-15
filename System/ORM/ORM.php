@@ -126,7 +126,7 @@ class ORM extends DB {
         if ($this->limit) {
             $sql.= " LIMIT " . $this->limit;
         }
-        
+         
        $this->result = $this->query($sql);
     }
 

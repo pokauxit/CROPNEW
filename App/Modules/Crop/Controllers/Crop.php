@@ -34,9 +34,7 @@ class Crop extends HMVC {
             $this->db = new tb_crop();
             $this->db->where = "argiculturist_id='" . $this->param(0) . "'";
             $this->db->orderSort = "crop_id ASC";
-   
-            
-            
+  
             //// br1
             $standard = new tb_standard();
             $standard->display = "start_year";
@@ -47,7 +45,7 @@ class Crop extends HMVC {
             $govStd->display = "standard_name,start_year,end_year";
             
              //
-            
+
             
             //br2
              $plant =  new tb_plant();

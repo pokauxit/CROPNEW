@@ -77,9 +77,7 @@ $template->close();
             $('#disease_symptom_id').empty();
             $('#disease_symptom_id').trigger('contentChanged');
             reData();
-            window.setTimeout(function () {
-                reSymptom();
-            }, 500);
+            
         });
         $(document).on('change', '#disease_pest_weed_id', function () {
             $('#disease_symptom_id').empty();
@@ -103,6 +101,10 @@ $template->close();
                 $('#disease_pest_weed_id').append(result);
                 $('#disease_pest_weed_id').trigger('contentChanged');
                 $('#disease_pest_weed_id').val(select).trigger('contentChanged');
+                
+                window.setTimeout(function () {
+                reSymptom();
+            }, 200);
             }
         });
     }
