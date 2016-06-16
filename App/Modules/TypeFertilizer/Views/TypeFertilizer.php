@@ -1,6 +1,6 @@
 <?php
     Use System\Template\Template;
-  
+    Use System\Utils\Paging;
     $template = new Template();
     $template->open();
     $template->nav1level();
@@ -13,10 +13,10 @@
         <table class="bordered">
             <thead class="green">
             <tr>
-              <th width="5%">No.</th>
+              <th width="5%">ลำดับ</th>
               <th width="30%">รหัสของปุ๋ย</th>
               <th width="50%">ชื่อชนิดปุ๋ย</th>
-              <th width="15%">ตัวเลือก</th>
+              <th width="15%">จัดการ</th>
             </tr>  
             </thead>
             <?php
@@ -25,11 +25,11 @@
             while ($rc  = $this->db->fetch()){
             ?>
             <tr>
-                <td><?php echo $i; ?></td>
+                <td><?php echo $i; ?>.</td>
                 <td><?php echo $rc->type_fertilizer_id; ?></td>
                 <td><?php echo $rc->type_fertilizer_name; ?></td>
                 <td>
-                  <a href="<?php echo $this->route->Edit($rc->type_fertilizer_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+                  <a href="<?php echo $this->route->Edit($rc->type_fertilizer_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
                   <a onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->type_fertilizer_id);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
                 </td>
             </tr>

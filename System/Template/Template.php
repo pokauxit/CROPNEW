@@ -88,13 +88,15 @@ var $mainPanel = "?";
        
         if($_URL[0] == "Ageiculturist")echo "เกษตรกร";
         if($_URL[0] == "DiseasePestWeed")echo "โรค/แมลง/วัชพืช";
-          if($_URL[0] == "Soil")echo "ดิน";
-           if($_URL[0] == "Symptom")echo "อาการ";
-           if($_URL[0] == "Standard")echo "มาตรฐาน";
+        if($_URL[0] == "Soil")echo "ดิน";
+        if($_URL[0] == "Symptom")echo "อาการ";
+        if($_URL[0] == "Standard")echo "มาตรฐาน";
         if($_URL[0] == "TypePlant")echo "ชนิดของพืช";
-           if($_URL[0] == "Plant")echo "พืช";
-           if($_URL[0] == "BioFertilizer")echo "ปุ๋ยและสารชีวภาพ";
-           if($_URL[0] == "TypeFertilizer")echo "ชนิดของปุ๋ย";
+        if($_URL[0] == "Plant")echo "พืช";
+        if($_URL[0] == "BioFertilizer")echo "ปุ๋ยและสารชีวภาพ";
+        if($_URL[0] == "TypeFertilizer")echo "ชนิดของปุ๋ย";
+        if($_URL[0] == "ProductUnit")echo "จัดการหน่วยผลผลิต";
+        if($_URL[0] == "FertilizerUnit")echo "หน่วยการให้ปุ๋ย";
 
 
         

@@ -14,10 +14,10 @@
         <thead class="green">
         <tr>
           <th>ลำดับ</th>
-          <th>ชื่อประเภท</th>
+          <th>ชื่อชนิดของพืช</th>
           <th>ชื่อพืช</th>
           <th>พื้นที่เพาะปลูก</th>
-          <th>ตัวเลือก</th>
+          <th>จัดการ</th>
         </tr> 
         </thead>
     <?php
@@ -31,7 +31,7 @@
           <td><?php echo $rc2->plant_name; ?></td>
           <td><?php echo $rc2->caltivated_area; ?></td>
           <td>
-              <a href="<?php echo $this->route->Edit($rc2->plant_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+              <a href="<?php echo $this->route->Edit($rc2->plant_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
               <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc2->plant_id);?>/<?php echo $this->param(1);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
           </td>
         </tr>

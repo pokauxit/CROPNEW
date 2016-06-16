@@ -38,7 +38,7 @@
 
         <div class="input-field col s12 m6 center">
             <select name="type_id" id="type_id">
-                <option value="" disabled selected>กรุณาเลือกประเภทพืช</option>
+                <option value="" disabled selected>กรุณาเลือกชนิดของพืช</option>
                 <?php
                     while($rc_typepln = $this->dbTypePlan->fetch()){
                 ?>
@@ -47,7 +47,7 @@
                 }
                 ?>
             </select>
-            <label for="type_id">ประเภทของพืช</label>
+            <label for="type_id">ชนิดของพืช</label>
         </div>
 
         <div class="input-field col s12 m6 center">

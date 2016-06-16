@@ -35,7 +35,7 @@
             
             <div class="input-field col s12 m6 center">
                 <input type="text" name="type_name" id="type_name" value="<?php echo $this->row->type_name?>">
-                <label for="type_name">ชื่อประเภท</label>
+                <label for="type_name">ชื่อชนิดของพืช</label>
             </div>
             
             <div class="input-field col s12 m6 center">

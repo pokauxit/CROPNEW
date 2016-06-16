@@ -13,12 +13,11 @@
         <table class="bordered">
             <thead class="green">
             <tr>
-              <th width="5%">No.</th>
-        
+              <th width="5%">ลำดับ</th>
               <th width="15%">ชนิดปุ๋ย</th>
               <th width="20%">ชื่อสารชีวภาพ/ปุ๋ย</th>
               <th width="30%">คุณสมบัติสารชีวภาพ/ปุ๋ย</th>
-              <th width="15%">ตัวเลือก</th>
+              <th width="15%">จัดการ</th>
             </tr>  
             </thead>
             <?php
@@ -33,7 +32,7 @@
               <td><?php echo $rc->bio_fer_name; ?></td>
               <td><?php echo $rc->bio_fer_properties; ?></td>
               <td>
-                  <a href="<?php echo $this->route->Edit($rc->bio_fer_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+                  <a href="<?php echo $this->route->Edit($rc->bio_fer_id);?>/<?php echo $this->param(1);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
                   <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->bio_fer_id);?>/<?php echo $this->param(1);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
               </td>
             </tr>    

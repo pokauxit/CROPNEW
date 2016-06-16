@@ -15,10 +15,10 @@ $template->nav1level();
             <table class="bordered">
                 <thead class="green">
                     <tr>
-                        <th width="5%">No.</th>
+                        <th width="5%">ลำดับ</th>
 
                         <th width="15%">ชื่อหน่วย</th>
-                        <th width="15%">ตัวเลือก</th>
+                        <th width="15%">จัดการ</th>
                     </tr>  
                 </thead>
                 <?php
@@ -30,7 +30,7 @@ $template->nav1level();
 
                         <td><?php echo $rc->unit_name; ?></td>
                         <td>
-                            <a href="<?php echo $this->route->Edit($rc->unit_id); ?>/<?php echo $this->param(1); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+                            <a href="<?php echo $this->route->Edit($rc->unit_id); ?>/<?php echo $this->param(1); ?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
                             <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->unit_id); ?>/<?php echo $this->param(1); ?>"><i class="red-text fa fa-trash"></i> ลบ</a>
                         </td>
                     </tr>    

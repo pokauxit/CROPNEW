@@ -15,6 +15,8 @@
         <?php echo $rc->home_no; ?>
         <label >ตำบล : </label>
         <?php echo $rc->tambon_tambon_name; ?>
+        <label >อำเภอ : </label>
+        <?php echo $rc->amphur_amphur_name; ?>
         <label >จังหวัด : </label>
         <?php echo $rc->province_province_name; ?> <?php echo $rc->postcode; ?>
     </div>

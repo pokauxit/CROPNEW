@@ -11,23 +11,25 @@
         <h4 class="pull-left">จัดการชนิดของพืช</h4>
         <br/>
         <table class="bordered">
+            <thead class="green">
             <tr>
-              <th>No.</th>
-              <th>ชื่อประเภท</th>
+              <th>ลำดับ</th>
+              <th>ชื่อชนิดของพืช</th>
               <th>หมายเหตุ</th>
-              <th>ตัวเลือก</th>
+              <th>จัดการ</th>
             </tr>  
+            </thead>
             <?php
             $i = 1;
             $pk = $this->pk;
             while ($rc  = $this->db->fetch()){
             ?>
             <tr>
-                <td><?php echo $i; ?></td>
+                <td><?php echo $i; ?>.</td>
                 <td><?php echo $rc->type_name; ?></td>
                 <td><?php echo $rc->note; ?></td>
                 <td>
-                  <a href="<?php echo $this->route->Edit($rc->type_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;&nbsp;
+                  <a href="<?php echo $this->route->Edit($rc->type_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
                   <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->type_id);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
                 </td>
             </tr>
