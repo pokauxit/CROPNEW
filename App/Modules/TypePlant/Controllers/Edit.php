@@ -14,7 +14,7 @@ namespace App\Modules\TypePlant\Controllers;
         $std =  new tpl();
         if($std->update(ID)){
             echo JS::editComplate();
-            echo JS::re($this->route->backToModule());
+            echo JS::re($this->route->backToModule()."///".$this->param(1));
         }else{
             echo JS::editFail();
             echo JS::back();

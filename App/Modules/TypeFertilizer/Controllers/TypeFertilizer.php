@@ -3,12 +3,16 @@
  use System\HMVC\HMVC;
  use App\Models\typefertilizer as tfz;
  use System\Security\ACL;
+ use System\Utils\Paging;
  
  
  class TypeFertilizer extends HMVC{
      protected  $db;
      protected  $row;
-     
+     protected  $pageLimit = 2;
+     protected  $paging;
+
+
      public function __construct() {
          ACL::check("STAFF");
          parent::__construct();
@@ -16,6 +20,16 @@
 
      public function index() {
         $this->db = new tfz();
+        $this->paging = new Paging();
+        
+        $this->paging->total =  $this->db->count($this->db->pk());
+        $this->paging->currentPage = $this->param(1);
+        $this->paging->perPage = $this->pageLimit;
+        $this->paging->url =  $this->route->backToModule()."///";
+        
+        $this->db->limit = $this->paging->limit();
+        $this->db->order = $this->db->pk();
+        $this->db->orderSort = "DESC";
         $this->db->select();
         $this->view();
      }

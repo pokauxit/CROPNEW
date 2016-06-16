@@ -1,6 +1,6 @@
 <?php
     Use System\Template\Template;
-  
+    Use System\Utils\Paging;
     $template = new Template();
     $template->open();
     $template->nav1level();
@@ -29,8 +29,8 @@
                 <td><?php echo $rc->type_name; ?></td>
                 <td><?php echo $rc->note; ?></td>
                 <td>
-                  <a href="<?php echo $this->route->Edit($rc->type_id);?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
-                  <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->type_id);?>"><i class="red-text fa fa-trash"></i> ลบ</a>
+                  <a href="<?php echo $this->route->Edit($rc->type_id);?>/<?php echo $this->param(1)?>"><i class="orange-text fa fa-edit"></i> แก้ไข </a>&nbsp;|&nbsp;
+                  <a  onclick="return confirm('ยืนยันการลบ')"  href="<?php echo $this->route->Delete($rc->type_id);?>/<?php $this->param(1)?>"><i class="red-text fa fa-trash"></i> ลบ</a>
                 </td>
             </tr>
             <?php
@@ -40,9 +40,13 @@
         </table>
     </div>
     <br/>
+    <div class="center">
+        <?php echo $this->paging->build();?>
+    </div>
+    <br/>
     <div class="center"  >
         <a class="btn waves-effect green" href="<?php echo $this->route->Add();
-        echo '/' . $this->param(0) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
+        echo '//' . $this->param(1) ?>"><i class="fa fa-plus"></i> เพิ่มข้อมูล</a>
         <a class="btn waves-effect orange" href="?"><i class="fa fa-arrow-circle-left"></i> ย้อนกลับ</a>
     </div> 
     </div>
