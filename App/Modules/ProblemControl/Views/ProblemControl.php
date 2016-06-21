@@ -39,33 +39,29 @@ $template->openMain($this->param(-2));
                 </label>
 
             </div>
-            <div class=" col s12 m2 ">
-                <label>ชื่อปัญหา :
-                    <label style="color: #000">
-                        <?php
-                        if ($problem->problem_type_id != 1) {
-                            echo $problem->disease_pest_weed_disease_pest_weed_name;
-                        }
-                        ?>
+            <?php if ($problem->problem_type_id != 1) { ?>
+                <div class=" col s12 m8 ">
+                    <label>ชื่อปัญหา :
+                        <label style="color: #000">
+                            <?php echo $problem->disease_pest_weed_disease_pest_weed_name; ?>
+                        </label>
                     </label>
-                </label>
-            </div>
-            <div class=" col s12 m6 ">
-                <label>อาการ :
-                    <label style="color: #000">
-                        <?php
-                        if ($problem->problem_type_id == 1) {
+                </div>
+            <?php } else if ($problem->problem_type_id == 1) { ?>
+                <div class=" col s12 m8 ">
+                    <label>อาการ :
+                        <label style="color: #000">
+                            <?php
                             while ($rc_problem = $this->symptom_problem->fetch()) {
                                 ?>
                                 <div class = "chip"><?php echo $rc_problem->symptom_symptom_name; ?></div>
                                 <?php
                             }
-                        }
-                        ?>
+                            ?>
+                        </label>
                     </label>
-                </label>
-
-            </div>
+                </div>
+            <?php } ?>
             <div class=" col s12 m4 ">
                 <label>รายละเอียดปัญหาของพืชที่ปลูก :
                     <label style="color: #000"><?php echo $problem->crop_problem_detail; ?></label>
