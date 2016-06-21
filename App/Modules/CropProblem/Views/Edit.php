@@ -38,23 +38,24 @@ $sv = $service->getCropByID(ID);
             </select>
             <label for="problem_type_id">ชนิดปัญหา</label>
         </div>
-        <div class="input-field  col  s12 m4">
+        <div class="input-field  col  s12 m8" id="disease_pest_weed_container">
             <select name="disease_pest_weed_id" id="disease_pest_weed_id">
             </select>
             <label for="disease_pest_weed_id">ชื่อปัญหา</label>
         </div>
-        <div class="input-field  col  s12 m4">
-            <label for="crop_problem_detail">รายละเอียด</label>
-            <input name="crop_problem_detail" type="text" class="validate" required value="<?php echo $this->rowId->crop_problem_detail; ?>">
+        <div class="input-field  col  s12 m8 "  id="symptom_list_container" style="text-align: left">
+            <span id="symptom_list">   
+                อาการ :  
+                <?php while ($rc_problem = $this->symptom_problem->fetch()) { ?>
+                    <div class="chip"><?php echo $rc_problem->symptom_symptom_name; ?><input type="hidden" class="symptom" name="symptom[]" value="<?php echo $rc_problem->symptom_id; ?>"><i class="material-icons">close</i></div>
+                <?php } ?>
+             <!--<div class="chip">Tag<i class="material-icons">close</i></div>-->
+            </span>
+            <a class="btn-floating center-align modal-trigger" href="#add_symptom"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
         </div>
     </div>
 
     <div class="row">
-        <div class="input-field  col  s12 m4">
-            <select name="disease_symptom_id" id="disease_symptom_id">
-            </select>
-            <label for="disease_symptom_id">อาการ</label>
-        </div>
         <div class="input-field  col  s12 m4">
             <select name="in_seiouscase">
                 <option disabled selected>กรุณาเลือกรายการ</option>
@@ -75,13 +76,9 @@ $sv = $service->getCropByID(ID);
             <label for="note">เพิ่มเติม</label>
             <input name="note" type="text" class="validate" required value="<?php echo $this->rowId->note; ?>">
         </div>
-    </div>
-    <div class="row" style="text-align: left">
-        <div id="symptom_list">   
-            <a class="btn-floating center-align modal-trigger" href="#add_symptom"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
-            <?php while ($rc_problem = $this->symptom_problem->fetch()) { ?>
-                <div class="chip"><?php echo $rc_problem->symptom_symptom_name; ?><input type="hidden" class="symptom" name="symptom[]" value="<?php echo $rc_problem->symptom_id; ?>"><i class="material-icons">close</i></div>
-            <?php } ?>
+        <div class="input-field  col  s12 m4">
+            <label for="crop_problem_detail">รายละเอียด</label>
+            <input name="crop_problem_detail" type="text" class="validate" required value="<?php echo $this->rowId->crop_problem_detail; ?>">
         </div>
     </div>
     <div align="center">
@@ -134,7 +131,6 @@ $template->close();
                 }
             }, 100);
         }
-
         reData();
         $('select').on('contentChanged', function () {
             $(this).material_select('destroy');
@@ -164,6 +160,15 @@ $template->close();
 
     function reData() {
         var id1 = $('#problem_type_id').val();
+        /// chack  type
+        if (id1 == 1) {
+            $("#disease_pest_weed_container").hide();
+            $("#symptom_list_container").show();
+        } else {
+            $("#disease_pest_weed_container").show();
+            $("#symptom_list_container").hide();
+        }
+        //
         var id2 = $('#id_plant').val();
         var select = $('#old_id').val();
         $('#disease_pest_weed_id option').remove();
