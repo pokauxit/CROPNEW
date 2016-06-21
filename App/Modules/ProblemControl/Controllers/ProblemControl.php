@@ -11,6 +11,7 @@ use System\Security\ACL;
 use App\Models\disease_pest_weed;
 use App\Models\disease_symptom;
 use App\Models\symptom;
+use App\Models\symptom_problem;
 
 class ProblemControl extends HMVC {
 
@@ -19,6 +20,7 @@ class ProblemControl extends HMVC {
     protected $dbList;
     protected $rowId;
     protected $rowId2;
+    protected $symptom_problem;
 
     public function __construct() {
         ACL::check("STAFF");
@@ -29,7 +31,7 @@ class ProblemControl extends HMVC {
         $this->db = new tb_method_5();
         $this->db->where = "crop_problem_id='" . $this->param(1) . "'";
         $this->db->orderSort = "control_id ASC";
-       
+
 
         $funit = new fertilizer_unit();
         $funit->display = "unit_name";
@@ -47,42 +49,43 @@ class ProblemControl extends HMVC {
         $arrayFomat = array($branch1, $branch2);
         $this->db->multiFKJoin($fkList, $arrayFomat);
 
-        
-        
+
+
         $this->problems = new cpm();
         $this->problems->where = "crop_problem_id='" . $this->param(1) . "'";
-      
 
-        
+
+
         $disease_pest_weed = new disease_pest_weed();
         $disease_pest_weed->display = "disease_pest_weed_name";
-         
-        
-        
-        
+
+
+
+
         $disease_symptom = new disease_symptom();
         $disease_symptom->display = "detail";
         $disease_symptom->fk = "symptom_id";
-        
+
         $symptom = new symptom();
-         $symptom->display = "symptom_name";   
-         
-         //set param
-          
-         $fk1 = "disease_pest_weed_id";
-         $tb1 = array($disease_pest_weed);
-         
-         
-         //$fk2 = "disease_symptom_id";
-       //  $tb2 = array($disease_symptom,$symptom);
-         
-         //
+        $symptom->display = "symptom_name";
+
+        //set param
+
+        $fk1 = "disease_pest_weed_id";
+        $tb1 = array($disease_pest_weed);
+
+
+        //$fk2 = "disease_symptom_id";
+        //  $tb2 = array($disease_symptom,$symptom);
+        //
          
          
          $this->problems->multiFKJoin(array($fk1), array($tb1));
-        
-        
-        
+
+        $this->symptom_problem = new symptom_problem();
+        $this->symptom_problem->where = "crop_problem_id='" . $this->param(1) . "'";
+        $this->symptom_problem->left('symptom_id', 'symptom.symptom_name');
+
         $this->view();
     }
 
