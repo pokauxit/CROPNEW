@@ -308,6 +308,7 @@ public function nav3level($id){
                     <!--Import jQuery before materialize.js-->
                     <script type="text/javascript" src="Assets/js/jquery-2.2.3.min.js"></script>
                     <script type="text/javascript" src="Assets/js/materialize.min.js"></script>
+                    <script type="text/javascript" src="Assets/js/typeahead.js"></script>
                     <script>
                         $(document).ready(function() {
                              $('.button-collapse').sideNav();

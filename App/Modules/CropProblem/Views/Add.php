@@ -54,6 +54,12 @@ $sv = $service->getCropByID(ID);
             <input name="note" type="text" class="validate" required>
         </div>
     </div>
+    <div class="row" style="text-align: left">
+        <div id="symptom_list">   
+            <a class="btn-floating center-align modal-trigger" href="#add_symptom"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
+            <!--<div class="chip">Tag<i class="material-icons">close</i></div>-->
+        </div>
+    </div>
 
     <div align="center">
         <input name="crop_id" type="hidden" value="<?php echo ID; ?>">
@@ -63,12 +69,51 @@ $sv = $service->getCropByID(ID);
     </div>
     <p><br></p>
 </form>
+<div id="add_symptom" class="modal" style="max-width: 400px">
+    <div style="text-align: center;padding: 3px">
+        <span style="float: right">
+            <a href="javascript:;" class="modal-action modal-close red-text"><i class="fa fa-lg fa-times"></i></a>
+        </span>
+    </div>
+    <div>
+        <div class="input-field  col  s12 m12">
+            <label for="sym_add">อาการ</label>
+            <input name="sym_add" id="sym_add" type="text">
+        </div>
+        <br>
+        <button class="btn waves-effect green" type="button" id="save_add" onclick="save_add();"><i class="fa fa-save"></i> บันทึก </button>
+        <button class="btn waves-effect red modal-action modal-close" type="button"><i class="fa fa-times"></i> ยกเลิก </button>
+        <br><br>
+    </div>
+</div>
 <?php
 $template->closeMain();
 $template->close();
 ?>
 <script>
     $(function () {
+        $('#sym_add').typeahead({
+            displayField: 'name',
+            valueField: 'id',
+            source: <?= $this->json; ?>,
+            onSelect: displayResult
+        });
+
+        function displayResult(item) {
+            window.setTimeout(function () {
+                var newText, newValue;
+                newText = item.text;
+                newValue = item.value;
+                if (newValue > 0) {
+                    $('#sym_add').val(newText);
+                    $("#sym_add").data('id', newValue);
+                } else {
+                    $('#sym_add').val('');
+                    $("#sym_add").data('id', '');
+                }
+            }, 100);
+        }
+        
         $('select').on('contentChanged', function () {
             $(this).material_select('destroy');
             $(this).material_select();
@@ -128,5 +173,15 @@ $template->close();
                 }
             });
         }
+    }
+    
+    var x_ind = 0;
+    function save_add() {
+        var sym_val = $("#sym_add").val();
+        var sym_id = $("#sym_add").data('id');
+        $("#symptom_list").append("<div class=\"chip\">" + sym_val + "<input type=\"hidden\" name=\"symptom[]\" value=\"" + sym_id + "\"><i class=\"material-icons\">close</i></div>");
+        $('#add_symptom').closeModal();
+        $("#sym_add").val('');
+        $("#sym_add").data('id', '');
     }
 </script>
