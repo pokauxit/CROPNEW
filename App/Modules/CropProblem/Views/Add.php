@@ -24,23 +24,24 @@ $sv = $service->getCropByID(ID);
             </select>
             <label for="problem_type_id">ชนิดปัญหา</label>
         </div>
-        <div class="input-field  col  s12 m4">
+        <div class="input-field  col  s12 m8" id="disease_pest_weed_container">
             <select name="disease_pest_weed_id" id="disease_pest_weed_id">
             </select>
             <label for="disease_pest_weed_id">ชื่อปัญหา</label>
         </div>
-        <div class="input-field  col  s12 m4">
-            <label for="crop_problem_detail">รายละเอียด</label>
-            <input name="crop_problem_detail" type="text" class="validate" required>
-        </div>
+       <div class="input-field  col  s12 m8 "  id="symptom_list_container" style="text-align: left">
+           <span id="symptom_list">   
+           อาการ :  
+            <!--<div class="chip">Tag<i class="material-icons">close</i></div>-->
+        </span>
+           <a class="btn-floating center-align modal-trigger" href="#add_symptom"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
+    </div>
+        
     </div>
 
     <div class="row">
-        <div class="input-field  col  s12 m4">
-            <select name="disease_symptom_id" id="disease_symptom_id">
-            </select>
-            <label for="disease_symptom_id">อาการ</label>
-        </div>
+         
+        
         <div class="input-field  col  s12 m4">
             <select name="in_seiouscase">
                 <option disabled selected>กรุณาเลือกรายการ</option>
@@ -53,13 +54,15 @@ $sv = $service->getCropByID(ID);
             <label for="note">เพิ่มเติม</label>
             <input name="note" type="text" class="validate" required>
         </div>
-    </div>
-    <div class="row" style="text-align: left">
-        <div id="symptom_list">   
-            <a class="btn-floating center-align modal-trigger" href="#add_symptom"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
-            <!--<div class="chip">Tag<i class="material-icons">close</i></div>-->
+        <div class="input-field  col  s12 m4">
+            <label for="crop_problem_detail">รายละเอียด</label>
+            <input name="crop_problem_detail" type="text" class="validate" required>
         </div>
+        
     </div>
+     
+    
+    
 
     <div align="center">
         <input name="crop_id" type="hidden" value="<?php echo ID; ?>">
@@ -117,22 +120,24 @@ $template->close();
             $(this).material_select();
         });
         $(document).on('change', '#problem_type_id', function () {
-            $('#disease_symptom_id').empty();
-            $('#disease_symptom_id').trigger('contentChanged');
+           
             reData();
 
         });
-        $(document).on('change', '#disease_pest_weed_id', function () {
-            $('#disease_symptom_id').empty();
-            $('#disease_symptom_id').trigger('contentChanged');
-            window.setTimeout(function () {
-                reSymptom();
-            }, 500);
-        });
+         
     });
 
     function reData() {
         var id1 = $('#problem_type_id').val();
+        /// chack  type
+          if(id1==1){
+               $("#disease_pest_weed_container").hide();
+              $("#symptom_list_container").show();
+          }else{
+               $("#disease_pest_weed_container").show();
+              $("#symptom_list_container").hide();
+          }
+        //
         var id2 = $('#id_plant').val();
         $('#disease_pest_weed_id option').remove();
         $.ajax({
@@ -190,4 +195,5 @@ $template->close();
         $("#sym_add").val('');
         $("#sym_add").data('id', '');
     }
+    $.ready(reData());
 </script>
