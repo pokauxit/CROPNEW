@@ -8,8 +8,8 @@ class DB{
     protected  $DB;
     
       protected  $result;
-    
-    function __construct()
+       
+              function __construct()
     {
         
         global  $CONNECTED;
@@ -56,7 +56,14 @@ class DB{
           $this->result  = mysqli_query($CONNECTED,$query);  
         return  $this->result;
     }
+     
     
+    public function last_id(){
+          global  $CONNECTED;  
+        return mysqli_insert_id($CONNECTED);
+    }
+
+
     /**
      * Fetch Data from mysql result 
      * <br>
