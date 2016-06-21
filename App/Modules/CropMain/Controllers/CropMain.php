@@ -5,7 +5,13 @@ use System\HMVC\HMVC;
 class CropMain extends HMVC{
     public function index() {
        
-        $this->view();
+        if(SUBMIT){
+            print_r($_POST);
+            
+        }else{
+             $this->view();
+        }
+       
     }
 
 }
