@@ -56,7 +56,7 @@ class CropProblem extends HMVC {
         //
 
 
-        $this->db->multiFKJoin(array($fk1, $fk2), array($tb1, $tb2));
+        $this->db->multiFKJoin(array($fk1), array($tb1));
         $this->view();
     }
 

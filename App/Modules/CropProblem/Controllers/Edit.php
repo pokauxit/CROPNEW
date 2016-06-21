@@ -18,6 +18,7 @@ class Edit extends HMVC {
         $STR = new tb_method_6();
         if ($STR->update($this->param(1))) {
             $symptom_problem = new symptom_problem();
+            $symptom_problem->deleteWhere("crop_problem_id=". $this->param(1));
             $_POST['crop_problem_id'] = $this->param(1);
             foreach ($_POST['symptom'] as $k => $v) {
                 if ($v != '') {

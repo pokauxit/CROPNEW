@@ -73,13 +73,13 @@ class ProblemControl extends HMVC {
          $tb1 = array($disease_pest_weed);
          
          
-         $fk2 = "disease_symptom_id";
-         $tb2 = array($disease_symptom,$symptom);
+         //$fk2 = "disease_symptom_id";
+       //  $tb2 = array($disease_symptom,$symptom);
          
          //
          
          
-         $this->problems->multiFKJoin(array($fk1,$fk2), array($tb1,$tb2));
+         $this->problems->multiFKJoin(array($fk1), array($tb1));
         
         
         

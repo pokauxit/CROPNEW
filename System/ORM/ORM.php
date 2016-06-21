@@ -333,6 +333,14 @@ class ORM extends DB {
         return $this->result = $this->query($sql);
     }
 
+    
+    
+     public function deleteWhere($condition) {
+        
+        $sql = "DELETE FROM " . $this->name . " WHERE " .$condition;
+        return $this->result = $this->query($sql);
+    }
+
     /**
      *  get ค่าใน row by id(pk) 
      * @param type $id คือ ค่าของ pk 
