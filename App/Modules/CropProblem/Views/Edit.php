@@ -80,9 +80,8 @@ $sv = $service->getCropByID(ID);
         <div id="symptom_list">   
             <a class="btn-floating center-align modal-trigger" href="#add_symptom"><i  class=" material-icons" style="padding-left: 5px;" >add circle</i></a>
             <?php while ($rc_problem = $this->symptom_problem->fetch()) { ?>
-                <div class="chip"><?php echo $rc_problem->symptom_symptom_name; ?><i class="material-icons">close</i></div>
+                <div class="chip"><?php echo $rc_problem->symptom_symptom_name; ?><input type="hidden" class="symptom" name="symptom[]" value="<?php echo $rc_problem->symptom_id; ?>"><i class="material-icons">close</i></div>
             <?php } ?>
-<!--<div class="chip">Tag<i class="material-icons">close</i></div>-->
         </div>
     </div>
     <div align="center">
@@ -131,6 +130,7 @@ $template->close();
                 if (newValue > 0) {
                     $('#sym_add').val(newText);
                     $("#sym_add").data('id', newValue);
+                    save_add();
                 } else {
                     $('#sym_add').val('');
                     $("#sym_add").data('id', '');
@@ -206,9 +206,17 @@ $template->close();
 
     var x_ind = 0;
     function save_add() {
+        var check = 0;
         var sym_val = $("#sym_add").val();
         var sym_id = $("#sym_add").data('id');
-        $("#symptom_list").append("<div class=\"chip\">" + sym_val + "<input type=\"hidden\" name=\"symptom[]\" value=\"" + sym_id + "\"><i class=\"material-icons\">close</i></div>");
+        $('.symptom').each(function () {
+            if ($(this).val() == sym_id) {
+                check++;
+            }
+        });
+        if (check == 0) {
+            $("#symptom_list").append("<div class=\"chip\">" + sym_val + "<input type=\"hidden\" class=\"symptom\" name=\"symptom[]\" value=\"" + sym_id + "\"><i class=\"material-icons\">close</i></div>");
+        }
         $('#add_symptom').closeModal();
         $("#sym_add").val('');
         $("#sym_add").data('id', '');

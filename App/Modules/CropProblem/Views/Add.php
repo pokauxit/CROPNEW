@@ -107,13 +107,14 @@ $template->close();
                 if (newValue > 0) {
                     $('#sym_add').val(newText);
                     $("#sym_add").data('id', newValue);
+                    save_add();
                 } else {
                     $('#sym_add').val('');
                     $("#sym_add").data('id', '');
                 }
             }, 100);
         }
-        
+
         $('select').on('contentChanged', function () {
             $(this).material_select('destroy');
             $(this).material_select();
@@ -122,7 +123,7 @@ $template->close();
             $('#disease_symptom_id').empty();
             $('#disease_symptom_id').trigger('contentChanged');
             reData();
-            
+
         });
         $(document).on('change', '#disease_pest_weed_id', function () {
             $('#disease_symptom_id').empty();
@@ -146,10 +147,10 @@ $template->close();
                 $('#disease_pest_weed_id').append(result);
                 $('#disease_pest_weed_id').trigger('contentChanged');
                 $('#disease_pest_weed_id').val(select).trigger('contentChanged');
-                
+
                 window.setTimeout(function () {
-                reSymptom();
-            }, 200);
+                    reSymptom();
+                }, 200);
             }
         });
     }
@@ -159,7 +160,7 @@ $template->close();
         var id2 = $('#disease_pest_weed_id').val();
         var select = $('#old_disease_symptom_id').val();
         $('#disease_symptom_id').empty();
-        if (id1=='1' && id2>'0'){
+        if (id1 == '1' && id2 > '0') {
             $.ajax({
                 'type': 'POST',
                 'url': '?DiseaseSymptom/getSymptom',
@@ -174,12 +175,20 @@ $template->close();
             });
         }
     }
-    
+
     var x_ind = 0;
     function save_add() {
+        var check = 0;
         var sym_val = $("#sym_add").val();
         var sym_id = $("#sym_add").data('id');
-        $("#symptom_list").append("<div class=\"chip\">" + sym_val + "<input type=\"hidden\" name=\"symptom[]\" value=\"" + sym_id + "\"><i class=\"material-icons\">close</i></div>");
+        $('.symptom').each(function () {
+            if ($(this).val() == sym_id) {
+                check++;
+            }
+        });
+        if (check == 0) {
+            $("#symptom_list").append("<div class=\"chip\">" + sym_val + "<input type=\"hidden\" class=\"symptom\" name=\"symptom[]\" value=\"" + sym_id + "\"><i class=\"material-icons\">close</i></div>");
+        }
         $('#add_symptom').closeModal();
         $("#sym_add").val('');
         $("#sym_add").data('id', '');
