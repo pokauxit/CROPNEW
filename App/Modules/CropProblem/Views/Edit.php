@@ -103,9 +103,6 @@ $sv = $service->getCropByID(ID);
             <label for="sym_add">อาการ</label>
             <input name="sym_add" id="sym_add" type="text">
         </div>
-        <br>
-        <button class="btn waves-effect green" type="button" id="save_add" onclick="save_add();"><i class="fa fa-save"></i> บันทึก </button>
-        <button class="btn waves-effect red modal-action modal-close" type="button"><i class="fa fa-times"></i> ยกเลิก </button>
         <br><br>
     </div>
 </div>

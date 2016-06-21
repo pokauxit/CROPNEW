@@ -104,7 +104,7 @@
             });
 
             this.$menu.css({
-                top: pos.top + pos.height,
+                top: pos.top + pos.height + 45,
                 left: pos.left
             });
 
