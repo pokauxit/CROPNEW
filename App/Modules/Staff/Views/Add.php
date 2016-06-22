@@ -52,6 +52,13 @@ echo System\Utils\JS::load();
                     <input name="staff_pass" type="password" class="validate" required>
                     <label for="staff_pass">รหัสผ่าน</label>
                 </div>
+                <div class="input-field col  s12 m6">
+                    <input name="staff_pass_confirm" type="password" class="validate" required>
+                    <label for="staff_pass_confirm">ยืนยันรหัสผ่าน</label>
+                </div>
+
+            </div>
+            <div class="row">
                 <div class="input-field  col  s12 m6">
                     <select name="staff_level">
                         <!--<option disabled selected>กรุณาเลือกรายการ</option>-->
@@ -60,13 +67,6 @@ echo System\Utils\JS::load();
                         
                     </select>
                     <label for="staff_level">สิทธิ์เข้าใช้งาน</label>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="input-field col  s12 m6">
-                    <input name="staff_pass_confirm" type="password" class="validate" required>
-                    <label for="staff_pass_confirm">ยืนยันรหัสผ่าน</label>
                 </div>
             </div>
             <div class="row">
