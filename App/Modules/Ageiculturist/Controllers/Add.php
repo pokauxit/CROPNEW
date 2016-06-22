@@ -2,7 +2,7 @@
 
 namespace App\Modules\Ageiculturist\Controllers;
 
-use App\models\ageiculturist as agl;
+use App\Models\ageiculturist as agl;
 use System\HMVC\HMVC;
 use System\Utils\Validate;
 use System\Utils\JS;

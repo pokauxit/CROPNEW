@@ -12,51 +12,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropProblem/Controllers/CropProblem.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/DiseasePestWeed/Views/Add.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Staff/Views/Staff.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Standard/Controllers/Standard.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Plant/views/Plant.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Home/Controllers/Home.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/System/Route/Route.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/TypePlant/Controllers/TypePlant.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/System/ORM/ORM.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Ageiculturist/Views/Ageiculturist.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/DiseaseSymptom/Controllers/DiseaseSymptom.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropMain/Views/CropMain.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/ServiceData/Controllers/ServiceData.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/TypeFertilizer/Controllers/TypeFertilizer.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/System/ORM/JoinModel.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/System/Template/Template.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/System/HMVC/HMVC.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/BioFertilizer/Controllers/BioFertilizer.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropMain/Controllers/CropMain.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropApplication/Views/Add.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/TypePlant/Views/TypePlant.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Symptom/Controllers/Edit.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/DiseasePestWeed/Controllers/Add.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Plant/Controllers/Plant.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/DiseasePestWeed/Views/DiseasePestWeed.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/Assets/css/web.css</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Staff/Views/Add.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/TypeFertilizer/Views/TypeFertilizer.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropApplication/Controllers/CropApplication.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Staff/Controllers/Edit.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/DiseasePestWeed/Controllers/DiseasePestWeed.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/System/ORM/ORM_Filter.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Home/Views/Home.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Ageiculturist/Controllers/Ageiculturist.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Login/Controllers/Login.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Staff/Controllers/Add.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Staff/Views/Edit.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropHarvest/Controllers/CropHarvest.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Symptom/Controllers/Symptom.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Crop/Controllers/Crop.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropApplyFertilizer/Controllers/CropApplyFertilizer.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/BioFertilizer/Views/BioFertilizer.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Staff/Controllers/Staff.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/ProblemControl/Controllers/ProblemControl.php</file>
-            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/Soil/Controllers/Soil.php</file>
+            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropProblem/Views/Add.php</file>
+            <file>file:/C:/AppServ/www/CROPNEW/App/Modules/CropProblem/Views/CropProblem.php</file>
         </group>
     </open-files>
 </project-private>
